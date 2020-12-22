@@ -36,5 +36,5 @@ void Pmeter::Render()
 	float x = CGame::GetInstance()->GetCamX();
 	float y = CGame::GetInstance()->GetCamY();
 	//CSprites::GetInstance()->Get(280000)->DrawFlipX(x + 20 + 76 * 3, y + 730 - 100 + 10 + 5);
-	animation_set->at(lv)->Render(x + 20 + 76 * 3+10+10+5, y + 730 - 100 + 10 - 5, 0, 255, 1, 1);
+	animation_set->at(lv)->Render(x + 273, y + 635, 0, 255, 1, 1);
 }

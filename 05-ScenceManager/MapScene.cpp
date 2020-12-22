@@ -245,6 +245,7 @@ void MapScene::Render()
 	{
 		map_portals[i]->Render();
 	}
+
 }
 
 void MapScene::Unload()
@@ -407,6 +408,9 @@ void MapScene::Load()
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 
 	current_portal = dynamic_cast<CMapPortal*>(map_portals[0]);
+
+	
+
 }
 
 void MapSceneKeyHandler::KeyState(BYTE * states)

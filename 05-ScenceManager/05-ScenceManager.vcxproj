@@ -130,6 +130,7 @@
     <ClCompile Include="ConCo.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Flatform.cpp" />
+    <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="Hub.cpp" />
     <ClCompile Include="Koopas.cpp" />
@@ -141,7 +142,9 @@
     <ClCompile Include="PlantBullet.cpp" />
     <ClCompile Include="Pmeter.cpp" />
     <ClCompile Include="Portal.cpp" />
+    <ClCompile Include="TextAndNumber.cpp" />
     <ClCompile Include="TimerCustom.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -160,6 +163,7 @@
     <ClInclude Include="ConCo.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Flatform.h" />
+    <ClInclude Include="GameTime.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Hub.h" />
     <ClInclude Include="Koopas.h" />
@@ -171,7 +175,9 @@
     <ClInclude Include="PlantBullet.h" />
     <ClInclude Include="Pmeter.h" />
     <ClInclude Include="Portal.h" />
+    <ClInclude Include="TextAndNumber.h" />
     <ClInclude Include="TimerCustom.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

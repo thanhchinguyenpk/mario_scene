@@ -15,12 +15,17 @@
 #include "VenusFireTrap.h"
 #include "PiranhaPlant.h"
 #include "Hub.h"
-
+#include "UI.h"
+#include "GameTime.h"
 
 class CPlayScene: public CScene
 {
 public: 
+
 	CMario *player;					// A play scene has to have player, right? 
+
+	UI* game_ui;
+	GameTime* game_time;
 
 	vector<LPGAMEOBJECT> objects;
 	Map* map;

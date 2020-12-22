@@ -5,9 +5,13 @@
 #include "CMapPortal.h"
 
 
+
 class MapScene : public CScene
 {
 public:
+
+	
+
 	CMario* player;
 	vector<LPGAMEOBJECT> objects;
 	Map* map;

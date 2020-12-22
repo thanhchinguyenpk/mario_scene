@@ -27,10 +27,12 @@ void Hub::SetState(int state)
 void Hub::Render()
 {
 	
-	pmeter->Render();
+	
 	//animations[0]->Render(x, y, 0, 255, 1, 1);
 
 	float x = CGame::GetInstance()->GetCamX();
 	float y = CGame::GetInstance()->GetCamY();
 	CSprites::GetInstance()->Get(60010)->DrawFlipX(x + 20 + 76 * 3, y + 730 - 100 + 10 + 5);
+
+	pmeter->Render();
 }

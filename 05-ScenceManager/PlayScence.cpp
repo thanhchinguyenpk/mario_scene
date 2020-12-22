@@ -343,6 +343,8 @@ void CPlayScene::Load()
 	CTextures::GetInstance()->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
+
+	game_ui = new UI();
 }
 
 void CPlayScene::Update(DWORD dt)
@@ -350,6 +352,8 @@ void CPlayScene::Update(DWORD dt)
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	
+	GameTime::GetInstance()->Update(dt);
+
 	vector<LPGAMEOBJECT> coObjects;
 	for (size_t i = 1; i < objects.size(); i++)
 	{
@@ -381,6 +385,10 @@ void CPlayScene::Render()
 	map->Draw();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+
+
+	game_time = GameTime::GetInstance();
+	game_ui->Render(300 - game_time->GetTime());
 }
 
 /*

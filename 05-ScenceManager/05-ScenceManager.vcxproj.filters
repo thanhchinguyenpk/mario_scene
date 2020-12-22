@@ -93,6 +93,9 @@
     <ClCompile Include="MapScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CMapPortal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Brick.h">
@@ -168,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CMapPortal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

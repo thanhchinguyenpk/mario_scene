@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="CMapPortal.cpp" />
     <ClCompile Include="ConCo.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Flatform.cpp" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="CMapPortal.h" />
     <ClInclude Include="ConCo.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Flatform.h" />

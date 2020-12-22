@@ -23,6 +23,7 @@
 #define MARIO_STATE_FLY_HIGH					1000
 #define MARIO_STATE_BRING_KOOMPASHELL_RIGHT			1100
 #define MARIO_STATE_ROUSE_KOOMPASHELL_RIGHT			1200
+#define MARIO_STATE_MOVE_IN_WORLD_MAP			1300
 
 #define MARIO_ANI_BIG_IDLE_RIGHT			0
 #define MARIO_ANI_SMALL_IDLE_RIGHT			1
@@ -156,6 +157,8 @@ public:
 	vector<LPGAMEOBJECT> listWeapons;
 
 	bool is_in_portal = false;
+
+	bool is_moving_in_world_map = false;
 	bool is_on_the_ground = false;
 
 	bool is_in_object = false;
@@ -183,7 +186,10 @@ public:
 public: 
 	CMario() : CGameObject()
 	{
-		level = MARIO_LEVEL_BIG;
+		level = MARIO_LEVEL_SMALL;
+		//is_moving_in_world_map = true;
+		//SetState(MARIO_STATE_MOVE_IN_WORLD_MAP);
+
 		untouchable = 0;
 		nx = 1;
 	}

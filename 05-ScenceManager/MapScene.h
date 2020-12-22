@@ -2,6 +2,8 @@
 #include "Scence.h"
 #include "Mario.h"
 #include "Map.h"
+#include "CMapPortal.h"
+
 
 class MapScene : public CScene
 {
@@ -11,11 +13,16 @@ public:
 	Map* map;
 	MapScene(int id, LPCWSTR filePath);
 
+	CMapPortal* current_portal;
+	vector<LPGAMEOBJECT> map_portals;
+
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+
+	void _ParseSection_MAP_SELECTION(string line);
 
 	void _ParseSection_MAP(string line);
 

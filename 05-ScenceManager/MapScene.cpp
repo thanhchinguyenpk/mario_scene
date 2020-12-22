@@ -15,6 +15,7 @@
 #define SCENE_SECTION_ANIMATION_SETS	5
 #define SCENE_SECTION_OBJECTS	6
 #define SCENE_SECTION_MAP	7
+#define SCENE_SECTION_MAP_SELECTION 8
 
 #define OBJECT_TYPE_MARIO	0
 #define OBJECT_TYPE_BRICK	1
@@ -145,7 +146,6 @@ void MapScene::_ParseSection_OBJECTS(string line)
 		obj = new CMario(); //CMario(x,y);
 		obj->SetPosition(x, y);//khong có dong duoi
 		player = (CMario*)obj;
-
 		DebugOut(L"[INFO] Player object created!\n");
 		break;
 	case OBJECT_TYPE_GOOMBA:
@@ -213,11 +213,38 @@ void MapScene::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
+void MapScene::_ParseSection_MAP_SELECTION(string line)
+{
+	vector<string> tokens = split(line);
+	if (tokens.size() < 9) return;
+
+	int id = atof(tokens[0].c_str());
+	float x = atof(tokens[1].c_str());
+	float y = atof(tokens[2].c_str());
+
+	int is_portal = atof(tokens[3].c_str());
+	int t = atof(tokens[4].c_str());
+
+	int r = atoi(tokens[5].c_str());
+	int b = atoi(tokens[6].c_str());
+	int l = atoi(tokens[7].c_str());
+	int state = atoi(tokens[8].c_str());
+
+	CGameObject* obj = new CMapPortal(id, x, y, is_portal ,t ,r ,b ,l ,state);
+
+	map_portals.push_back(obj);
+
+}
+
 void MapScene::Render()
 {
 	map->Draw();
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+	for (size_t i = 0; i < map_portals.size(); i++)
+	{
+		map_portals[i]->Render();
+	}
 }
 
 void MapScene::Unload()
@@ -353,7 +380,7 @@ void MapScene::Load()
 		if (line == "[MAP]") {
 			section = SCENE_SECTION_MAP; continue;
 		}
-
+		if (line == "[MAP_SELECTION]") { section = SCENE_SECTION_MAP_SELECTION; continue; }
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	// một là đang ở dòng data
 		//hai là đang ở section không biết đó là gì , để tránh khi đôi lúc chế section mà quên if vô 
 		//trong file này á .
@@ -369,6 +396,7 @@ void MapScene::Load()
 		case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 		case SCENE_SECTION_MAP: _ParseSection_MAP(line); break;
+		case SCENE_SECTION_MAP_SELECTION: _ParseSection_MAP_SELECTION(line); break;
 		}
 	}
 
@@ -378,7 +406,7 @@ void MapScene::Load()
 
 	DebugOut(L"[INFO] Done loading scene resources %s\n", sceneFilePath);
 
-	
+	current_portal = dynamic_cast<CMapPortal*>(map_portals[0]);
 }
 
 void MapSceneKeyHandler::KeyState(BYTE * states)
@@ -387,6 +415,50 @@ void MapSceneKeyHandler::KeyState(BYTE * states)
 
 void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 {
+	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
+
+	CMario *mario = ((CPlayScene*)scence)->GetPlayer();
+
+	CGame* game_temp = CGame::GetInstance();
+	MapScene* map_scene = (MapScene*)game_temp->GetCurrentScene();
+
+
+	switch (KeyCode)
+	{
+	case DIK_RIGHT:
+		if (map_scene->current_portal->r != -1)
+		{
+			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->r]);
+			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
+			mario->vx = 0.4;
+		}
+		break;
+	case DIK_LEFT:
+		if (map_scene->current_portal->l != -1)
+		{
+			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->l]);
+			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
+			mario->vx = -0.4;
+		}
+		break;
+	case DIK_UP:
+		if (map_scene->current_portal->t != -1)
+		{
+			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->t]);
+			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
+			mario->vy = -0.4;
+		}
+		break;
+	case DIK_DOWN:
+		if (map_scene->current_portal->b != -1)
+		{
+			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->b]);
+			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
+			mario->vy = 0.4;
+		}
+		break;
+	
+	}
 }
 
 void MapSceneKeyHandler::OnKeyUp(int KeyCode)

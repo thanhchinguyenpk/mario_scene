@@ -25,6 +25,7 @@
 107	textures\MARIOPRO.png	255	255	255
 108	textures\ENEMY2.png	255	255	255
 109	textures\CONPHUNLUA.png	255	255	255
+110	textures\power_state.png	255	255	255
 
 # id	left	top	width	height	texture_id
 [SPRITES]
@@ -458,6 +459,8 @@
 40123	120	0	16	15	105
 # empty
 40124	0	0	16	15	20
+#pmeter
+60000
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]

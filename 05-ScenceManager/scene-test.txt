@@ -1,4 +1,4 @@
-
+#haha
 #id 	file_path 		 row_map     column_map   file_texture   row_tiled    columtile   
 [MAP]
 0	textures\map_thanh.txt	41	176	textures\Final1.png	30 	29

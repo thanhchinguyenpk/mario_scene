@@ -5,8 +5,13 @@
 #include "Utils.h"
 
 #include "PlayScence.h"
+#include "MapScene.h"
+
+#define TYPE_PLAY_MAP 0
+#define TYPE_WORLD_MAP 1
 
 CGame * CGame::__instance = NULL;
+
 
 /*
 	Initialize DirectX, create a Direct3D device for rendering within the window, initial Sprite library for 
@@ -355,8 +360,17 @@ void CGame::_ParseSection_SCENES(string line)
 	if (tokens.size() < 2) return;
 	int id = atoi(tokens[0].c_str());
 	LPCWSTR path = ToLPCWSTR(tokens[1]);
+	int type_scene = atoi(tokens[2].c_str());
 
-	LPSCENE scene = new CPlayScene(id, path);
+	LPSCENE scene;
+	if (type_scene == TYPE_PLAY_MAP)
+	{
+		scene = new CPlayScene(id, path);
+	}
+	else {
+		scene = new MapScene(id, path);
+	}
+	
 	scenes[id] = scene;
 }
 

@@ -1,79 +1,4 @@
-﻿  Animations.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  Brick.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  ConCo.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(41): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(116): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(180): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(184): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(191): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(195): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(198): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(201): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(206): warning C4305: '=': truncation from 'double' to 'float'
-  debug.cpp
-  Flatform.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  Goomba.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\goomba.cpp(34): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\goomba.cpp(166): warning C4305: '=': truncation from 'double' to 'float'
-  Koopas.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  Map.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(40): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(42): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(79): warning C4154: deletion of an array expression; conversion to pointer supplied
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(83): warning C4154: deletion of an array expression; conversion to pointer supplied
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(208): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(209): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(211): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(212): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\map.cpp(228): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  MarioBullet.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mariobullet.cpp(36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  ParaGoomba.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): note: see previous definition of 'BRICK_BBOX_WIDTH'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): note: see previous definition of 'BRICK_BBOX_HEIGHT'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.cpp(23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.cpp(113): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.cpp(118): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.cpp(121): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.cpp(124): warning C4305: '=': truncation from 'double' to 'float'
-  PiranhaPlant.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\piranhaplant.cpp(19): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\piranhaplant.cpp(24): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\piranhaplant.cpp(71): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\piranhaplant.cpp(75): warning C4305: '=': truncation from 'double' to 'float'
-  PlantBullet.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  Portal.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\portal.cpp(9): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\portal.cpp(10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  TimerCustom.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-  Utils.cpp
-  Game.cpp
+﻿  Game.cpp
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
@@ -82,13 +7,9 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatfo
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(396): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(418): warning C4018: '<': signed/unsigned mismatch
-  GameObject.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\gameobject.cpp(142): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\gameobject.cpp(143): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  main.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(410): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(432): warning C4018: '<': signed/unsigned mismatch
+  MapScene.cpp
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
@@ -97,81 +18,18 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatfo
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
-  Mario.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(4): note: see previous definition of 'CONCO_WALKING_SPEED'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(5): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(32): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(27): note: see previous definition of 'CONCO_ANI_THUT_VAO'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(28): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coinfly.h(4): warning C4005: 'GOOMBA_WALKING_SPEED': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\goomba.h(6): note: see previous definition of 'GOOMBA_WALKING_SPEED'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(100): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(105): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(168): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(175): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(189): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(215): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(290): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(316): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(359): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(738): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(780): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(817): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  PlayScence.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(100): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(122): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(145): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(146): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(189): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(190): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(197): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(198): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(199): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(200): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(207): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(374): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(383): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(641): warning C4390: ';': empty controlled statement found; is this the intent?
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(710): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(714): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(731): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(735): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(804): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(808): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(834): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(838): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(896): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(902): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
-  Compiling...
-  Scence.cpp
-  Sprites.cpp
-  Textures.cpp
-  VenusFireTrap.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(150): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(202): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(210): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(86): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(108): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(128): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(129): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(180): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(181): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(183): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(190): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(219): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(225): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

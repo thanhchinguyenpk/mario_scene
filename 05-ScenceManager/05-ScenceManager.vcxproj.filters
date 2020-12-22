@@ -90,6 +90,9 @@
     <ClCompile Include="PiranhaPlant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Brick.h">
@@ -162,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PiranhaPlant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

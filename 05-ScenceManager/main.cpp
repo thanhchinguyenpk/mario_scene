@@ -58,6 +58,7 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 */
 void Update(DWORD dt)
 {
+	
 	CGame::GetInstance()->GetCurrentScene()->Update(dt);
 }
 
@@ -160,10 +161,11 @@ int Run()
 		if (dt >= tickPerFrame)
 		{
 			frameStart = now;
-
+			DebugOut(L"[toi day chua]4 path pic scene resources from :\n");
 			game->ProcessKeyboard();
 			
 			Update(dt);
+			
 			Render();
 		}
 		else
@@ -184,8 +186,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	
 	game->Load(L"mario-sample.txt");
 
-	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
+	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+	
 	Run();
 
 	return 0;

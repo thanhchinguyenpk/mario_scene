@@ -22,6 +22,7 @@ public:
 	CMario *player;					// A play scene has to have player, right? 
 
 	vector<LPGAMEOBJECT> objects;
+	Map* map;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
@@ -31,7 +32,7 @@ public:
 
 	void _ParseSection_MAP(string line);
 	
-	Map* map;
+	
 
 	
 
@@ -54,6 +55,6 @@ public:
 	virtual void KeyState(BYTE *states);
 	virtual void OnKeyDown(int KeyCode);
 	virtual void OnKeyUp(int KeyCode);
-	CPlayScenceKeyHandler(CScene *s) :CScenceKeyHandler(s) {};
+	CPlayScenceKeyHandler(CScene *s) :CScenceKeyHandler(s) {  };
 };
 

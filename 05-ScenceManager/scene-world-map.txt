@@ -1,0 +1,4 @@
+#haha
+#id 	file_path 		 row_map     column_map   file_texture   row_tiled    columtile   
+[MAP]
+0	textures\world_map.txt	12	16	textures\tileset_worldmap.png	4 	8

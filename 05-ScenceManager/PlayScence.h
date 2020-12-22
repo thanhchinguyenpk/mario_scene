@@ -14,6 +14,7 @@
 #include "MarioBullet.h"
 #include "VenusFireTrap.h"
 #include "PiranhaPlant.h"
+#include "Hub.h"
 
 
 class CPlayScene: public CScene

@@ -7,6 +7,7 @@
 #include "Sprites.h"
 #include "Portal.h"
 #include "ConCo.h"
+#include "Pmeter.h"
 
 
 using namespace std;
@@ -214,6 +215,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		//int lv = atof(tokens[4].c_str());
 		obj = new PiranhaPlant(player);
 		obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
+		break;
+	}
+	case 9:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new Hub(player);
+		//obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
 		break;
 	}
 	default:

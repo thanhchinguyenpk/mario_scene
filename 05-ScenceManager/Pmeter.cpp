@@ -29,10 +29,10 @@ void Pmeter::Render()
 		lv = 4;
 	else if (speed < 0.53)
 		lv = 5;
-	else if (speed < 0.55)
+	else if (speed < 0.58)
 		lv = 6;
-	else if (speed < 0.59)
-		lv = 7;
+	//else if (speed < 0.59)
+	//	lv = 7;
 	float x = CGame::GetInstance()->GetCamX();
 	float y = CGame::GetInstance()->GetCamY();
 	//CSprites::GetInstance()->Get(280000)->DrawFlipX(x + 20 + 76 * 3, y + 730 - 100 + 10 + 5);

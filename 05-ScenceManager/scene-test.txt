@@ -25,7 +25,8 @@
 107	textures\MARIOPRO.png	255	255	255
 108	textures\ENEMY2.png	255	255	255
 109	textures\CONPHUNLUA.png	255	255	255
-110	textures\power_state.png	255	255	255
+110	textures\power_state.png	176	 224	248
+111	textures\status_bar.png	255	255	255
 
 # id	left	top	width	height	texture_id
 [SPRITES]
@@ -440,6 +441,19 @@
 # white box
 40115	9	8	78	78	106
 ##################################################
+# Pmeter
+60000	2	2	64	7	110
+60001	2	11	64	7	110
+60002	2	20	64	7	110
+60003	2	29	64	7	110
+60004	2	38	64	7	110
+60005	2	47	64	7	110
+60006	2	56	64	7	110
+60007	2	65	64	7	110
+##################################################
+# hub
+60010	3	3	152	28	111
+##################################################
 # MAP SELECTION
 # start
 40116	1	33	16	16	105
@@ -459,8 +473,7 @@
 40123	120	0	16	15	105
 # empty
 40124	0	0	16	15	20
-#pmeter
-60000
+
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
@@ -798,7 +811,17 @@
 # empty
 776	40124	100
 
-#
+#pmeter
+1100	60000	100
+1101	60001	100
+1102	60002	100
+1103	60003	100
+1104	60004	100
+1105	60005	100
+1106	60006	70	60007	70
+
+
+###########################################3
 # id	ani1	ani2	ani3
 #
 [ANIMATION_SETS]
@@ -855,7 +878,8 @@
 25	767
 # map selection
 26	768	769	770	771	772	773	774	775	776
-
+# pmeter
+27	1100	1101	1102	1103	1104	1105	1106	
 
 
 
@@ -867,6 +891,7 @@
 # type	x	y	ani_set_id	extra_settings per object type
 # type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas,4=conco
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
+#9 =hub
 # MARIO
 0	5515	0	1
 
@@ -906,6 +931,8 @@
 7	5615	1130	13	2
 #xanh cap cap
 8	5424	1160	19	
+# p meter x,y nhu khong a, de dai animationset a
+9	100	100	27
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
 #50	115	98	0	148	150	1

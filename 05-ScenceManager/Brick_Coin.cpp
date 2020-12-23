@@ -72,9 +72,9 @@ void Brick_Coin::SetState(int state)
 		}
 	
 		break;
-	case BRICK_COIN_STATE_BOUCING:
+	/*case BRICK_COIN_STATE_BOUCING:
 		is_hit = true;
-		break;
+		break;*/
 	
 	}
 

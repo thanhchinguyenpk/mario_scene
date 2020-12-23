@@ -18,11 +18,13 @@ class Brick_Coin : public CGameObject
 {
 
 	//float originalX;
+public:
 	float originalY;
 	
 	bool is_hit = false;
+	bool dropped = false;
 	bool flag = false;
-public:
+
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);

@@ -19,6 +19,12 @@
 #include "GameTime.h"
 #include "Brick_Coin.h"
 #include "BrickBlink.h"
+#include "Mushroom.h"
+#include "SuperLeaf.h"
+#include "CoinEffect.h"
+
+#define ITEM_RANDOM 0
+#define ITEM_MONEY 1
 
 class CPlayScene: public CScene
 {
@@ -30,6 +36,9 @@ public:
 	GameTime* game_time;
 
 	vector<LPGAMEOBJECT> objects;
+	vector<LPGAMEOBJECT> itemsMarioCanEat;
+	void DropItem(int itemType, float x, float y);
+
 	Map* map;
 
 	void _ParseSection_TEXTURES(string line);

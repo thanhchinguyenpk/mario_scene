@@ -187,8 +187,8 @@ public:
 	CMario() : CGameObject()
 	{
 		level = MARIO_LEVEL_SMALL;
-		is_moving_in_world_map = true;
-		SetState(MARIO_STATE_MOVE_IN_WORLD_MAP);
+		//is_moving_in_world_map = true;
+		//SetState(MARIO_STATE_MOVE_IN_WORLD_MAP);
 
 		untouchable = 0;
 		nx = 1;

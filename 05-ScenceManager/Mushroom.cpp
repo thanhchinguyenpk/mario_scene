@@ -5,10 +5,12 @@
 #include "Flatform.h"
 #include "Mario.h"
 
-extern vector<LPGAMEOBJECT> objects;
-extern CMario* mario;
+//extern vector<LPGAMEOBJECT> objects;
+//extern CMario* mario;
 
-int boQuaVienDaDongTienDauTienAnNap = 0;
+//int boQuaVienDaDongTienDauTienAnNap = 0;
+
+
 
 void Mushroom::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -122,7 +124,7 @@ void Mushroom::Render()
 {
 	int ani = MUSHROOM_ANI_WALKING;
 
-	animations[ani]->Render(x, y);
+	animation_set->at(0)->Render(x, y);
 	RenderBoundingBox();
 }
 
@@ -135,7 +137,7 @@ void Mushroom::SetState(int state)
 	{
 	case MUSHROOM_STATE_GOING_UP:
 		vx = 0;
-		vy = -0.04;
+		vy = -0.1;
 		break;
 	case MUSHROOM_STATE_MOVING_LEFT:
 		vx = -MUSHROOM_MOVING_SPEED;
@@ -150,5 +152,13 @@ void Mushroom::SetState(int state)
 Mushroom::Mushroom(float pos_x_brick, float pos_y_brick)
 {
 		this->pos_y_brick = pos_y_brick;
+
+		CAnimationSets * animation_sets_temp = CAnimationSets::GetInstance();
+		LPANIMATION_SET ani_set = animation_sets_temp->Get(12);
+		this->SetAnimationSet(ani_set);
+
+		SetPosition(pos_x_brick, pos_y_brick);
+		SetState(MUSHROOM_STATE_GOING_UP);
+
 }
 

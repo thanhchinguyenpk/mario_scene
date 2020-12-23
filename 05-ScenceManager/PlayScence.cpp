@@ -48,7 +48,36 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define MAX_SCENE_LINE 1024
 
 
-void CPlayScene::_ParseSection_TEXTURES(string line)
+void CPlayScene::DropItem(int itemType, float x, float y)
+{
+	switch (itemType)
+	{
+	case ITEM_RANDOM:
+	{
+		if (player->GetLevel() == MARIO_LEVEL_SMALL)
+		{
+			Mushroom* mushroom = new Mushroom(x, y);
+			itemsMarioCanEat.push_back(mushroom);
+		}
+		else if (player->GetLevel() == MARIO_LEVEL_BIG)
+		{
+			SuperLeaf *superleaf = new SuperLeaf(x, y);
+			itemsMarioCanEat.push_back(superleaf);
+		}
+		break;
+	}
+	case ITEM_MONEY:
+	{
+		CoinEffect* coineffect = new CoinEffect(x, y);
+		itemsMarioCanEat.push_back(coineffect);
+		break;
+	}
+
+	}
+}
+
+
+	void CPlayScene::_ParseSection_TEXTURES(string line)
 {
 	vector<string> tokens = split(line);
 
@@ -369,14 +398,38 @@ void CPlayScene::Update(DWORD dt)
 	GameTime::GetInstance()->Update(dt);
 
 	vector<LPGAMEOBJECT> coObjects;
+
+
 	for (size_t i = 1; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}
 
+
+
+	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
+	{
+		itemsMarioCanEat[i]->Update(dt, &coObjects);
+	}
+
+
+
+
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);
+
+		//LPGAMEOBJECT e = objects[i];
+		if (dynamic_cast<Brick_Coin*>(objects[i]))
+		{
+			Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
+			if (brick->is_hit == true && brick->dropped == false)
+			{
+				DropItem(1, brick->x, brick->y);
+				brick->dropped = true;
+				DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
+			}
+		}
 	}
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
@@ -397,9 +450,13 @@ void CPlayScene::Update(DWORD dt)
 void CPlayScene::Render()
 {
 	map->Draw();
+	
+
+	for (int i = 0; i < itemsMarioCanEat.size(); i++)
+		itemsMarioCanEat[i]->Render();
+
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
-
 
 	game_time = GameTime::GetInstance();
 	game_ui->Render(300 - game_time->GetTime());

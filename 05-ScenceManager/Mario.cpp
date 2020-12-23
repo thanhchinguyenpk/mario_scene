@@ -397,6 +397,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						if (brickcoin->GetState() == BRICK_COIN_STATE_CHUA_DAP)
 						{
 							brickcoin->SetState(BRICK_COIN_STATE_DA_DAP);
+							brickcoin->is_hit = true;
 						}
 					}
 				}

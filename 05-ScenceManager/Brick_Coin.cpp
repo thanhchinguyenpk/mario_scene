@@ -16,7 +16,7 @@ void Brick_Coin::Render()
 	//DebugOut(L"[ERROR------------------------------] DINPUT::GetDeviceData failed. Error: %d\n", ani);
 
 
-	animations[ani]->Render(x, y);
+	animation_set->at(ani)->Render(x, y);
 	RenderBoundingBox();
 }
 
@@ -62,12 +62,13 @@ void Brick_Coin::SetState(int state)
 		mr->SetState(MUSHROOM_STATE_GOING_UP);
 		itemsMarioCanEat.push_back(mr);*/
 
+			/*
 			SwitchBlock* switch_block = new SwitchBlock();
 			switch_block->AddAnimation(20000);
 			switch_block->AddAnimation(20001);
 			switch_block->SetState(SWITCH_BLOCK_STATE_INIT);
 			switch_block->SetPosition(this->x, this->y- SWITCH_BLOCK_BBOX_HEIGHT);
-			objects.push_back(switch_block);
+			objects.push_back(switch_block);*/
 		}
 	
 		break;

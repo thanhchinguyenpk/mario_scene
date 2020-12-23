@@ -17,6 +17,8 @@
 #include "Hub.h"
 #include "UI.h"
 #include "GameTime.h"
+#include "Brick_Coin.h"
+#include "BrickBlink.h"
 
 class CPlayScene: public CScene
 {

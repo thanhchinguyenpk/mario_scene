@@ -12,7 +12,7 @@
 #define BRICK_COIN_ANI_CHUA_DAP	 0
 #define BRICK_COIN_ANI_DA_DAP	 1
 
-extern vector<LPGAMEOBJECT> itemsMarioCanEat;
+//extern vector<LPGAMEOBJECT> itemsMarioCanEat;
 
 class Brick_Coin : public CGameObject
 {

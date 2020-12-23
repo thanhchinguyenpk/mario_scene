@@ -18,14 +18,18 @@
 #define  BRICK_BLINK_STATE_MOVE_LEFT		100 // chỗ này chưa
 #define  BRICK_BLINK_STATE_MOVE_RIGHT	200
 
-extern CMario* mario;
+//extern CMario* mario;
 class BrickBlink : public CGameObject
 {
 public:
-	vector<LPGAMEOBJECT> vec_debris;
-	bool is_brick = true;
-	
+	CMario* mario;
 
+	vector<LPGAMEOBJECT> vec_debris;
+	int number_debris = 0;
+
+	bool is_brick = true;
+	bool vanish = false;
+	BrickBlink(CMario* player);
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void SetState(int state);

@@ -3,6 +3,7 @@
 #include "Mario.h"
 #include "Map.h"
 #include "CMapPortal.h"
+#include "InvisibleObject.h"
 
 
 
@@ -19,12 +20,14 @@ public:
 
 	CMapPortal* current_portal;
 	vector<LPGAMEOBJECT> map_portals;
+	vector<LPGAMEOBJECT> ghost_platforms;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	void _ParseSection_STATIC_OBJECTS(string line);
 
 	void _ParseSection_MAP_SELECTION(string line);
 

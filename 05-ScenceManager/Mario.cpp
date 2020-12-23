@@ -388,6 +388,38 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					}
 				}
+
+				if (dynamic_cast<Brick_Coin*>(e->obj))
+				{
+					Brick_Coin* brickcoin = dynamic_cast<Brick_Coin*>(e->obj);
+					if (e->ny > 0) // phương va chạm hướng lên
+					{
+						if (brickcoin->GetState() == BRICK_COIN_STATE_CHUA_DAP)
+						{
+							brickcoin->SetState(BRICK_COIN_STATE_DA_DAP);
+						}
+					}
+				}
+				if (dynamic_cast<BrickBlink*>(e->obj))
+				{
+					BrickBlink* brick_blink = dynamic_cast<BrickBlink*>(e->obj);
+
+					if (brick_blink->is_brick == true)
+					{
+						if (e->ny > 0) // phương va chạm hướng lên
+						{
+							brick_blink->SetState(BRICK_BLINK_STATE_WAS_HIT);
+							//brick_blink->used = true;
+						}
+					}
+					else if (brick_blink->is_brick == false)
+					{
+						x -= min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+						y -= min_ty * dy + ny * 0.4f;
+						brick_blink->used = true;
+					}
+				}
+				
 				if (dynamic_cast<Flatform*>(e->obj))
 				{
 					//is_in_portal = true;
@@ -422,18 +454,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 
 
-				if (dynamic_cast<Brick_Coin*>(e->obj))
-				{
-					Brick_Coin* brickcoin = dynamic_cast<Brick_Coin*>(e->obj);
-					if (e->ny > 0) // phương va chạm hướng lên
-					{
-						if (brickcoin->GetState() == BRICK_COIN_STATE_CHUA_DAP)
-						{
-							brickcoin->SetState(BRICK_COIN_STATE_DA_DAP);
-						}
-					}
-				}
-
+				
 
 
 
@@ -455,25 +476,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				}
 
-				if (dynamic_cast<BrickBlink*>(e->obj))
-				{
-					BrickBlink* brick_blink = dynamic_cast<BrickBlink*>(e->obj);
-
-					if (brick_blink->is_brick == true)
-					{
-						if (e->ny > 0) // phương va chạm hướng lên
-						{
-							brick_blink->SetState(BRICK_BLINK_STATE_WAS_HIT);
-							//brick_blink->used = true;
-						}
-					}
-					else if (brick_blink->is_brick == false)
-					{
-						x -= min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-						y -= min_ty * dy + ny * 0.4f;
-						brick_blink->used = true;
-					}
-				}
+				
 
 	#pragma endregion
 

@@ -126,13 +126,17 @@
   <ItemGroup>
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="BrickBlink.cpp" />
+    <ClCompile Include="Brick_Coin.cpp" />
     <ClCompile Include="CMapPortal.cpp" />
     <ClCompile Include="ConCo.cpp" />
+    <ClCompile Include="DebrisBrick.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Flatform.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="Hub.cpp" />
+    <ClCompile Include="InvisibleObject.cpp" />
     <ClCompile Include="Koopas.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapScene.cpp" />
@@ -159,13 +163,17 @@
   <ItemGroup>
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="BrickBlink.h" />
+    <ClInclude Include="Brick_Coin.h" />
     <ClInclude Include="CMapPortal.h" />
     <ClInclude Include="ConCo.h" />
+    <ClInclude Include="DebrisBrick.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Flatform.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Hub.h" />
+    <ClInclude Include="InvisibleObject.h" />
     <ClInclude Include="Koopas.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapScene.h" />

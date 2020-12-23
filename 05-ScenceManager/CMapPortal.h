@@ -3,6 +3,26 @@
 #include "Mario.h"
 #include "Game.h"
 
+#define STATE_START 0
+#define STATE_1 1
+#define STATE_2 2
+#define STATE_3 3
+#define STATE_4 4
+#define STATE_5 5
+#define STATE_6 6
+#define STATE_CARD 7
+#define STATE_EMPTY 8
+
+#define ANI_START 0
+#define ANI_1 1
+#define ANI_2 2
+#define ANI_3 3
+#define ANI_4 4
+#define ANI_5 5
+#define ANI_6 6
+#define ANI_CARD 7
+#define ANI_EMPTY 8
+
 class CMapPortal : public CGameObject
 {
 public:

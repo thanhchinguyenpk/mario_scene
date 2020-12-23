@@ -1,22 +1,34 @@
 #include "BrickBlink.h"
 #include "DebrisBrick.h"
 
-extern vector<LPGAMEOBJECT> objects;
+//extern vector<LPGAMEOBJECT> objects;
+
+BrickBlink::BrickBlink(CMario * player)
+{
+	mario = player;
+}
 
 void BrickBlink::Render()
 {
+
+	for (LPGAMEOBJECT debris : vec_debris)
+		debris->Render();
+
 	int ani = BRICK_BLINK_ANI_BLINK;
 	int direction = 1;
 	int ny = 1;
 	if (is_brick == false)
 		ani = BRICK_BLINK_ANI_COIN;
 
-	animations[ani]->Render(x, y, 0, 255, direction, ny);
+	if (vanish==false)
+	animation_set->at(ani)->Render(x, y, 0, 255, direction, ny);
 	//RenderBoundingBox();
 }
 
 void BrickBlink::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
+	if (vanish)
+		return;
 	l = x - BRICK_BLINK_BBOX_WIDTH/2;
 	t = y - BRICK_BLINK_BBOX_HEIGHT/2;
 	r = x + BRICK_BLINK_BBOX_WIDTH/2;
@@ -37,21 +49,21 @@ void BrickBlink::SetState(int state)
 		DebrisBrick* debrick_brick = NULL;
 
 		debrick_brick = new DebrisBrick(pos_x + DEBRIS_DISTANCE, pos_y - DEBRIS_DISTANCE, 1, 1.5);
-		objects.push_back(debrick_brick);
+		vec_debris.push_back(debrick_brick);
 
 
 		debrick_brick = new DebrisBrick(pos_x + DEBRIS_DISTANCE, pos_y + DEBRIS_DISTANCE, 1, 1);
-		objects.push_back(debrick_brick);
+		vec_debris.push_back(debrick_brick);
 
 
 		debrick_brick = new DebrisBrick(pos_x - DEBRIS_DISTANCE, pos_y + DEBRIS_DISTANCE, -1, 1);
-		objects.push_back(debrick_brick);
+		vec_debris.push_back(debrick_brick);
 
 		debrick_brick = new DebrisBrick(pos_x - DEBRIS_DISTANCE, pos_y - DEBRIS_DISTANCE, -1, 1.5);
-		objects.push_back(debrick_brick);
+		vec_debris.push_back(debrick_brick);
 
-		this->used = true;
-
+		//this->used = true;
+		vanish = true;
 		//used = true;
 	}
 		break;
@@ -73,10 +85,20 @@ void BrickBlink::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 
 
-		mario->GetBoundingBox(ml, mt, mr, mb);
+	mario->GetBoundingBox(ml, mt, mr, mb);
 
-		if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
 			SetState(BRICK_BLINK_STATE_WAS_HIT);
+
+	for (LPGAMEOBJECT debris : vec_debris)
+	{
+		debris->Update(dt, coObjects);
+		if (debris->used)
+			number_debris++;
+	}
+
+	if (number_debris == 4)
+		this->used = true;
 	
 }
 

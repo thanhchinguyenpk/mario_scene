@@ -224,6 +224,20 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		//obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
 		break;
 	}
+	case 10:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new Brick_Coin(y);
+		obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
+	case 11:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new BrickBlink(player);
+		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;

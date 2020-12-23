@@ -27,6 +27,8 @@
 109	textures\CONPHUNLUA.png	255	255	255
 110	textures\power_state.png	176	 224	248
 111	textures\status_bar.png	255	0	255
+112	textures\misc_1.png	176	224	248
+
 
 # id	left	top	width	height	texture_id
 [SPRITES]
@@ -353,8 +355,8 @@
 
 ##################################################
 # debris
-40074	0	0	33	39	103
-40075	36	0	39	39	103
+40074	458	119	10	10	112
+40075	470	119	10	10	112
 40076	78	0	33	39	103
 40077	114	0	39	39	103
 
@@ -742,7 +744,7 @@
 744	40058	200	40059	200
 
 # ==== DEBRIS =====
-745	40074	100	40075	100	40076	100	40077	100
+745	40074	100	40075	100
 
 # ==== BLING BLING BRICK ====
 746	40078	100	40079	100	40080	100	40081	100
@@ -844,7 +846,7 @@
 # QUESTION BRICK 
 2	702	720
 # TRANSPARENT BRICK
-3	703	746	720
+3	746	720
 # FIRE BALL
 4	704	736
 # TAN GOOMBA
@@ -886,6 +888,7 @@
 # POINT
 23	755	756	757	758
 # MAP SELECTION
+#		catus	help	guard
 24	703	759	760	761
 # white box
 25	767
@@ -904,19 +907,10 @@
 # type	x	y	ani_set_id	extra_settings per object type
 # type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas,4=conco
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
-#9 =hub
+#9 =hub		,10=questionbrick	,11=brick blink
 # MARIO
 0	100	700	1
-
 # BRICK 
-#1	0	135	22
-#1	0	150	22
-#1	16	150	22
-#1	32	150	22
-#1	100	150	22
-#1	115	150	22
-#1	130	150	22
-
 1	0	1248	22
 # con cua
 2	200	100	5
@@ -930,9 +924,6 @@
 6	6288	1872	1	1000	5	0
 #cong tren mat dat
 6	300	1180	1	50	70	1
-
-	
-
 #cong duoi mat dat
 6	6453	1620	1	50	70	1
 #nen cuoi gan mau den
@@ -946,6 +937,16 @@
 8	5424	1160	19	
 # p meter x,y nhu khong a, de dai animationset a
 9	100	100	27
+#brick question
+10	552	1080	2
+10	600	1080	2
+10	696	936	2
+10	744	936	2
+#brick blink
+11	800	1110	3
+11	900	1110	3
+11	1000	1110	3
+
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
 #50	115	98	0	148	150	1

@@ -16,6 +16,7 @@
 #define SCENE_SECTION_OBJECTS	6
 #define SCENE_SECTION_MAP	7
 #define SCENE_SECTION_MAP_SELECTION 8
+#define SCENE_SECTION_STATIC_OBJECTS 9
 
 #define OBJECT_TYPE_MARIO	0
 #define OBJECT_TYPE_BRICK	1
@@ -213,6 +214,46 @@ void MapScene::_ParseSection_OBJECTS(string line)
 	objects.push_back(obj);
 }
 
+void MapScene::_ParseSection_STATIC_OBJECTS(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 8) return;
+
+	int object_type = atoi(tokens[0].c_str());
+
+	float x = atof(tokens[1].c_str());
+	float y = atof(tokens[2].c_str());
+
+	float w = atof(tokens[3].c_str());
+	float h = atof(tokens[4].c_str());
+
+	int ani_set_id = atoi(tokens[5].c_str());
+	int state = atoi(tokens[6].c_str());
+	int type = atoi(tokens[7].c_str());
+
+	CAnimationSets* animation_sets = CAnimationSets::GetInstance();
+
+	CGameObject* obj = NULL;
+
+	switch (object_type)
+	{
+	case 5: obj = new InvisibleObject(x, y, w, h, state); break;
+	default:
+		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
+		return;
+	}
+
+	// General object setup
+	obj->SetPosition(x, y);
+
+	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
+
+	obj->SetAnimationSet(ani_set);
+
+	ghost_platforms.push_back(obj);
+}
+
 void MapScene::_ParseSection_MAP_SELECTION(string line)
 {
 	vector<string> tokens = split(line);
@@ -239,12 +280,19 @@ void MapScene::_ParseSection_MAP_SELECTION(string line)
 void MapScene::Render()
 {
 	map->Draw();
-	for (int i = 0; i < objects.size(); i++)
-		objects[i]->Render();
+	
+
 	for (size_t i = 0; i < map_portals.size(); i++)
 	{
 		map_portals[i]->Render();
 	}
+
+	for (size_t i = 0; i < ghost_platforms.size(); i++)
+	{
+		ghost_platforms[i]->Render();
+	}
+	for (int i = 0; i < objects.size(); i++)
+		objects[i]->Render();
 
 }
 
@@ -285,6 +333,11 @@ void MapScene::Update(DWORD dt)
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(dt, &coObjects);
+	}
+
+	for (size_t i = 0; i < ghost_platforms.size(); i++)
+	{
+		ghost_platforms[i]->Update(dt);
 	}
 
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
@@ -381,7 +434,9 @@ void MapScene::Load()
 		if (line == "[MAP]") {
 			section = SCENE_SECTION_MAP; continue;
 		}
+
 		if (line == "[MAP_SELECTION]") { section = SCENE_SECTION_MAP_SELECTION; continue; }
+		if (line == "[STATIC_OBJECTS]") { section = SCENE_SECTION_STATIC_OBJECTS; continue; }
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	// một là đang ở dòng data
 		//hai là đang ở section không biết đó là gì , để tránh khi đôi lúc chế section mà quên if vô 
 		//trong file này á .
@@ -398,6 +453,7 @@ void MapScene::Load()
 		case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 		case SCENE_SECTION_MAP: _ParseSection_MAP(line); break;
 		case SCENE_SECTION_MAP_SELECTION: _ParseSection_MAP_SELECTION(line); break;
+		case SCENE_SECTION_STATIC_OBJECTS: _ParseSection_STATIC_OBJECTS(line); break;
 		}
 	}
 

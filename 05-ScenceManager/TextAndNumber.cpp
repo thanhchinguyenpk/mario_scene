@@ -13,3 +13,10 @@ void TextAndNumber::Render(float posX, float posY, const string& str)
 	}
 
 }
+
+string TextAndNumber::FillZeroString(string str, int MaxStringLenght)
+{
+	while (str.size() < MaxStringLenght)
+		str = "0" + str;
+	return str;
+}

@@ -1,6 +1,2 @@
-﻿  MoneyEffect.cpp
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\moneyeffect.cpp(5): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\moneyeffect.cpp(6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\moneyeffect.cpp(8): warning C4305: '=': truncation from 'double' to 'float'
+﻿  UI.cpp
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

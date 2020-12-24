@@ -9,7 +9,7 @@ class TextAndNumber
 
 	public:
 		void Render(float posX, float posY, const string& str);
-		string FillZeroString(string str, UINT MaxStringLenght);
+		string FillZeroString(string str, int MaxStringLenght);
 
 		TextAndNumber() {};
 		~TextAndNumber() {};

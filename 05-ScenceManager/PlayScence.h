@@ -32,6 +32,9 @@ public:
 
 	CMario *player;					// A play scene has to have player, right? 
 
+	int point_hub = 0;
+	int the_number_mario_hit_brick = 0;
+
 	UI* game_ui;
 	GameTime* game_time;
 

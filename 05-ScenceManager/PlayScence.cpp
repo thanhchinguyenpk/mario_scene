@@ -427,6 +427,10 @@ void CPlayScene::Update(DWORD dt)
 			{
 				DropItem(1, brick->x, brick->y);
 				brick->dropped = true;
+
+				this->the_number_mario_hit_brick++;
+				this->point_hub += 100;
+
 				DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
 			}
 		}
@@ -459,7 +463,7 @@ void CPlayScene::Render()
 		objects[i]->Render();
 
 	game_time = GameTime::GetInstance();
-	game_ui->Render(300 - game_time->GetTime());
+	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, point_hub,4,1);
 }
 
 /*

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Mario.h"
 #include "debug.h"
+#include "MoneyEffect.h"
 
 #define	 PARA_GROOMBA_BBOX_WIDTH 20*3
 #define	 PARA_GROOMBA_BBOX_HEIGHT 19*3
@@ -33,13 +34,17 @@
 
 class ParaGoomba :public CGameObject
 {
+public:
+
+	MoneyEffect *effect = NULL;
+
 	int count =1;
 	DWORD moving_time;
 	bool turn_on_moving = false;
 	TimerCustom* time_to_disapear = new TimerCustom(500);
 
 	CMario* mario;
-public:
+
 	ParaGoomba(CMario* player);
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);

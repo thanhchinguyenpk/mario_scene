@@ -29,7 +29,7 @@ void CoinEffect::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (y > maxPosY && vanish == false)
 	{
 		vanish = true;
-		effect = new MoneyEffect(this->x,this->y);
+		effect = new MoneyEffect(this->x,this->y-50);
 	}
 
 	if (effect)

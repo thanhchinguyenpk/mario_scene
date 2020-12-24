@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "MoneyEffect.h"
 
 #define CONCO_WALKING_SPEED			 0.05;
 #define CONCO_MAI_RUA_CHAY_SPEED	 0.1;
@@ -38,6 +39,9 @@
 class CConCo : public CGameObject
 {
 public:
+
+	MoneyEffect *effect = NULL;
+
 	bool is_brought = false;
 	DWORD time_to_indent_out;
 	bool shell_moving = false;

@@ -198,7 +198,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: 
 	{	
 		obj = new CGoomba(player);
-		obj->SetState(GOOMBA_STATE_WALKING);
+		obj->SetState(CONCO_STATE_FLY_RIGHT);
 		break;
 	}
 	case OBJECT_TYPE_PARA_GOOMBA:

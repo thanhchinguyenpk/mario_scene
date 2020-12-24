@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "TimerCustom.h"
 #include "Mario.h"
-
+#include "MoneyEffect.h"
 #define GOOMBA_WALKING_SPEED 0.01f;
 #define GOOMBA_GRAVITY			0.002f*1.5
 
@@ -23,6 +23,7 @@
 class CGoomba : public CGameObject
 {
 public:
+	MoneyEffect *effect = NULL;
 	CMario* mario;
 	TimerCustom* time_to_disapear = new TimerCustom(400);
 	CGoomba(CMario* player);

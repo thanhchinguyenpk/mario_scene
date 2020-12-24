@@ -1,2 +1,19 @@
-﻿  UI.cpp
+﻿  ConCo.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(42): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(117): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(195): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(199): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(206): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(209): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(213): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(215): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(218): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(220): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(223): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(228): warning C4305: '=': truncation from 'double' to 'float'
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

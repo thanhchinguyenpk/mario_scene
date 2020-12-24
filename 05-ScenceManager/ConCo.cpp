@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "debug.h"
 #include "Flatform.h"
+#include "Brick.h"
 
 
 #include "Utils.h"
@@ -103,7 +104,7 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		
 
-			if (dynamic_cast<Flatform*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+			if (dynamic_cast<CBrick*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 			{
 				/*Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
@@ -141,6 +142,16 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		SetPosition(this->x, this->y - 32);//để khi thọt ra mai rùa không bị rơi xuống
 		SetState(CONCO_STATE_WALKING_LEFT);
 	}
+
+	if (effect)
+	{
+		effect->Update(dt, coObjects);
+		if (effect->used == true)
+		{
+			delete effect;
+			effect = NULL;
+		}
+	}
 }
 
 void CConCo::Render()
@@ -159,6 +170,10 @@ void CConCo::Render()
 		ani = CONCO_ANI_SHELL_MOVING;
 	else if (state == CONCO_STATE_FLY_LEFT)
 		ani = CONCO_ANI_FLY_LEFT; // thôi kệ nó đi :(
+
+	if (effect)
+		effect->Render();
+
 	//int ani = CONCO_ANI_THUT_VAO;
 	DebugOut(L"[ERROR-------state cua con co------------------] DINPUT::GetDeviceData failed. Error: %d\n", state);
 	//animation_set->at(0)
@@ -189,13 +204,20 @@ void CConCo::SetState(int state)
 		vy = 0;
 		nx = 1;
 		time_to_indent_out = GetTickCount64();
+
+		if (effect == NULL)
+			effect = new MoneyEffect(this->x, this->y-50);
 		//y = 135;
 		break;
 	case CONCO_STATE_MAI_RUA_CHAY_PHAI:
 		vx = 8*CONCO_MAI_RUA_CHAY_SPEED;
+		if (effect == NULL)
+			effect = new MoneyEffect(this->x, this->y-50);
 		break;
 	case CONCO_STATE_MAI_RUA_CHAY_TRAI:
 		vx = -8 * CONCO_MAI_RUA_CHAY_SPEED;
+		if (effect == NULL)
+			effect = new MoneyEffect(this->x, this->y-50);
 		break;
 	case CONCO_STATE_FLY_LEFT:
 		vx = -CONCO_WALKING_SPEED;

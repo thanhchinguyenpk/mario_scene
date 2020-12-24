@@ -98,6 +98,16 @@ void ParaGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (time_to_disapear->IsTimeUp())
 		used = true;
 
+	if (effect)
+	{
+		effect->Update(dt, coObjects);
+		if (effect->used == true)
+		{
+			delete effect;
+			effect = NULL;
+		}
+	}
+
 	DebugOut(L"[ERROR-------------state----------------] DINPUT::GetDeviceData failed. Error: %d\n",state);
 }
 
@@ -125,11 +135,15 @@ void ParaGoomba::SetState(int state)
 		break;
 	case PARA_GROOMBA_STATE_WALKING:
 		//vy = 0;
+		if (effect == NULL)
+			effect = new MoneyEffect(this->x, this->y - 50);
 		break;
 	case PARA_GROOMBA_STATE_DIE:
 		vy = 0;
 		vx = 0;
 		time_to_disapear->StartTime();
+		if (effect == NULL)
+			effect = new MoneyEffect(this->x, this->y - 50);
 		break;
 
 
@@ -153,6 +167,10 @@ void ParaGoomba::Render()
 
 	if (state == PARA_GROOMBA_STATE_DIE)
 		ani = PARA_GROOMBA_ANI_DIE;
+
+
+	if (effect)
+		effect->Render();
 
 	animation_set->at(ani)->Render(x, y, 0, 255, direction, ny);
 	RenderBoundingBox();

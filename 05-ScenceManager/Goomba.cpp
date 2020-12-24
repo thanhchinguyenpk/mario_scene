@@ -126,6 +126,16 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	if (time_to_disapear->IsTimeUp())
 		used = true;
+	
+	if (effect)
+	{
+		effect->Update(dt, coObjects);
+		if (effect->used == true)
+		{
+			delete effect;
+			effect = NULL;
+		}
+	}
 
 	//DebugOut(L"[ERROR----------vy cua con cua-----------------] DINPUT::GetDeviceData failed. Error: %g\n", vy);
 }
@@ -144,10 +154,15 @@ void CGoomba::Render()
 		ny = -1;
 	}
 
+	if (effect)
+		effect->Render();
+
 	int alpha = 255;
 
 	//animation_set->at(ani)->Render(x, y, 0, alpha, nx);
 	animation_set->at(ani)->Render(x, y, 0, alpha, nx,ny);
+
+
 	RenderBoundingBox();
 }
 
@@ -158,9 +173,14 @@ void CGoomba::SetState(int state)
 	{
 		case GOOMBA_STATE_DIE:
 			//y += GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE + 1;
+		{
 			vx = 0;
 			vy = 0;
 			time_to_disapear->StartTime();
+
+			if(effect==NULL)
+				effect = new MoneyEffect(this->x, this->y-50);
+		}
 			break;
 		case GOOMBA_STATE_WALKING: 
 			vx = -0.05;//GOOMBA_WALKING_SPEED;

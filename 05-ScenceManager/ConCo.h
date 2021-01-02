@@ -35,7 +35,7 @@
 #define CONCO_ANI_INDENT_OUT		 7
 
 #define CONCO_GRAVITY			0.003
-#define CONCO_HIHI			0.003
+
 class CConCo : public CGameObject
 {
 public:

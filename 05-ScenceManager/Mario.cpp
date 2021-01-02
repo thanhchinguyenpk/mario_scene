@@ -421,12 +421,14 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 				}
 				
+				//if (dynamic_cast<Flatform*>(e->obj))
+				//{
+					//is_in_portal = true;
+				//}
+				
+
 				if (dynamic_cast<Flatform*>(e->obj))
 				{
-					//is_in_portal = true;
-				}
-				/*
-
 				Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
 				if (e->ny < 0 && flatform->is_portal)
@@ -449,7 +451,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 
 			}
-		*/
+		
 			}/*
 	#pragma region logic collision
 

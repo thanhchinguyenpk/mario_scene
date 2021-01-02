@@ -447,6 +447,13 @@ void CPlayScene::Update(DWORD dt)
 	cx -= game->GetScreenWidth() / 2;
 	cy -= game->GetScreenHeight() / 2;
 
+	cx += 200;
+
+	if (cx < 0)
+		return;
+	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
+		return;
+
 	if (player->is_on_the_ground == false)
 		CGame::GetInstance()->SetCamPos(cx, 700);
 }

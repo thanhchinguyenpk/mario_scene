@@ -274,6 +274,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
 		break;
 	}
+	case 13:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new RandomBonus(player);
+		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -285,7 +292,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
 	// nhớ thêm đoạn code animation set mà null chẳng hạn 0:32:38
 	obj->SetAnimationSet(ani_set);
-	objects.push_back(obj);
+
+	if (dynamic_cast<RandomBonus*>(obj))
+		itemsMarioCanEat.push_back(obj);
+	else
+		objects.push_back(obj);
 
 
 	
@@ -438,7 +449,7 @@ void CPlayScene::Update(DWORD dt)
 				this->the_number_mario_hit_brick++;
 				this->point_hub += 100;
 
-				DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
+				//DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
 			}
 		}
 	}

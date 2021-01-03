@@ -151,6 +151,7 @@
     <ClCompile Include="PlantBullet.cpp" />
     <ClCompile Include="Pmeter.cpp" />
     <ClCompile Include="Portal.cpp" />
+    <ClCompile Include="RandomBonus.cpp" />
     <ClCompile Include="SuperLeaf.cpp" />
     <ClCompile Include="TextAndNumber.cpp" />
     <ClCompile Include="TimerCustom.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="PlantBullet.h" />
     <ClInclude Include="Pmeter.h" />
     <ClInclude Include="Portal.h" />
+    <ClInclude Include="RandomBonus.h" />
     <ClInclude Include="SuperLeaf.h" />
     <ClInclude Include="TextAndNumber.h" />
     <ClInclude Include="TimerCustom.h" />

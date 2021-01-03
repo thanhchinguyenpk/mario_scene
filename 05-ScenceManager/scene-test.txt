@@ -909,7 +909,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =hub		,10=questionbrick	,11=brick blink
 # MARIO
-0	450	1000	1
+0	7864	1000	1
 # BRICK 
 #1	0	1248	22
 # con cua
@@ -1087,7 +1087,9 @@
 			
 12	5442	384	14
 
+#random bonus
 
+13	8064	1008	22
 
 
 

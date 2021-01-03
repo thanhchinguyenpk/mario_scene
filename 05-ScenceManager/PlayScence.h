@@ -22,6 +22,7 @@
 #include "Mushroom.h"
 #include "SuperLeaf.h"
 #include "CoinEffect.h"
+#include "Coin.h"
 
 #define ITEM_RANDOM 0
 #define ITEM_MONEY 1

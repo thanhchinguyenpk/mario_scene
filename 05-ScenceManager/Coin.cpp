@@ -18,7 +18,7 @@ void Coin::Render()
 	int direction = 1;
 	int ny = 1;
 
-	animations[0]->Render(x, y, 0, 255, direction, ny);
+	animation_set->at(0)->Render(x, y, 0, 255, direction, ny);
 
 	RenderBoundingBox();
 }

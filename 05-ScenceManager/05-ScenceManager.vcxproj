@@ -129,6 +129,7 @@
     <ClCompile Include="BrickBlink.cpp" />
     <ClCompile Include="Brick_Coin.cpp" />
     <ClCompile Include="CMapPortal.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CoinEffect.cpp" />
     <ClCompile Include="ConCo.cpp" />
     <ClCompile Include="DebrisBrick.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="BrickBlink.h" />
     <ClInclude Include="Brick_Coin.h" />
     <ClInclude Include="CMapPortal.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="CoinEffect.h" />
     <ClInclude Include="ConCo.h" />
     <ClInclude Include="DebrisBrick.h" />

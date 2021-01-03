@@ -267,6 +267,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
 		break;
 	}
+	case 12:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new Coin();
+		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;

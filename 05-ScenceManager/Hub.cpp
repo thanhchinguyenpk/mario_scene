@@ -32,7 +32,7 @@ void Hub::Render()
 
 	float x = CGame::GetInstance()->GetCamX();
 	float y = CGame::GetInstance()->GetCamY();
-	CSprites::GetInstance()->Get(60010)->DrawFlipX(x + 20 + 76 * 3, y + 730 - 100 + 10 + 5);
-
+	//CSprites::GetInstance()->Get(60010)->DrawFlipX(x + 20 + 76 * 3, y + 730 - 100 + 10 + 5);
+	CSprites::GetInstance()->Get(60010)->DrawFlipX(x + 368, y + 645);
 	pmeter->Render();
 }

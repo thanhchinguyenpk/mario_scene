@@ -489,6 +489,16 @@ void CPlayScene::Render()
 
 	game_time = GameTime::GetInstance();
 	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, point_hub,4,1);
+
+	if(is_mario_got_card)
+	{
+		float x = CGame::GetInstance()->GetCamX();
+		float y = CGame::GetInstance()->GetCamY();
+
+		CSprites::GetInstance()->Get(40040 + card)->DrawFlipX(x + 534, y + 645, 0, 255, 1, 1);
+	}
+			
+	
 }
 
 /*

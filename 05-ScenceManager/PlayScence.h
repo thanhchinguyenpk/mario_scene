@@ -32,6 +32,8 @@ class CPlayScene: public CScene
 {
 public: 
 
+	int card = 0;
+	bool is_mario_got_card = false;
 	CMario *player;					// A play scene has to have player, right? 
 
 	int point_hub = 0;

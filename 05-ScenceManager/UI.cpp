@@ -20,4 +20,6 @@ void UI::Render(int remainingTime,int the_number_mario_hit_brick, int point_hub,
 
 	
 
+	
+
 }

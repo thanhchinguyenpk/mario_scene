@@ -88,7 +88,25 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	//is_in_portal = false;
 	//CGameObject* temp = NULL;
 
-	if (is_moving_in_world_map)
+	if (is_go_down_pine)
+	{
+		CGameObject::Update(dt);
+		y += dy;
+
+		if ((GetTickCount64() - go_down_pine_then_move_cam > 2000)&& go_down_pine_then_move_cam)
+		{
+			if(is_on_the_ground==false)
+				this->SetPosition(6363 + 16, 1521);
+			else
+				this->SetPosition(2336 * 3, 360 * 3);
+
+			is_on_the_ground = !is_on_the_ground;//truyền biến xử lý cam ở play scene;
+			//this->SetPosition(6363 + 16, 1521);
+			is_go_down_pine = false;
+			go_down_pine_then_move_cam = 0;
+		}
+	}
+	else if (is_moving_in_world_map)
 	{
 		CGameObject::Update(dt);
 		//DebugOutTitle(L"04 - collision %0.1f, %0.1f", this->x, this->y);
@@ -117,7 +135,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		float y_flatform = 0;
 
 		float vy_flatform = 0;
-
+		float vx_flatform = 0;
 
 
 		float speed_vx = abs(vx);
@@ -264,6 +282,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			y_flatform = min_ty * dy + ny * 0.4f;
 
 			vy_flatform = vy;
+			vx_flatform = vx;
+
 
 			x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
 			y += min_ty * dy + ny * 0.4f;
@@ -415,8 +435,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 					else if (brick_blink->is_brick == false)
 					{
-						x -= min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-						y -= min_ty * dy + ny * 0.4f;
+						y += (y_flatform + y_flatform);// double for safe
+						x += (x_flatform + x_flatform);
+						vy = vy_flatform;
+						vx = vx_flatform;
+
 						brick_blink->used = true;
 					}
 				}
@@ -429,37 +452,28 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (dynamic_cast<Flatform*>(e->obj))
 				{
-				Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
+					Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
-				if (e->ny < 0 && flatform->is_portal)
-				{
-					this->SetPosition(6363 + 16, 1521);
-					CGame::GetInstance()->SetCamPos(2064 * 3 + 16 * 3, 456 * 3);
-					this->is_on_the_ground = true;
+					if (e->ny < 0 && flatform->is_portal)
+					{
+						//this->SetPosition(6363 + 16, 1521);
+					
+						//this->is_on_the_ground = true;
+
+					}
+					else if (e->ny > 0 && flatform->is_portal) // hướng xuống
+					{
+						this->SetPosition(2336 * 3, 360 * 3);
+						//CGame::GetInstance()->SetCamPos(2199 * 3 + 16 * 3, 287 * 3 - 150);
+						this->is_on_the_ground = false;
+					}
+					else if (e->ny > 0)
+					{
+						y += (y_flatform + y_flatform);// double for safe
+						vy = vy_flatform;
+					}
 
 				}
-				else if (e->ny > 0 && flatform->is_portal) // hướng xuống
-				{
-					this->SetPosition(2336 * 3, 360 * 3);
-					CGame::GetInstance()->SetCamPos(2199 * 3 + 16 * 3, 287 * 3 - 150);
-					this->is_on_the_ground = false;
-				}
-				else if (e->ny > 0)
-				{
-					y += (y_flatform + y_flatform);// double for safe
-					vy = vy_flatform;
-				}
-
-			}
-		
-			}/*
-	#pragma region logic collision
-
-
-
-				
-
-
 
 				if (dynamic_cast<SwitchBlock*>(e->obj))// khỏi bị nhích xuống, rơi ra ngoài thê giưới
 				{
@@ -471,6 +485,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					}
 				}
+		
+			}/*
+	#pragma region logic collision
+
+
+
+				
+
+
+
+				
 
 				if (dynamic_cast<Coin*>(e->obj))
 				{
@@ -749,7 +774,9 @@ void CMario::Render()
 		}
 		else if (is_in_object == true)
 		{
-			if (is_sitdown == true) // trên object thì nó mới sitdown được, if bên ngoài
+			if (state == MARIO_STATE_GO_DOWN_PINE)
+				ani = MARIO_ANI_TAIL_GO_DOWN;
+			else if (is_sitdown == true) // trên object thì nó mới sitdown được, if bên ngoài
 				ani = MARIO_ANI_TAIL_SITDOWN_RIGHT;
 			else if (is_bring == true)
 				ani = MARIO_ANI_TAIL_BRING_KOOMPASHELL_RIGHT;
@@ -789,6 +816,9 @@ void CMario::Render()
 	//DebugOut(L"[ERROR---------------nx--------------------ani cua nó la %d\n", nx);
 	//DebugOut(L"[ERROR---------------nx--------------------ani cua nó la %f\n", vx);
 	//DebugOut(L"[ERROR----state cua nó la %d\n", state);
+
+	if (is_go_down_pine == true)
+		ani = MARIO_ANI_TAIL_GO_DOWN;
 	animation_set->at(ani)->Render(x, y, 0, alpha, nx);
 
 	RenderBoundingBox();
@@ -814,6 +844,16 @@ void CMario::SetState(int state)
 		if (is_press_z == true)
 			return;
 		nx = -1;
+		break;
+	case MARIO_STATE_GO_DOWN_PINE:
+		//vy = -MARIO_JUMP_SPEED_Y;
+		vx = 0;
+		vy =  0.03;
+		break;
+	case MARIO_STATE_GO_UP_PINE:
+		//vy = -MARIO_JUMP_SPEED_Y;
+		vx = 0;
+		vy = -0.03;
 		break;
 	case MARIO_STATE_JUMP:
 		vy = -MARIO_JUMP_SPEED_Y;
@@ -874,7 +914,7 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	//top = y; 
 	left = x - MARIO_BIG_BBOX_WIDTH / 2;
 	top = y - MARIO_BIG_BBOX_HEIGHT / 2;
-
+	
 	if (level == MARIO_LEVEL_BIG || level == MARIO_LEVEL_BIG_ORANGE)
 	{
 		if (is_sitdown == false) {

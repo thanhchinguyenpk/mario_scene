@@ -24,6 +24,8 @@
 #define MARIO_STATE_BRING_KOOMPASHELL_RIGHT			1100
 #define MARIO_STATE_ROUSE_KOOMPASHELL_RIGHT			1200
 #define MARIO_STATE_MOVE_IN_WORLD_MAP			1300
+#define MARIO_STATE_GO_DOWN_PINE			1400
+#define MARIO_STATE_GO_UP_PINE			1500
 
 #define MARIO_ANI_BIG_IDLE_RIGHT			0
 #define MARIO_ANI_SMALL_IDLE_RIGHT			1
@@ -156,6 +158,8 @@ public:
 	
 	vector<LPGAMEOBJECT> listWeapons;
 
+	bool is_go_down_pine = false;
+	DWORD go_down_pine_then_move_cam = 0;
 	bool is_in_portal = false;
 
 	bool is_moving_in_world_map = false;

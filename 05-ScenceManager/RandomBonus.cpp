@@ -126,7 +126,7 @@ void RandomBonus::Render()
 		float y = CGame::GetInstance()->GetCamY();
 
 		if(GetTickCount64()- time_order_to_render_text>1000)
-			text.Render(x + 200, y + 100, "COURSE CLEAR!");
+			text.Render(x + 200, y + 100, "COURSE CLEAR !");
 
 		if (GetTickCount64() - time_order_to_render_text > 1500)
 			text.Render(x + 170, y + 155, "YOU GOT A CARD");

@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Game.h"
+#include "PlayScence.h"
 
 #define BRICK_COIN_BBOX_WIDTH  16*3
 #define BRICK_COIN_BBOX_HEIGHT 16*3

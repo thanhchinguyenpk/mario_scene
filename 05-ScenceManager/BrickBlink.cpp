@@ -29,6 +29,9 @@ void BrickBlink::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	if (vanish)
 		return;
+	//if (is_brick == false)
+	//	return;
+
 	l = x - BRICK_BLINK_BBOX_WIDTH/2;
 	t = y - BRICK_BLINK_BBOX_HEIGHT/2;
 	r = x + BRICK_BLINK_BBOX_WIDTH/2;
@@ -88,7 +91,9 @@ void BrickBlink::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	mario->GetBoundingBox(ml, mt, mr, mb);
 
 	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
-			SetState(BRICK_BLINK_STATE_WAS_HIT);
+	{
+		//SetState(BRICK_BLINK_STATE_WAS_HIT);
+	}	
 
 	for (LPGAMEOBJECT debris : vec_debris)
 	{

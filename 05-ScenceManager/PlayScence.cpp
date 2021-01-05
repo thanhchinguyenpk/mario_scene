@@ -293,7 +293,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	// nhớ thêm đoạn code animation set mà null chẳng hạn 0:32:38
 	obj->SetAnimationSet(ani_set);
 
-	if (dynamic_cast<RandomBonus*>(obj))
+	if(dynamic_cast<BrickBlink*>(obj))
+	{
+		listBricks.push_back(obj);
+		DebugOut(L"[ERR]mấy viên? object type: %d\n", object_type);
+	} else if (dynamic_cast<RandomBonus*>(obj))
 		itemsMarioCanEat.push_back(obj);
 	else
 		objects.push_back(obj);
@@ -418,10 +422,13 @@ void CPlayScene::Update(DWORD dt)
 	vector<LPGAMEOBJECT> coObjects;
 
 
+
 	for (size_t i = 1; i < objects.size(); i++)
-	{
 		coObjects.push_back(objects[i]);
-	}
+
+	for (size_t i = 0; i < listBricks.size(); i++)
+		coObjects.push_back(listBricks[i]);
+
 
 
 
@@ -430,7 +437,12 @@ void CPlayScene::Update(DWORD dt)
 		itemsMarioCanEat[i]->Update(dt, &coObjects);
 	}
 
+	for (size_t i = 0; i < listBricks.size(); i++)
+	{
+		listBricks[i]->Update(dt, &coObjects);
+	}
 
+	
 
 
 	for (size_t i = 0; i < objects.size(); i++)
@@ -454,6 +466,37 @@ void CPlayScene::Update(DWORD dt)
 		}
 	}
 
+
+	/*for (auto& item : listBricks)
+	{
+		if (item->used == true)
+		{
+			//if (dynamic_cast<SuperLeaf*>(pointer))
+			//	DebugOut(L"xoas roi ne!\n");
+				
+			delete item;
+			item = nullptr;
+			DebugOut(L"xoas roi ne!\n");
+			
+		}
+	}
+	*/
+	for (size_t i = 0; i < listBricks.size(); i++)
+	{
+		if (listBricks[i]->used==true)
+		{
+			delete listBricks[i];
+			listBricks[i] = nullptr;
+
+			listBricks.erase(listBricks.begin() + i);
+		}
+		
+	}
+
+
+	//listBricks.erase(std::remove(listBricks.begin(), listBricks.end(), nullptr), listBricks.end());
+
+
 	// skip the rest if scene was already unloaded (Mario::Update might trigger PlayScene::Unload)
 	if (player == NULL) return; 
 
@@ -474,11 +517,21 @@ void CPlayScene::Update(DWORD dt)
 
 	if (player->is_on_the_ground == false)
 		CGame::GetInstance()->SetCamPos(cx, 700);
+	else
+		//	CGame::GetInstance()->SetCamPos(2064 * 3 + 16 * 3, 456 * 3);
+	{
+		if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
+			return;
+		CGame::GetInstance()->SetCamPos(cx, 1368);
+	}
 }
 
 void CPlayScene::Render()
 {
 	map->Draw();
+	
+	for (int i = 0; i < listBricks.size(); i++)
+		listBricks[i]->Render();
 	
 
 	for (int i = 0; i < itemsMarioCanEat.size(); i++)
@@ -572,19 +625,19 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 				break;*/
 	case DIK_1:
 		mario->SetLevel(MARIO_LEVEL_BIG);
-		mario->SetPosition(mario->x, 80.0f);
+		mario->SetPosition(mario->x, mario->y-30);
 		//goomba->SetState(GOOMBA_STATE_WAS_SHOOTED);
 		break;
 	case DIK_2:
-		mario->SetPosition(mario->x, 80.0f);
+		mario->SetPosition(mario->x, mario->y - 30);
 		mario->SetLevel(MARIO_LEVEL_SMALL);
 		break;
 	case DIK_3:
-		mario->SetPosition(mario->x, 80.0f);
+		mario->SetPosition(mario->x, mario->y - 30);
 		mario->SetLevel(MARIO_LEVEL_BIG_TAIL);
 		break;
 	case DIK_4:
-		mario->SetPosition(mario->x, 80.0f);
+		mario->SetPosition(mario->x, mario->y - 30);
 		mario->SetLevel(MARIO_LEVEL_BIG_ORANGE);
 		break;
 	case DIK_5:
@@ -630,9 +683,15 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		break;
 	case DIK_S:
 		//case 14:
+		float x, y;
+		mario->GetPosition(x, y);
+		if (x > 6966 && mario->is_on_the_ground)
+		{
+			mario->is_go_down_pine = true;
+			mario->SetState(MARIO_STATE_GO_UP_PINE);
 
-
-		if (mario->GetIsInObject() == true && mario->is_run_for_fly_high == false)
+			mario->go_down_pine_then_move_cam = GetTickCount64();
+		}else if (mario->GetIsInObject() == true && mario->is_run_for_fly_high == false)
 		{
 			mario->StartJumping();
 			mario->SetState(MARIO_STATE_JUMP);
@@ -714,7 +773,16 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 
 		break;
 	case DIK_DOWN:
-		if (mario->GetLevel() == MARIO_LEVEL_BIG || mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
+	
+		//float x, y;
+		mario->GetPosition(x, y);
+		if (x < 600)
+		{
+			mario->is_go_down_pine = true;
+			mario->go_down_pine_then_move_cam = GetTickCount64();
+			mario->SetState(MARIO_STATE_GO_DOWN_PINE);
+		}
+		else if (mario->GetLevel() == MARIO_LEVEL_BIG || mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 			mario->SetPosition(mario->x, mario->y + MARIO_BIG_BBOX_HEIGHT / 2 - MARIO_BIG_SITDOWN_BBOX_HEIGHT / 2);
 		else if (mario->GetLevel() == MARIO_LEVEL_BIG_TAIL)
 			mario->SetPosition(mario->x, mario->y + MARIO_BIG_TAIL_BBOX_HEIGHT / 2 - MARIO_BIG_TAIL_SITDOWN_BBOX_HEIGHT / 2);
@@ -764,14 +832,14 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 	case DIK_DOWN:
 		//DebugOut(L"UPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp\n", KeyCode);
 
-		if (mario->is_in_portal == true);
+		/*if (mario->is_in_portal == true);
 		{
 			if (mario->GetLevel() == MARIO_LEVEL_BIG || mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 			mario->SetPosition(mario->x, mario->y - MARIO_BIG_BBOX_HEIGHT / 2 + MARIO_BIG_SITDOWN_BBOX_HEIGHT / 2);
 		else if (mario->GetLevel() == MARIO_LEVEL_BIG_TAIL)
 			mario->SetPosition(mario->x, mario->y - MARIO_BIG_TAIL_BBOX_HEIGHT / 2 + MARIO_BIG_TAIL_SITDOWN_BBOX_HEIGHT / 2);
 
-		}
+		}*/
 		break;
 
 	case DIK_A:
@@ -978,7 +1046,12 @@ void CPlayScenceKeyHandler::KeyState(BYTE *states)
 		//	return;
 		//if (mario->is_in_portal == fl)
 		//if (mario->is_in_portal == true)
+
+			//mario->SetState(MARIO_STATE_GO_DOWN_PINE);
+	{
+		if (mario->is_go_down_pine == false)
 			mario->SetState(MARIO_STATE_SITDOWN);
+	}
 	//CGame::GetInstance()->SetCamPos(CGame::GetInstance()->GetCamX(), CGame::GetInstance()->GetCamY() + 10);
 //else if (game->IsKeyDown(DIK_UP))
 	//CGame::GetInstance()->SetCamPos(CGame::GetInstance()->GetCamX(), CGame::GetInstance()->GetCamY() - 10);

@@ -153,6 +153,7 @@
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="RandomBonus.cpp" />
     <ClCompile Include="SuperLeaf.cpp" />
+    <ClCompile Include="SwitchBlock.cpp" />
     <ClCompile Include="TextAndNumber.cpp" />
     <ClCompile Include="TimerCustom.cpp" />
     <ClCompile Include="UI.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Portal.h" />
     <ClInclude Include="RandomBonus.h" />
     <ClInclude Include="SuperLeaf.h" />
+    <ClInclude Include="SwitchBlock.h" />
     <ClInclude Include="TextAndNumber.h" />
     <ClInclude Include="TimerCustom.h" />
     <ClInclude Include="UI.h" />

@@ -24,6 +24,7 @@
 #include "CoinEffect.h"
 #include "Coin.h"
 #include "RandomBonus.h"
+#include <vector>
 
 #define ITEM_RANDOM 0
 #define ITEM_MONEY 1
@@ -44,6 +45,9 @@ public:
 
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> itemsMarioCanEat;
+	vector<LPGAMEOBJECT> listBricks;
+
+
 	void DropItem(int itemType, float x, float y);
 
 	Map* map;

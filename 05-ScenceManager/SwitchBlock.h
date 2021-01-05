@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Game.h"
+#include "PlayScence.h"
 
 #define SWITCH_BLOCK_BBOX_WIDTH 16*3
 #define SWITCH_BLOCK_BBOX_HEIGHT 16*3
@@ -9,7 +11,7 @@
 #define SWITCH_BLOCK_STATE_BRICK_FOREVER 300
 
 
-extern vector<LPGAMEOBJECT> listBricks;
+//extern vector<LPGAMEOBJECT> listBricks;
 
 class SwitchBlock :public CGameObject
 {

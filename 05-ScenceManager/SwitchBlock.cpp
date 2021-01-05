@@ -20,7 +20,7 @@ void SwitchBlock::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		SetState(SWITCH_BLOCK_STATE_WAS_PRESSED);
 		transform_one_time = true;
-		DebugOut(L"[ERROR--------vo press?--------------------] day la sizeeeeeee:  %d\n");
+		//DebugOut(L"[ERROR--------vo press?--------------------] day la sizeeeeeee:  %d\n");
 	}
 }
 
@@ -32,6 +32,10 @@ void SwitchBlock::SetState(int state)
 	case SWITCH_BLOCK_STATE_INIT:
 		break;
 	case SWITCH_BLOCK_STATE_WAS_PRESSED:
+		CGame* game = CGame::GetInstance();
+		CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+		//scene->is_mario_got_card = true;
+		vector<LPGAMEOBJECT> listBricks = scene->listBricks;
 		StartTransformListBrick(&listBricks);
 		time_to_retransform->StartTime();
 		break;
@@ -46,7 +50,7 @@ void SwitchBlock::Render()
 	int ny = 1;
 	if (state==SWITCH_BLOCK_STATE_WAS_PRESSED)
 		ani = 1;
-	animations[ani]->Render(x, y, 0, 255, direction, ny);
+	animation_set->at(ani)->Render(x, y, 0, 255, direction, ny);
 
 	RenderBoundingBox();
 }

@@ -4,7 +4,7 @@
 #include "Mushroom.h"
 #include "SwitchBlock.h"
 
-extern vector<LPGAMEOBJECT> objects;
+//extern vector<LPGAMEOBJECT> objects;
 
 void Brick_Coin::Render()
 {
@@ -62,13 +62,20 @@ void Brick_Coin::SetState(int state)
 		mr->SetState(MUSHROOM_STATE_GOING_UP);
 		itemsMarioCanEat.push_back(mr);*/
 
-			/*
+			/*CGame* game = CGame::GetInstance();
+			CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+			scene->is_mario_got_card = true;*/
+
+			
 			SwitchBlock* switch_block = new SwitchBlock();
-			switch_block->AddAnimation(20000);
-			switch_block->AddAnimation(20001);
+			switch_block->SetAnimationSet(CAnimationSets::GetInstance()->Get(21));
 			switch_block->SetState(SWITCH_BLOCK_STATE_INIT);
 			switch_block->SetPosition(this->x, this->y- SWITCH_BLOCK_BBOX_HEIGHT);
-			objects.push_back(switch_block);*/
+
+			CGame* game = CGame::GetInstance();
+			CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+			scene->objects.push_back(switch_block);
+			//objects.push_back(switch_block);
 		}
 	
 		break;

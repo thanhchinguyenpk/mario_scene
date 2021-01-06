@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "MoneyEffect.h"
 
-#define CONCO_WALKING_SPEED			 0.05;
+#define CONCO_WALKING_SPEED			 0.07;
 #define CONCO_MAI_RUA_CHAY_SPEED	 0.1;
 
 #define CONCO_BBOX_WIDTH		 16*3 //ok

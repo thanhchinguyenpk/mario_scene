@@ -913,7 +913,7 @@
 # STATIC COIN
 14	733
 # LONG GREEN PIPE
-15	740
+15	740	741	742
 # SHORT GREEN PIPE
 16	741
 # SHORT BLACK PIPE
@@ -952,13 +952,15 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO
-0	400	1000	1
+0	450	1000	1
 # BRICK 
 #1	0	1248	22
 # con cua
 2	200	100	5
-#CONCO
-4	300	200	8
+#CONCO3860
+#4	5436	700	16
+4	4033	500	8
+4	4217	300	8
 #red goomba
 5	500	460	6
 #flatform
@@ -1119,6 +1121,19 @@
 12	5346	288	14
 			
 12	5442	384	14
+
+
+#pine số cuối cùng là state cho biết pine dài ngắn đen
+14	1103	1176	15	100
+
+14	5423	1201	15	200
+14	5616	1176	15	100
+
+14	7008	1201	15	200
+#pine trên cao
+14	6813	393	15	200
+#pine dưới đất
+14	7057	1439	15	300
 
 #random bonus
 

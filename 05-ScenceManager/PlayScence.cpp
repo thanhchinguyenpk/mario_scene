@@ -212,7 +212,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 	case OBJECT_TYPE_CONCO:
 		obj = new CConCo();
-		obj->SetState(CONCO_STATE_WALKING_LEFT);
+		obj->SetState(CONCO_STATE_FLY_LEFT);
 		break;
 	case OBJECT_TYPE_PORTAL:
 		{	
@@ -279,6 +279,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		//int lv = atof(tokens[4].c_str());
 		obj = new RandomBonus(player);
 		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
+	case 14:
+	{
+		int state = atof(tokens[4].c_str());
+		obj = new Pine();
+		obj->SetState(state);
 		break;
 	}
 	default:
@@ -688,6 +695,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		if (x > 6966 && mario->is_on_the_ground)
 		{
 			mario->is_go_down_pine = true;
+			mario->SetPosition(x, y - 40);
 			mario->SetState(MARIO_STATE_GO_UP_PINE);
 
 			mario->go_down_pine_then_move_cam = GetTickCount64();

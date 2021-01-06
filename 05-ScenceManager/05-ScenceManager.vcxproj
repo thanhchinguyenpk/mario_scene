@@ -147,6 +147,7 @@
     <ClCompile Include="MoneyEffect.cpp" />
     <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="ParaGoomba.cpp" />
+    <ClCompile Include="Pine.cpp" />
     <ClCompile Include="PiranhaPlant.cpp" />
     <ClCompile Include="PlantBullet.cpp" />
     <ClCompile Include="Pmeter.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="MoneyEffect.h" />
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="ParaGoomba.h" />
+    <ClInclude Include="Pine.h" />
     <ClInclude Include="PiranhaPlant.h" />
     <ClInclude Include="PlantBullet.h" />
     <ClInclude Include="Pmeter.h" />

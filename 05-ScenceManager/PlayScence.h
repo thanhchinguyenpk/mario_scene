@@ -24,6 +24,7 @@
 #include "CoinEffect.h"
 #include "Coin.h"
 #include "RandomBonus.h"
+#include "Pine.h"
 #include <vector>
 
 #define ITEM_RANDOM 0

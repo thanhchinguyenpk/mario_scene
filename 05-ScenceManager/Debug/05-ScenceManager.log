@@ -17,6 +17,8 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(28): note: see previous definition of 'CONCO_ANI_THUT_VAO'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(130): warning C4018: '<': signed/unsigned mismatch
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(152): warning C4018: '<': signed/unsigned mismatch
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(175): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
@@ -28,20 +30,21 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playsc
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(229): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(230): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(237): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(533): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(537): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(286): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(540): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(562): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(693): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(782): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(904): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(908): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(925): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(929): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(998): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1002): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1028): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1032): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1095): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1101): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(544): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(547): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(569): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(701): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(790): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(912): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(916): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(933): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(937): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1006): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1010): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1036): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1040): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1103): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1109): warning C4305: 'argument': truncation from 'double' to 'float'
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

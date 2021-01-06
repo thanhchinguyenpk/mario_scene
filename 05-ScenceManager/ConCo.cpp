@@ -89,7 +89,10 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (ny != 0)
 		{
 			//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] co nhay vo phuong DOC Error: \n");
-			vy = 0; // sẽ bị chặn lại_ không đúng má ơi.
+			if (state == CONCO_STATE_FLY_LEFT)
+				vy = -0.6; // sẽ bị chặn lại_ không đúng má ơi.
+			else
+				vy = 0;
 		}
 
 
@@ -106,15 +109,15 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			if (dynamic_cast<CBrick*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 			{
-				/*Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
+				//Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
-				if (this->x > flatform->x + 243 && state==CONCO_STATE_WALKING_RIGHT)
-					SetState(CONCO_STATE_WALKING_LEFT);
-				if(this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
-					SetState(CONCO_STATE_WALKING_RIGHT);*/
+				//if (this->x > flatform->x + 243 && state==CONCO_STATE_WALKING_RIGHT)
+				//	SetState(CONCO_STATE_WALKING_LEFT);
+				//if(this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
+				//	SetState(CONCO_STATE_WALKING_RIGHT);
 
-				if (state == CONCO_STATE_FLY_LEFT)
-					vy = -0.6;
+			//	if (state == CONCO_STATE_FLY_LEFT)
+				//	vy = -0.6;
 
 				
 			}
@@ -175,9 +178,9 @@ void CConCo::Render()
 		effect->Render();
 
 	//int ani = CONCO_ANI_THUT_VAO;
-	DebugOut(L"[ERROR-------state cua con co------------------] DINPUT::GetDeviceData failed. Error: %d\n", state);
+	//DebugOut(L"[ERROR-------state cua con co------------------] DINPUT::GetDeviceData failed. Error: %d\n", state);
 	//animation_set->at(0)
-		animation_set->at(ani)->Render(x, y,0,255,1,1);
+		animation_set->at(0)->Render(x, y,0,255,1,1);
 	RenderBoundingBox();
 }
 
@@ -220,9 +223,11 @@ void CConCo::SetState(int state)
 			effect = new MoneyEffect(this->x, this->y-50);
 		break;
 	case CONCO_STATE_FLY_LEFT:
-		vx = -CONCO_WALKING_SPEED;
+		vx = -CONCO_WALKING_SPEED;// -0.13;
 		//vy = 0;
 		nx = -1;
+		vx = 0;
+		vy = 0;
 		break;
 	case CONCO_STATE_FLY_RIGHT:
 		vx = CONCO_WALKING_SPEED;

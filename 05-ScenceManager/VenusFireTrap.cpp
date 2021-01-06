@@ -159,7 +159,7 @@ void VenusFireTrap::Render()
 
 	animation_set->at(ani)->Render(x, y, 0, 255, direction, ny);
 
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void VenusFireTrap::SetState(int state)

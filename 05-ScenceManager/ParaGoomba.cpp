@@ -62,7 +62,7 @@ void ParaGoomba::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<CBrick*>(e->obj))
+			if (dynamic_cast<Flatform*>(e->obj))
 			{
 				if (state == PARA_GROOMBA_STATE_WALKING|| state == PARA_GROOMBA_STATE_DIE)
 				{
@@ -132,6 +132,7 @@ void ParaGoomba::SetState(int state)
 		break;
 	case PARA_GROOMBA_STATE_JUMP_BIG:
 		vy = -0.4;
+		//vx = -PARA_GROOMBA_WALKING_SPEED;
 		break;
 	case PARA_GROOMBA_STATE_WALKING:
 		//vy = 0;

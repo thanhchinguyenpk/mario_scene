@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "MarioBullet.h"
 
+
 #define MARIO_WALKING_SPEED			0.3 
 #define MARIO_JUMP_SPEED_Y			0.9
 #define MARIO_JUMP_DEFLECT_SPEED	1.2
@@ -230,4 +231,6 @@ public:
 	float GetAcceleration() { return acceleration; }
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+
+	void CollideWithEnemy();
 };

@@ -3,6 +3,7 @@
 #include "Mario.h"
 #include "debug.h"
 #include "MoneyEffect.h"
+#include "Flatform.h"
 
 #define	 PARA_GROOMBA_BBOX_WIDTH 20*3
 #define	 PARA_GROOMBA_BBOX_HEIGHT 19*3

@@ -28,7 +28,8 @@
 #include "SwitchBlock.h"
 #include "ParaGoomba.h"
 #include "MapScene.h"
-
+#include "PiranhaPlant.h"
+#include "VenusFireTrap.h"
 
 
 
@@ -307,6 +308,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 				if (dynamic_cast<CConCo*>(e->obj))
 				{
+					if (untouchable) return;
 					//DebugOut(L"chạm mấy lần? %d\n");
 					CConCo* conco = dynamic_cast<CConCo*>(e->obj);
 
@@ -315,7 +317,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					{
 						this->hold_somthing = conco;
 					}
-					else if((conco->GetState() == CONCO_STATE_THUT_VAO|| conco->GetState() == CONCO_STATE_INDENT_OUT||
+					else if ((conco->GetState() == CONCO_STATE_THUT_VAO || conco->GetState() == CONCO_STATE_INDENT_OUT ||
 						conco->GetState() == CONCO_STATE_SHELL_MOVING) && (GetState() == MARIO_STATE_WALKING_RIGHT || GetState() == MARIO_STATE_WALKING_LEFT))
 					{// nếu đang thụt vào , hoặc rung rinh, hoặc chui ra thì bị duy chuyển
 						if (this->x < conco->x)
@@ -338,6 +340,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 							conco->SetState(CONCO_STATE_WALKING_LEFT);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 					}
+					else
+						CollideWithEnemy();
 
 
 
@@ -353,9 +357,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 				if (dynamic_cast<CGoomba *>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 				{
-
+					if (untouchable) return;
 					CGoomba *goomba = dynamic_cast<CGoomba *>(e->obj);
 
+				
 					// jump on top >> kill Goomba and deflect a bit 
 					if (e->ny < 0) //nêu như phương va chạm hướng lên ( lưu ý trục y hướng xuống)
 						// thì cho phép đạp bẹp
@@ -364,8 +369,15 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						goomba->SetState(GOOMBA_STATE_DIE);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 
-					}
+					}else if(e->nx!=0)
+						CollideWithEnemy();
 
+
+					if (state == MARIO_STATE_SPIN)
+					{
+						//if (goomba->x - this->x < 80);
+						goomba->SetState(GOOMBA_STATE_WAS_SHOOTED);
+					}
 					//SÀI NHA
 				//	else if (e->nx != 0) // vec tơ pháp tuyến từ bên trái qua, từ bên phải xuống
 				//	{		// thì làm mario rớt level, bất tử hoặc chết
@@ -384,14 +396,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						//}
 						//}
 
-					if (state == MARIO_STATE_SPIN)
-					{
-						//if (goomba->x - this->x < 80);
-						goomba->SetState(GOOMBA_STATE_WAS_SHOOTED);
-					}
+					
 				}
 				if (dynamic_cast<ParaGoomba*>(e->obj))
 				{
+					if (untouchable) return;
+
 					ParaGoomba* paragoomba = dynamic_cast<ParaGoomba*>(e->obj);
 					if (e->ny < 0) // phương va chạm hướng lên
 					{
@@ -408,8 +418,18 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 
 					}
+					else
+						CollideWithEnemy();
 				}
+				if (dynamic_cast<PiranhaPlant*>(e->obj)|| dynamic_cast<VenusFireTrap*>(e->obj))
+				{
 
+					if (untouchable)
+						return;
+
+					CollideWithEnemy();
+
+				}
 				if (dynamic_cast<Brick_Coin*>(e->obj))
 				{
 					Brick_Coin* brickcoin = dynamic_cast<Brick_Coin*>(e->obj);
@@ -958,6 +978,20 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 			//top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
 		right = x + MARIO_SMALL_BBOX_WIDTH / 2;
 		bottom = y + MARIO_SMALL_BBOX_HEIGHT / 2;
+	}
+}
+
+void CMario::CollideWithEnemy()
+{
+	if (level > MARIO_LEVEL_BIG)
+	{
+		level = MARIO_LEVEL_BIG;
+		StartUntouchable();
+	}
+	else if (level > MARIO_LEVEL_SMALL)
+	{
+		level = MARIO_LEVEL_SMALL;
+		StartUntouchable();
 	}
 }
 

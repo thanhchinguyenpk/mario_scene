@@ -952,17 +952,17 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO
-0	6000	1000	1
+0	5160	1000	1
 # BRICK 
 #1	0	1248	22
-# con cua
-2	200	100	5
+# con cua//6670
+2	670	100	5
 #CONCO3860-4033
 4	1662	1029	8
 4	6230	1060	8
 4	4217	300	8
 #red goomba
-5	500	460	6
+5	470	1248	6
 #flatform
 #4=width 5=height //flat form thi khong render so 22 de choi thoi
 #nen duoi dat	

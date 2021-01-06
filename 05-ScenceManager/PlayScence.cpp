@@ -212,7 +212,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 	case OBJECT_TYPE_CONCO:
 		obj = new CConCo();
-		obj->SetState(CONCO_STATE_FLY_LEFT);
+		obj->SetState(CONCO_STATE_WALKING_RIGHT);
 		break;
 	case OBJECT_TYPE_PORTAL:
 		{	

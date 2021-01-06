@@ -1,9 +1,10 @@
 #pragma once
 #include "GameObject.h"
 #include "MoneyEffect.h"
+#include "BrickBlink.h"
 
 #define CONCO_WALKING_SPEED			 0.07;
-#define CONCO_MAI_RUA_CHAY_SPEED	 0.1;
+#define CONCO_MAI_RUA_CHAY_SPEED	 0.02;
 
 #define CONCO_BBOX_WIDTH		 16*3 //ok
 #define CONCO_BBOX_HEIGHT		 27*3 //ok
@@ -40,7 +41,9 @@ class CConCo : public CGameObject
 {
 public:
 
+	int is_walking_back_and_fort = 0;
 	MoneyEffect *effect = NULL;
+	int count_brick = 0;
 
 	bool is_brought = false;
 	DWORD time_to_indent_out;

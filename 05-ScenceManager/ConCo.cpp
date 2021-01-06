@@ -39,7 +39,7 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		CGameObject::Update(dt, coObjects);
 	}
 
-	vy += 0.001 * dt;
+	vy += 0.002 * dt;
 
 	
 
@@ -84,7 +84,8 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] cham dau quay qua trái. Error: \n");
 			}
 			else
-				vx = 0;
+				vx = -vx;
+			//if(state==)
 		}// tại sao lại có hai dòng này- theo mình nghĩ là té từ trên cao xuống thì
 		if (ny != 0)
 		{
@@ -107,18 +108,48 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		
 
-			if (dynamic_cast<CBrick*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+			if (dynamic_cast<Flatform*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 			{
-				//Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
+				if (is_walking_back_and_fort == 1)
+				{
+					Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
-				//if (this->x > flatform->x + 243 && state==CONCO_STATE_WALKING_RIGHT)
-				//	SetState(CONCO_STATE_WALKING_LEFT);
-				//if(this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
-				//	SetState(CONCO_STATE_WALKING_RIGHT);
+					if (this->x > flatform->x + 273 && state == CONCO_STATE_WALKING_RIGHT)
+						SetState(CONCO_STATE_WALKING_LEFT);
+					if (this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
+						SetState(CONCO_STATE_WALKING_RIGHT);
+					
+				}	
+			}
 
-			//	if (state == CONCO_STATE_FLY_LEFT)
-				//	vy = -0.6;
+			if (dynamic_cast<BrickBlink*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+			{
+				
+				BrickBlink* brick_blink = dynamic_cast<BrickBlink*>(e->obj);
+				
 
+					if (this->x > brick_blink->x + 24 && state == CONCO_STATE_WALKING_RIGHT&& brick_blink->is_brick == true)
+						SetState(CONCO_STATE_WALKING_LEFT);
+					if (this->x < brick_blink->x-24 &&state == CONCO_STATE_WALKING_LEFT && brick_blink->is_brick == true)
+						SetState(CONCO_STATE_WALKING_RIGHT);
+					if (brick_blink->is_brick == false&&count_brick<2)
+					{
+						count_brick++;
+						y += dy;
+						SetState(CONCO_STATE_WALKING_RIGHT);
+					}
+
+					if ((state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI) && brick_blink->is_brick == true)
+
+					{
+						if (e->nx != 0) // phương va chạm hướng lên
+						{
+							brick_blink->SetState(BRICK_BLINK_STATE_WAS_HIT);
+							//brick_blink->used = true;
+						}
+					}
+							
+						
 				
 			}
 
@@ -180,7 +211,7 @@ void CConCo::Render()
 	//int ani = CONCO_ANI_THUT_VAO;
 	//DebugOut(L"[ERROR-------state cua con co------------------] DINPUT::GetDeviceData failed. Error: %d\n", state);
 	//animation_set->at(0)
-		animation_set->at(0)->Render(x, y,0,255,1,1);
+		animation_set->at(ani)->Render(x, y,0,255,1,1);
 	RenderBoundingBox();
 }
 

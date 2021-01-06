@@ -1,4 +1,4 @@
-﻿  PlayScence.cpp
+﻿  Brick_Coin.cpp
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
@@ -8,15 +8,194 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatfo
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(5): note: see previous definition of 'CONCO_WALKING_SPEED'
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(33): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(28): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
-  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick_coin.cpp(56): warning C4305: '=': truncation from 'double' to 'float'
+  ConCo.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(42): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(94): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(229): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(233): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(240): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(243): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(247): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(249): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(252): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(254): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(257): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.cpp(264): warning C4305: '=': truncation from 'double' to 'float'
+  Game.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(410): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\game.cpp(432): warning C4018: '<': signed/unsigned mismatch
+  MapScene.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(110): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(130): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(131): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(174): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(181): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(183): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(191): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(225): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(226): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(228): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(229): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(262): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(263): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(264): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(266): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(267): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(294): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(301): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(493): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(501): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(509): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mapscene.cpp(517): warning C4305: '=': truncation from 'double' to 'float'
+  Mario.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coinfly.h(4): warning C4005: 'GOOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\goomba.h(6): note: see previous definition of 'GOOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(146): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(151): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(214): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(221): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(235): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(261): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(339): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(365): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(408): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(805): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(852): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(857): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(860): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(902): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  MarioBullet.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mariobullet.cpp(36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Mushroom.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mushroom.cpp(30): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mushroom.cpp(140): warning C4305: '=': truncation from 'double' to 'float'
+  PlayScence.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(130): warning C4018: '<': signed/unsigned mismatch
@@ -47,4 +226,72 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playsc
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1040): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1103): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\playscence.cpp(1109): warning C4305: 'argument': truncation from 'double' to 'float'
+  RandomBonus.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\randombonus.cpp(7): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\randombonus.cpp(24): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\randombonus.cpp(59): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\randombonus.cpp(153): warning C4305: '=': truncation from 'double' to 'float'
+  SwitchBlock.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+  main.cpp
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(153): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(212): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(4): warning C4005: 'CONCO_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(6): note: see previous definition of 'CONCO_WALKING_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(5): warning C4005: 'CONCO_MAI_RUA_CHAY_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(7): note: see previous definition of 'CONCO_MAI_RUA_CHAY_SPEED'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(18): warning C4005: 'CONCO_ANI_WALKING_RIGHT': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(34): note: see previous definition of 'CONCO_ANI_WALKING_RIGHT'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(19): warning C4005: 'CONCO_ANI_THUT_VAO': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(29): note: see previous definition of 'CONCO_ANI_THUT_VAO'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\coin.h(20): warning C4005: 'CONCO_ANI_MAI_RUA_CHAY': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\conco.h(30): note: see previous definition of 'CONCO_ANI_MAI_RUA_CHAY'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\pine.h(7): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\paragoomba.h(11): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
+  Generating Code...
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

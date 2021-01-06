@@ -315,8 +315,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					{
 						this->hold_somthing = conco;
 					}
-					else if (conco->GetState() == CONCO_STATE_THUT_VAO && (GetState() == MARIO_STATE_WALKING_RIGHT || GetState() == MARIO_STATE_WALKING_LEFT))
-					{
+					else if((conco->GetState() == CONCO_STATE_THUT_VAO|| conco->GetState() == CONCO_STATE_INDENT_OUT||
+						conco->GetState() == CONCO_STATE_SHELL_MOVING) && (GetState() == MARIO_STATE_WALKING_RIGHT || GetState() == MARIO_STATE_WALKING_LEFT))
+					{// nếu đang thụt vào , hoặc rung rinh, hoặc chui ra thì bị duy chuyển
 						if (this->x < conco->x)
 							conco->SetState(CONCO_STATE_MAI_RUA_CHAY_PHAI);
 						else

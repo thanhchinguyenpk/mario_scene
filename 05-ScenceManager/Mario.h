@@ -76,7 +76,7 @@
 
 #define MARIO_ANI_SMALL_FLYING								30
 #define MARIO_ANI_BIG_FLYING								31
-#define MARIO_ANI_TAIL_FLY									32
+#define MARIO_ANI_TAIL_FLY_HIGH									32
 #define MARIO_ANI_ORANGE_FLYING								33
 #define MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT			34
 
@@ -111,7 +111,7 @@
 
 
 //nhớ còn ani này nha 
-#define MARIO_ANI_TAIL_FLY_HIGH									70 //need
+#define MARIO_ANI_TAIL_FLY								57 //need
 
 
 
@@ -156,6 +156,9 @@ public:
 
 	DWORD untouchable_start;
 	DWORD jumping_start;
+
+	DWORD fly_start=0;
+	DWORD fly_high_start = 0;
 	
 	vector<LPGAMEOBJECT> listWeapons;
 

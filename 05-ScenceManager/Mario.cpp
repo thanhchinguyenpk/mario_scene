@@ -210,7 +210,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			if (GetState() == MARIO_STATE_FLY)// nếu là con cáo bay và ani quẫy đuôi chưa xong
 			{
 				//if (!animations[MARIO_ANI_TAIL_FLY]->IsRenderDone())
-				if (!animation_set->at(MARIO_ANI_TAIL_FLY)->IsRenderDone())
+				if (GetTickCount64()-fly_start<=210&& fly_start)
 				{
 					vy = 0.1;
 					//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
@@ -218,14 +218,14 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}
 			else if (GetState() == MARIO_STATE_FLY_HIGH)
 			{
-				if (!animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->IsRenderDone())
+				if (GetTickCount64() - fly_high_start <= 300 && fly_high_start)
 					vy = -0.3;
 				//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
 			}
 
 
 
-			/*	if (!(GetState() == MARIO_STATE_FLY_HIGH && animations[MARIO_ANI_TAIL_FLY_HIGH]->IsRenderDone()))//nếu là con cáo bay cao và ani nằm quẫy  chưa xong
+				/*if (!(GetState() == MARIO_STATE_FLY_HIGH && animations[MARIO_ANI_TAIL_FLY_HIGH]->IsRenderDone()))//nếu là con cáo bay cao và ani nằm quẫy  chưa xong
 				{
 					vy = -0.1;
 					DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
@@ -535,7 +535,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		*/
 		}
 
-		DebugOut(L"[ERROR------------vx la--------------] DINPUT::GetDeviceData failed. Error: %f\n", vx);
+		//DebugOut(L"[ERROR------------vx la--------------] DINPUT::GetDeviceData failed. Error: %f\n", vx);
 
 		// clean up collision events
 
@@ -563,21 +563,24 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			SetState(MARIO_STATE_IDLE);
 			//is_render_animation = false;
 		}
-		if (GetState() == MARIO_STATE_FLY && animation_set->at(MARIO_ANI_TAIL_FLY)->IsRenderDone())
+		//if (GetState() == MARIO_STATE_FLY && animation_set->at(MARIO_ANI_TAIL_FLY)->IsRenderDone())
+		if (GetState() == MARIO_STATE_FLY && GetTickCount64()-fly_start>210&&fly_start)
 		{
 			SetState(MARIO_STATE_IDLE);
 			//is_render_animation = false;
-			//DebugOut(L"Hello , vo day khong???\n");
+			DebugOut(L"Hello render bay xong chua dza , vo day khong???\n");
 			is_fly = false;
 			is_fly_short = false;
+			fly_start = 0;
 		}
-		if (GetState() == MARIO_STATE_FLY_HIGH && animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->IsRenderDone())
+		if (GetState() == MARIO_STATE_FLY_HIGH && GetTickCount64() - fly_high_start > 300 && fly_high_start)
 		{
 			SetState(MARIO_STATE_IDLE);
 			//is_render_animation = false;
 			//DebugOut(L"Hello , vo day khong???\n");
 			is_fly = false;
 			is_fly_high = false;
+			fly_high_start = 0;
 		}
 
 		if (is_brouse == true && animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->IsRenderDone())
@@ -617,15 +620,16 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			CConCo* conco = dynamic_cast<CConCo*>(this->hold_somthing);
 			conco->is_brought = true;
 			this->is_bring = true;
-		}
+		
 
 		//DebugOut(L"[ERROR----vx cua nó la %f\n", vx);
 
 		//DebugOut(L"portalllllllllllllllllllllllllllllll %d\n", is_in_portal);
-		//DebugOut(L"UPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp\n", KeyCode);
+		
+		}
 	}
 
-	
+	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
 
 void CMario::Render()
@@ -833,7 +837,7 @@ void CMario::Render()
 	//if (ani <= 28 && ani >= 25)
 	//	nx = !nx;
 
-	DebugOut(L"[ERROR---------------ani--------------------ani cua nó la %d\n", ani);
+	DebugOut(L"---------------ani-------------------------------> %d\n", ani);
 	//DebugOut(L"[ERROR---------------nx--------------------ani cua nó la %d\n", nx);
 	//DebugOut(L"[ERROR---------------nx--------------------ani cua nó la %f\n", vx);
 	//DebugOut(L"[ERROR----state cua nó la %d\n", state);

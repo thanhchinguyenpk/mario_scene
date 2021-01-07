@@ -712,11 +712,18 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 				mario->SetIsInObject(false);
 				mario->SetState(MARIO_STATE_FLY_HIGH);
 				mario->SetIsFly(true);
+				mario->fly_high_start = GetTickCount64();
 			}
 			else if (mario->GetLevel() == MARIO_LEVEL_BIG_TAIL)
 			{
+				/*DebugOut(L"[INFO] vô fly ?AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADown: %d\n", KeyCode);
+				mario->fly_start = GetTickCount64();
 				mario->SetState(MARIO_STATE_FLY);
+				mario->SetIsFly(true);*/
+				mario->SetIsInObject(false);
+				mario->SetState(MARIO_STATE_FLY_HIGH);
 				mario->SetIsFly(true);
+				mario->fly_high_start = GetTickCount64();
 			}
 		}
 		//DebugOut(L"[INFO] KeyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADown: %d\n", KeyCode);

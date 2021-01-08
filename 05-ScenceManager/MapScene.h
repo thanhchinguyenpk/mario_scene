@@ -33,10 +33,13 @@ public:
 
 	void _ParseSection_MAP(string line);
 
+
 	virtual void Load();
 	virtual void Update(DWORD dt);
 	virtual void Render();
 	virtual void Unload();
+
+	CMario * GetPlayer() { return player; };
 
 };
 

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Game.h"
 #include "PlayScence.h"
+#include "Mario.h"
 
 #define BRICK_COIN_BBOX_WIDTH  16*3
 #define BRICK_COIN_BBOX_HEIGHT 16*3
@@ -21,7 +22,10 @@ class Brick_Coin : public CGameObject
 
 	//float originalX;
 public:
+
+	CMario * mario = NULL;
 	float originalY;
+	bool is_contain_button_p = true;
 	
 	bool is_hit = false;
 	bool dropped = false;
@@ -32,5 +36,5 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 
 	virtual void SetState(int state);
-	Brick_Coin(float pos_y);
+	Brick_Coin(float pos_y, CMario * player);
 };

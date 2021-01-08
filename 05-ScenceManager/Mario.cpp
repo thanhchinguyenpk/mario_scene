@@ -500,7 +500,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						//CGame::GetInstance()->SetCamPos(2199 * 3 + 16 * 3, 287 * 3 - 150);
 						this->is_on_the_ground = false;
 					}
-					else if (e->ny > 0 && flatform->y < 1311)// bé hơn để nắp đậy dưới hầm khỏi bug
+					else if (e->ny > 0 && flatform->y < 1311 && flatform->x < 6726)// bé hơn để nắp đậy dưới hầm khỏi bug
 					{
 						y += (y_flatform + y_flatform);// double for safe
 						vy = vy_flatform;
@@ -643,6 +643,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		
 		}
 	}
+
+
+	
 
 	DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
@@ -859,6 +862,7 @@ void CMario::Render()
 
 	if (is_go_down_pine == true)
 		ani = MARIO_ANI_TAIL_GO_DOWN;
+
 	if (is_auto_running == true)
 		if (level == MARIO_LEVEL_SMALL)
 			ani = MARIO_ANI_SMALL_WALKING_RIGHT;
@@ -997,6 +1001,8 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 
 			if (state == MARIO_STATE_SPIN)
 			{
+				left = x - MARIO_BIG_TAIL_SPIN_BBOX_WIDTH / 2;
+				top = y ;//chỉ vẫy phần đuôi
 				right = x + MARIO_BIG_TAIL_SPIN_BBOX_WIDTH / 2;
 				bottom = y + MARIO_BIG_TAIL_BBOX_HEIGHT / 2;
 			}

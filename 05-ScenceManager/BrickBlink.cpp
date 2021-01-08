@@ -92,7 +92,7 @@ void BrickBlink::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
 	{
-		//SetState(BRICK_BLINK_STATE_WAS_HIT);
+		SetState(BRICK_BLINK_STATE_WAS_HIT);
 	}	
 
 	for (LPGAMEOBJECT debris : vec_debris)

@@ -523,6 +523,8 @@ void CGame::SwitchScene(int scene_id)
 
 	scenes[current_scene]->Unload();;// laays sence hiện tại, unload nó đi
 
+	DebugOut(L"vô chỗ này 2 lần mới đúngg\n");
+
 	CTextures::GetInstance()->Clear();
 	CSprites::GetInstance()->Clear();
 	CAnimations::GetInstance()->Clear();

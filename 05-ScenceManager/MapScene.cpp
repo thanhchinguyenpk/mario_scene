@@ -300,8 +300,18 @@ void MapScene::Unload()
 {
 	for (int i = 0; i < objects.size(); i++)
 		delete objects[i];
-
 	objects.clear();
+
+	for (int i = 0; i < map_portals.size(); i++)
+		delete map_portals[i];
+	map_portals.clear();
+
+	for (int i = 0; i < ghost_platforms.size(); i++)
+		delete ghost_platforms[i];
+	ghost_platforms.clear();
+
+
+	
 	player = NULL;// có khả năng là mình quay lại cảnh đó!
 	/*đi qua cảnh mới thì mình unload cảnh cũ, sau đó mình load cảnh mới lên, nhưng sau này mình có thể
 	qay lại đúng cảnh cũ, nếu khog gán bằng null khi qua cảnh mới có thể trỏ lại cảnh cũ, thầy cẩn
@@ -477,7 +487,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 {
 	DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 
-	CMario *mario = ((CPlayScene*)scence)->GetPlayer();
+	CMario *mario = ((MapScene*)scence)->GetPlayer();
 
 	CGame* game_temp = CGame::GetInstance();
 	MapScene* map_scene = (MapScene*)game_temp->GetCurrentScene();
@@ -485,6 +495,14 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 
 	switch (KeyCode)
 	{
+	case DIK_S:
+		if (map_scene->current_portal->is_portal) {
+			
+			game_temp->SwitchScene(4);
+			DebugOut(L"hé liu PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp----->  \n");
+
+		}
+		break;
 	case DIK_RIGHT:
 		if (map_scene->current_portal->r != -1)
 		{

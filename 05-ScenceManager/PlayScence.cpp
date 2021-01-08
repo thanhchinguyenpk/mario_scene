@@ -191,7 +191,8 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		}
 		obj = new CMario(); //CMario(x,y);
 		obj->SetPosition(x, y);//khong có dong duoi
-		player = (CMario*)obj;  
+		player = (CMario*)obj; 
+		player->is_moving_in_world_map= atoi(tokens[4].c_str());
 
 		DebugOut(L"[INFO] Player object created!\n");
 		break;
@@ -256,7 +257,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case 10:
 	{
 		//int lv = atof(tokens[4].c_str());
-		obj = new Brick_Coin(y);
+		obj = new Brick_Coin(y,player);
 		obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
 		break;
 	}
@@ -304,7 +305,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	{
 		listBricks.push_back(obj);
 		DebugOut(L"[ERR]mấy viên? object type: %d\n", object_type);
-	} else if (dynamic_cast<RandomBonus*>(obj))
+	} else if (dynamic_cast<RandomBonus*>(obj)|| dynamic_cast<Coin*>(obj))
 		itemsMarioCanEat.push_back(obj);
 	else
 		objects.push_back(obj);
@@ -444,6 +445,8 @@ void CPlayScene::Update(DWORD dt)
 		itemsMarioCanEat[i]->Update(dt, &coObjects);
 	}
 
+	player->CheckOverlapWithItems(&itemsMarioCanEat);
+
 	for (size_t i = 0; i < listBricks.size(); i++)
 	{
 		listBricks[i]->Update(dt, &coObjects);
@@ -462,7 +465,7 @@ void CPlayScene::Update(DWORD dt)
 			Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
 			if (brick->is_hit == true && brick->dropped == false)
 			{
-				DropItem(1, brick->x, brick->y);
+				DropItem(0, brick->x, brick->y);
 				brick->dropped = true;
 
 				this->the_number_mario_hit_brick++;
@@ -499,6 +502,28 @@ void CPlayScene::Update(DWORD dt)
 		}
 		
 	}
+
+	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
+	{
+		if (itemsMarioCanEat[i]->used == true && !dynamic_cast<RandomBonus*>(itemsMarioCanEat[i]))
+		{
+			delete itemsMarioCanEat[i];
+			itemsMarioCanEat[i] = nullptr;
+			//DebugOut(L"hihihi, delete roi ne\n");
+			itemsMarioCanEat.erase(itemsMarioCanEat.begin() + i);
+		}
+	}
+
+
+
+	if (player->x > 8580)
+	{
+		CGame* game_temp = CGame::GetInstance();
+		game_temp->SwitchScene(3);
+		CGame::GetInstance()->SetCamPos(0, 0);
+		return;
+	}
+	//itemsMarioCanEat.erase(std::remove(itemsMarioCanEat.begin(), itemsMarioCanEat.end(), nullptr), itemsMarioCanEat.end());
 
 
 	//listBricks.erase(std::remove(listBricks.begin(), listBricks.end(), nullptr), listBricks.end());
@@ -540,6 +565,9 @@ void CPlayScene::Update(DWORD dt)
 			return;
 		CGame::GetInstance()->SetCamPos(cx, 1368);
 	}
+
+
+
 }
 
 void CPlayScene::Render()
@@ -577,8 +605,20 @@ void CPlayScene::Unload()
 {
 	for (int i = 0; i < objects.size(); i++)
 		delete objects[i];
-
 	objects.clear();
+
+
+	for (int i = 0; i < itemsMarioCanEat.size(); i++)
+		delete itemsMarioCanEat[i];
+	itemsMarioCanEat.clear();
+
+
+	for (int i = 0; i < listBricks.size(); i++)
+		delete listBricks[i];
+	listBricks.clear();
+
+
+	
 	player = NULL;// có khả năng là mình quay lại cảnh đó!
 	/*đi qua cảnh mới thì mình unload cảnh cũ, sau đó mình load cảnh mới lên, nhưng sau này mình có thể
 	qay lại đúng cảnh cũ, nếu khog gán bằng null khi qua cảnh mới có thể trỏ lại cảnh cũ, thầy cẩn

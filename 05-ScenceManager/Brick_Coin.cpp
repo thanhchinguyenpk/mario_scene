@@ -9,10 +9,11 @@
 void Brick_Coin::Render()
 {
 	int ani = 0;
-	if (state == BRICK_COIN_STATE_DA_DAP)
-	{
+
+	 if (state == BRICK_COIN_STATE_DA_DAP)
 		ani = 1;
-	}
+	 else if(is_contain_button_p)
+		 ani = 2;
 	//DebugOut(L"[ERROR------------------------------] DINPUT::GetDeviceData failed. Error: %d\n", ani);
 
 
@@ -26,6 +27,24 @@ void Brick_Coin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt);
 	y += dy;
+
+	if (state != BRICK_COIN_STATE_DA_DAP) 
+	{
+		float ml, mt, mr, mb;
+		float il, it, ir, ib;
+
+		this->GetBoundingBox(il, it, ir, ib);
+
+
+
+		mario->GetBoundingBox(ml, mt, mr, mb);
+
+		if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+		{
+			SetState(BRICK_COIN_STATE_DA_DAP);
+		}
+	}
+
 
 	if (y<originalY-20 && flag==false)
 	{
@@ -87,10 +106,10 @@ void Brick_Coin::SetState(int state)
 
 }
 
-Brick_Coin::Brick_Coin(float pos_y)
+Brick_Coin::Brick_Coin(float pos_y, CMario * player)
 {
 	// originalX = x;
-		
+	mario = player;
 	 this->originalY = pos_y;
 }
 

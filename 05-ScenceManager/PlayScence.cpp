@@ -701,7 +701,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		//case 14:
 		float x, y;
 		mario->GetPosition(x, y);
-		if (x > 6966 && mario->is_on_the_ground)
+		if (x > 7030 && mario->is_on_the_ground)
 		{
 			mario->is_go_down_pine = true;
 			mario->SetPosition(x, y - 40);
@@ -754,12 +754,17 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 
 			mario->SetSpin(true);
 			mario->SetState(MARIO_STATE_SPIN);
+			mario->spin_start = GetTickCount64();
+
 
 		}
 		else if (mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 		{
 			if (mario->GetIsInObject() == true)
+			{
 				mario->SetState(MARIO_STATE_SHOOT_BULLET);
+				mario->throw_start = GetTickCount64();
+			}
 			else
 			{
 				mario->SetState(MARIO_STATE_JUMP_SHOOT_BULLET);
@@ -890,6 +895,7 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 			mario->hold_somthing = NULL;
 			mario->is_bring = false;
 			mario->SetState(MARIO_STATE_ROUSE_KOOMPASHELL_RIGHT);
+			mario->rouse_start = GetTickCount64();
 		}
 
 		break;

@@ -163,6 +163,9 @@ public:
 	DWORD fly_start=0;
 	DWORD fly_high_start = 0;
 	DWORD fly_fire_throw_start = 0;
+	DWORD spin_start = 0;
+	DWORD throw_start = 0;
+	DWORD rouse_start = 0;
 	
 	vector<LPGAMEOBJECT> listWeapons;
 

@@ -1,8 +1,8 @@
 ﻿  Mario.cpp
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(154): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(220): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(228): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(223): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.h(231): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(3): warning C4005: 'BRICK_BBOX_WIDTH': macro redefinition
   c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\brick.h(4): note: see previous definition of 'BRICK_BBOX_WIDTH'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\flatform.h(4): warning C4005: 'BRICK_BBOX_HEIGHT': macro redefinition
@@ -28,12 +28,13 @@ c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(230): warning C4305: '=': truncation from 'double' to 'float'
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(244): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(270): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(349): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(378): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(426): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(840): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(903): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(908): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(911): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(953): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(337): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(350): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(379): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(427): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(844): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(907): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(912): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(915): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\project 5\gamedev-intro-tutorials\05-scencemanager\mario.cpp(957): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\project 5\gamedev-intro-tutorials\Debug\05-ScenceManager.exe

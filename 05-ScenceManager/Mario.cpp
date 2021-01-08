@@ -334,6 +334,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 							conco->SetState(CONCO_STATE_MAI_RUA_CHAY_TRAI);
 
 						SetState(MARIO_STATE_ROUSE_KOOMPASHELL_RIGHT);
+						this->rouse_start = GetTickCount64();
 					}
 
 					else if (e->ny < 0)
@@ -499,7 +500,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						//CGame::GetInstance()->SetCamPos(2199 * 3 + 16 * 3, 287 * 3 - 150);
 						this->is_on_the_ground = false;
 					}
-					else if (e->ny > 0 && flatform->x < 1311)// bé hơn để nắp đậy dưới hầm khỏi bug
+					else if (e->ny > 0 && flatform->y < 1311)// bé hơn để nắp đậy dưới hầm khỏi bug
 					{
 						y += (y_flatform + y_flatform);// double for safe
 						vy = vy_flatform;
@@ -556,15 +557,17 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 
 
-		if (GetState() == MARIO_STATE_SPIN && animation_set->at(39)->IsRenderDone())
+		if (GetState() == MARIO_STATE_SPIN && GetTickCount64() - spin_start >= 150 && spin_start)
 		{
 			SetState(MARIO_STATE_IDLE);
 			SetSpin(false);
+			spin_start = 0;
 			//is_render_animation = false;
 		}
-		if (GetState() == MARIO_STATE_SHOOT_BULLET && animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->IsRenderDone())
+		if (GetState() == MARIO_STATE_SHOOT_BULLET && GetTickCount64() - throw_start > 200 && throw_start)
 		{
 			SetState(MARIO_STATE_IDLE);
+			throw_start = 0;
 			//is_render_animation = false;
 		}
 
@@ -594,10 +597,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			fly_high_start = 0;
 		}
 
-		if (is_brouse == true && animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->IsRenderDone())
+		if (is_brouse == true && GetTickCount64() - rouse_start > 100 && rouse_start)
 		{
 			SetState(MARIO_STATE_IDLE);
 			is_brouse = false;
+			rouse_start = 0;
 			//DebugOut(L"Hello vo 700s khong, vo day khong???\n");
 			//is_fly = false;
 		}
@@ -640,7 +644,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
-	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
+	DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
 
 void CMario::Render()
@@ -927,13 +931,13 @@ void CMario::SetState(int state)
 		vy = 0;
 		break;
 	case MARIO_STATE_SPIN:
-		animation_set->at(39)->ResetCurrentFrame();
-		animation_set->at(39)->StartTimeAnimation();
+		//animation_set->at(39)->ResetCurrentFrame();
+		//animation_set->at(39)->StartTimeAnimation();
 		//vx = 0;
 		break;
 	case MARIO_STATE_SHOOT_BULLET:
-		animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->ResetCurrentFrame();
-		animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->StartTimeAnimation();
+		//animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->ResetCurrentFrame();
+		//animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->StartTimeAnimation();
 		break;
 	case MARIO_STATE_JUMP_SHOOT_BULLET:
 		//animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->ResetCurrentFrame();
@@ -953,8 +957,8 @@ void CMario::SetState(int state)
 		vx = 1.5 * nx;
 		break;
 	case MARIO_STATE_ROUSE_KOOMPASHELL_RIGHT:
-		animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
-		animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->StartTimeAnimation();
+		//animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
+		//->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->StartTimeAnimation();
 		is_brouse = true;
 		break;
 	}

@@ -958,7 +958,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO
-0	7160	1000	1
+0	6790	1	1
 # BRICK 
 #1	0	1248	22
 # con cua//6670
@@ -1033,6 +1033,10 @@
 6	6432	1104	1	144	2	0
 6	6528	816	1	144	2	0
 
+#trên không trung
+6	3936	432	1	192	2	0
+6	4224	576	1	192	2	0
+6	4464	528	1	720	2	0
 
 #venus	cai thu 4 laf type(do hay xanh)
 #venus do
@@ -1087,7 +1091,7 @@
 
 11	6288	1176	3
 
-11	4320	384	3
+11	4350	445	3
 # coin
 #coin trên mặt đất
 12	3240	979	14
@@ -1137,9 +1141,9 @@
 
 14	7008	1201	15	200
 #pine trên cao
-14	6813	393	15	200
+14	6816	386	15	200
 #pine dưới đất
-14	7057	1439	15	300
+14	7059	1439	15	300
 
 #random bonus
 

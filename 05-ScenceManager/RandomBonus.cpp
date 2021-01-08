@@ -22,6 +22,8 @@ void RandomBonus::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 			DebugOut(L"va chạm rùi hihi object type: %d\n");
 			got_bonus = true;
 			time_order_to_render_text = GetTickCount64();
+			
+			mario->is_hit_bonus = true;
 
 		}
 	}

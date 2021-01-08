@@ -1,8 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
-#define	 PINE_BBOX_WIDTH 32*3
-#define	 PINE_BBOX_HEIGHT 48*3
+#define	 PINE_TALL_BBOX_WIDTH 32*3
+#define	 PINE_TALL_BBOX_HEIGHT 48*3
+
+#define	 PINE_SHORT_BBOX_WIDTH 32*3
+#define	 PINE_SHORT_BBOX_HEIGHT 32*3
 
 #define  PARA_GROOMBA_WALKING_SPEED			 0.03f;
 

@@ -154,11 +154,15 @@ public:
 	float acceleration= MARIO_ACCELERATION;
 	CGameObject* hold_somthing = NULL;
 
+	bool is_hit_bonus = false;
+	bool is_auto_running = false;
+
 	DWORD untouchable_start;
 	DWORD jumping_start;
 
 	DWORD fly_start=0;
 	DWORD fly_high_start = 0;
+	DWORD fly_fire_throw_start = 0;
 	
 	vector<LPGAMEOBJECT> listWeapons;
 

@@ -2,10 +2,21 @@
 
 void Pine::GetBoundingBox(float & l, float & t, float & r, float & b)
 {
-	l = x - PINE_BBOX_WIDTH / 2;
-	t = y - PINE_BBOX_HEIGHT / 2;
-	r = x + PINE_BBOX_WIDTH / 2;
-	b = y + PINE_BBOX_HEIGHT / 2;
+	if (state == PINE_STATE_TALL)
+	{
+		l = x - PINE_TALL_BBOX_WIDTH / 2;
+		t = y - PINE_TALL_BBOX_HEIGHT / 2;
+		r = x + PINE_TALL_BBOX_WIDTH / 2;
+		b = y + PINE_TALL_BBOX_HEIGHT / 2;
+	}
+	else if (state == PINE_STATE_SHORT||state== PINE_STATE_BLACK)
+	{
+		l = x - PINE_SHORT_BBOX_WIDTH / 2;
+		t = y - PINE_SHORT_BBOX_HEIGHT / 2;
+		r = x + PINE_SHORT_BBOX_WIDTH / 2;
+		b = y + PINE_SHORT_BBOX_HEIGHT / 2;
+	}
+
 }
 
 void Pine::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)

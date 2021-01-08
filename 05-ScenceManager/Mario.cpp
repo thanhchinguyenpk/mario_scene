@@ -88,8 +88,16 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
 	//is_in_portal = false;
 	//CGameObject* temp = NULL;
+	if (is_auto_running)
+	{
+		CGameObject::Update(dt);
+		x += dx;
+		vx = 0.3;// 0.3 thì chạy, 0.15 khong chạy @@
 
-	if (is_go_down_pine)
+		//if(y<1194)
+		//	y += 10;
+	}
+	else if (is_go_down_pine)
 	{
 		CGameObject::Update(dt);
 		y += dy;
@@ -475,7 +483,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
 
-					if (e->ny < 0 && flatform->is_portal)
+					if (this->is_hit_bonus == true)
+					{
+						is_auto_running = true;
+					}else if (e->ny < 0 && flatform->is_portal)
 					{
 						//this->SetPosition(6363 + 16, 1521);
 					
@@ -488,7 +499,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						//CGame::GetInstance()->SetCamPos(2199 * 3 + 16 * 3, 287 * 3 - 150);
 						this->is_on_the_ground = false;
 					}
-					else if (e->ny > 0)
+					else if (e->ny > 0 && flatform->x < 1311)// bé hơn để nắp đậy dưới hầm khỏi bug
 					{
 						y += (y_flatform + y_flatform);// double for safe
 						vy = vy_flatform;
@@ -558,10 +569,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 
 
-		if (GetState() == MARIO_STATE_JUMP_SHOOT_BULLET && animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->IsRenderDone())
+		if (GetState() == MARIO_STATE_JUMP_SHOOT_BULLET && GetTickCount64() - fly_fire_throw_start > 200 && fly_fire_throw_start)
 		{
 			SetState(MARIO_STATE_IDLE);
-			//is_render_animation = false;
+			fly_fire_throw_start = 0;
 		}
 		//if (GetState() == MARIO_STATE_FLY && animation_set->at(MARIO_ANI_TAIL_FLY)->IsRenderDone())
 		if (GetState() == MARIO_STATE_FLY && GetTickCount64()-fly_start>210&&fly_start)
@@ -844,6 +855,22 @@ void CMario::Render()
 
 	if (is_go_down_pine == true)
 		ani = MARIO_ANI_TAIL_GO_DOWN;
+	if (is_auto_running == true)
+		if (level == MARIO_LEVEL_SMALL)
+			ani = MARIO_ANI_SMALL_WALKING_RIGHT;
+		else if(level == MARIO_LEVEL_BIG)
+			ani = MARIO_ANI_BIG_WALKING_RIGHT;
+		else if (level == MARIO_LEVEL_BIG_TAIL)
+			ani = MARIO_ANI_TAIL_WALKING_RIGHT;
+		else if (level == MARIO_LEVEL_BIG_ORANGE)
+			ani = MARIO_ANI_ORANGE_WALKING_RIGHT;
+		
+	/*
+	#define MARIO_ANI_BIG_WALKING_RIGHT			4
+	#define	MARIO_ANI_SMALL_WALKING_RIGHT		5
+	#define MARIO_ANI_TAIL_WALKING_RIGHT		6
+	#define MARIO_ANI_ORANGE_WALKING_RIGHT		7
+	*/
 	animation_set->at(ani)->Render(x, y, 0, alpha, nx);
 
 	RenderBoundingBox();
@@ -909,17 +936,17 @@ void CMario::SetState(int state)
 		animation_set->at(MARIO_ANI_ORANGE_SHOOT_BULLET_RIGHT)->StartTimeAnimation();
 		break;
 	case MARIO_STATE_JUMP_SHOOT_BULLET:
-		animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->ResetCurrentFrame();
-		animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->StartTimeAnimation();
+		//animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->ResetCurrentFrame();
+		//animation_set->at(MARIO_ANI_ORANGE_JUMP_SHOOT_BULLET_RIGHT)->StartTimeAnimation();
 		break;
 	case MARIO_STATE_FLY:
-		animation_set->at(MARIO_ANI_TAIL_FLY)->ResetCurrentFrame();
-		animation_set->at(MARIO_ANI_TAIL_FLY)->StartTimeAnimation();
+		//animation_set->at(MARIO_ANI_TAIL_FLY)->ResetCurrentFrame();
+		//animation_set->at(MARIO_ANI_TAIL_FLY)->StartTimeAnimation();
 		is_fly_short = true;
 		break;
 	case MARIO_STATE_FLY_HIGH:
-		animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->ResetCurrentFrame();
-		animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->StartTimeAnimation();
+		//animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->ResetCurrentFrame();
+		//animation_set->at(MARIO_ANI_TAIL_FLY_HIGH)->StartTimeAnimation();
 		is_fly_high = true;
 		break;
 	case MARIO_STATE_BRING_KOOMPASHELL_RIGHT:

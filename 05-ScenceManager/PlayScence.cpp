@@ -522,10 +522,19 @@ void CPlayScene::Update(DWORD dt)
 	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
 
-	if (player->is_on_the_ground == false)
+	if (player->y < 570) //trên trời
+	{
+		if (cy < 0)
+		{
+			CGame::GetInstance()->SetCamPos(cx, 0);
+			return;
+		}
+		CGame::GetInstance()->SetCamPos(cx, cy);
+
+	}else if (player->is_on_the_ground == false)// mặt đất
 		CGame::GetInstance()->SetCamPos(cx, 700);
-	else
-		//	CGame::GetInstance()->SetCamPos(2064 * 3 + 16 * 3, 456 * 3);
+	else // dưới lòng đất
+		
 	{
 		if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
 			return;
@@ -752,7 +761,11 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 			if (mario->GetIsInObject() == true)
 				mario->SetState(MARIO_STATE_SHOOT_BULLET);
 			else
+			{
 				mario->SetState(MARIO_STATE_JUMP_SHOOT_BULLET);
+				mario->fly_fire_throw_start = GetTickCount64();
+
+			}
 
 			mario->Attack();
 			/*CGameObject * temp = new MarioBullet();
@@ -791,7 +804,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 	
 		//float x, y;
 		mario->GetPosition(x, y);
-		if (x < 600)
+		if (x>6774 && x<6852)
 		{
 			mario->is_go_down_pine = true;
 			mario->go_down_pine_then_move_cam = GetTickCount64();

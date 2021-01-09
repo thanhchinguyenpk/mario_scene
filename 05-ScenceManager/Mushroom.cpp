@@ -27,7 +27,7 @@ void Mushroom::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	//y += dy;
 
 	if(enable_gravity==true)
-		vy += 0.002 * dt;
+		vy += 0.003 * dt;
 
 		
 	if (y <= pos_y_brick - MUSHROOM_BBOX_HEIGHT-5)
@@ -69,7 +69,7 @@ void Mushroom::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
-			if (dynamic_cast<Flatform*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+			if (dynamic_cast<Flatform*>(e->obj)|| dynamic_cast<Pine*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 			{
 				x += min_tx * dx + nx * 0.4f;
 				y += min_ty * dy + ny * 0.4f;
@@ -124,7 +124,9 @@ void Mushroom::Render()
 {
 	int ani = MUSHROOM_ANI_WALKING;
 
-	animation_set->at(0)->Render(x, y);
+	if (is_read_mushroom == false)
+		ani = 1;
+	animation_set->at(ani)->Render(x, y);
 	RenderBoundingBox();
 }
 

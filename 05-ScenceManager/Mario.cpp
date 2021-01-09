@@ -80,7 +80,14 @@ void CMario::CheckOverlapWithItems(vector<LPGAMEOBJECT>* itemsMarioCanEat)
 		item->GetBoundingBox(il, it, ir, ib);
 
 		if (this->CheckOverLap(ml, mt, mr, mb, il, it, ir, ib))
+		{
+			if (dynamic_cast<Mushroom*>(item)&& dynamic_cast<Mushroom*>(item)->is_read_mushroom==true)
+				SetLevel(MARIO_LEVEL_BIG);
+			else if (dynamic_cast<SuperLeaf*>(item))
+				SetLevel(MARIO_LEVEL_BIG_TAIL);
+
 			item->used = true;
+		}
 	}
 }
 
@@ -314,6 +321,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					is_in_object = true;
 				}
 
+				if(state!= MARIO_STATE_SPIN)
+				{
 				if (dynamic_cast<CConCo*>(e->obj))
 				{
 					if (untouchable) return;
@@ -354,11 +363,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 
 
-					if (state == MARIO_STATE_SPIN)
-					{
-						//if (goomba->x - this->x < 80);
-						conco->SetState(CONCO_STATE_WAS_SHOOTED);
-					}
+					
 
 
 
@@ -381,29 +386,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}else if(e->nx!=0)
 						CollideWithEnemy();
 
-
-					if (state == MARIO_STATE_SPIN)
-					{
-						//if (goomba->x - this->x < 80);
-						goomba->SetState(GOOMBA_STATE_WAS_SHOOTED);
-					}
-					//SÀI NHA
-				//	else if (e->nx != 0) // vec tơ pháp tuyến từ bên trái qua, từ bên phải xuống
-				//	{		// thì làm mario rớt level, bất tử hoặc chết
-						//if (untouchable==0)
-						//{
-						//	if (goomba->GetState()!=GOOMBA_STATE_DIE)
-						//	{
-						//		if (level > MARIO_LEVEL_SMALL)
-						//		{
-						//			level = MARIO_LEVEL_SMALL;
-						//			StartUntouchable();
-						//		}
-						//		else
-						//			SetState(MARIO_STATE_DIE);
-						//	}
-						//}
-						//}
+			
 
 					
 				}
@@ -429,6 +412,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 					else
 						CollideWithEnemy();
+				}
 				}
 				if (dynamic_cast<PiranhaPlant*>(e->obj)|| dynamic_cast<VenusFireTrap*>(e->obj))
 				{
@@ -473,13 +457,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						brick_blink->used = true;
 					}
 				}
-				
-				//if (dynamic_cast<Flatform*>(e->obj))
-				//{
-					//is_in_portal = true;
-				//}
-				
-
 				if (dynamic_cast<Flatform*>(e->obj))
 				{
 					Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
@@ -518,7 +495,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					}
 				}
-		
+				
 			}/*
 	#pragma region logic collision
 
@@ -1033,6 +1010,10 @@ void CMario::CollideWithEnemy()
 	{
 		level = MARIO_LEVEL_SMALL;
 		StartUntouchable();
+	}
+	else if (level== MARIO_LEVEL_SMALL)
+	{
+		is_die = true;
 	}
 }
 

@@ -960,17 +960,28 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO tham số cuối là is_moving_in_world_map
-0	7155	1000	1	0	
+0	390	1000	1	0	
 # BRICK 
 #1	0	1248	22
 # con cua//6670
-2	1670	100	5
-#CONCO3860-4033
-4	2662	1029	8
-4	6230	1060	8
-4	4217	300	8
+2	696	1216	5
+2	1587	1185	5
+2	2523	1140	5
+2	2679	1140	5
+
+#4	1587	1185	8	0
+#CONCO3860-4033			loai 0=xanh 1=cocanh  2=do 
+4	1761	1068	8	2
+
+4	3936	969	8	1
+4	4090	860	8	1
+4	4277	670	8	1
+
+4	4446	1194	8	0
+
+4	6309	1080	8	2
 #red goomba
-5	470	1248	6
+5	2900	1148	6
 #flatform
 #4=width 5=height //flat form thi khong render so 22 de choi thoi
 #nen duoi dat	
@@ -1051,26 +1062,23 @@
 7	5615	1130	13	2
 #xanh cap cap
 8	5424	1160	19	
-# p meter x,y nhu khong a, de dai animationset a
+#hub p meter x,y nhu khong a, de dai animationset a
 9	100	100	27
 #brick question
-#test
-#10	5835	1080	2
-#10	5935	1050	2
+#test				nút p	chứ item
+10	552	1080	2	0	0
+10	600	1080	2	0	0
 
-10	552	1080	2
-10	600	1080	2
+10	696	936	2	0	0
+10	744	936	2	0	1
 
-10	696	936	2
-10	744	936	2
+10	1272	984	2	0	0
 
-10	1272	984	2
+10	1992	1176	2	0	1
 
-10	1992	1176	2
+10	2136	1080	2	0	0
 
-10	2136	1080	2
-
-10	4440	1128	2
+10	4440	1128	2	0	1
 
 #brick blink
 11	5856	1224	3
@@ -1090,14 +1098,14 @@
 11	5952	1128	3
 11	6000	1128	3
 11	6048	1128	3
-10	6096	1128	2
+10	6096	1128	2	1	1
 
 11	6288	1224	3
 11	6336	1224	3
 
 11	6288	1176	3
 
-11	4350	445	3
+10	4350	445	2	0	1
 # coin
 #coin trên mặt đất
 12	3240	979	14

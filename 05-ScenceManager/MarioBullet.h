@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 
+
 #define MARIOBULLET_GRAVITY			0.002f*1.5
 
 #define MARIOBULLET_BBOX_WIDTH 9*3

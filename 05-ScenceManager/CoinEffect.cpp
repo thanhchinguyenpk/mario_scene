@@ -1,4 +1,4 @@
-#include "CoinEffect.h"
+﻿#include "CoinEffect.h"
 
 CoinEffect::CoinEffect(float brickX, float brickY)
 {
@@ -12,7 +12,7 @@ CoinEffect::CoinEffect(float brickX, float brickY)
 	LPANIMATION_SET ani_set = animation_sets_temp->Get(14);
 	this->SetAnimationSet(ani_set);
 
-	vy = -0.2;
+	vy = -0.5;
 
 }
 
@@ -22,9 +22,10 @@ void CoinEffect::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	Effect::Update(dt, coObjects);
 
 	y += dy;
-	if (y < minPosY)
+	if (y < minPosY&&make_sure_go_down==false)
 	{
 		vy = -vy;
+		make_sure_go_down = true;// có trường hợp lên cái bị khựng lại và lên luon, nên kẹp biến này cho chắc
 	}
 	if (y > maxPosY && vanish == false)
 	{

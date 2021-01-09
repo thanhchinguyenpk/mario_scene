@@ -45,6 +45,8 @@ class CGameObject
 {
 public:
 
+	bool is_cam_coming = false;
+
 	float x; 
 	float y;
 

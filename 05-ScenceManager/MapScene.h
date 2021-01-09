@@ -4,6 +4,8 @@
 #include "Map.h"
 #include "CMapPortal.h"
 #include "InvisibleObject.h"
+#include "GameTime.h"
+#include "UI.h"
 
 
 
@@ -33,6 +35,8 @@ public:
 
 	void _ParseSection_MAP(string line);
 
+	UI* game_ui;
+	GameTime* game_time;
 
 	virtual void Load();
 	virtual void Update(DWORD dt);

@@ -23,9 +23,12 @@ class Brick_Coin : public CGameObject
 	//float originalX;
 public:
 
+	int brick_type = 0;
+
 	CMario * mario = NULL;
 	float originalY;
-	bool is_contain_button_p = true;
+
+	int is_contain_button_p = 0;
 	
 	bool is_hit = false;
 	bool dropped = false;
@@ -36,5 +39,5 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 
 	virtual void SetState(int state);
-	Brick_Coin(float pos_y, CMario * player);
+	Brick_Coin(float pos_y, CMario * player,int is_has_button_p,int type_brick);
 };

@@ -54,13 +54,22 @@ void CPlayScene::DropItem(int itemType, float x, float y)
 	{
 	case ITEM_RANDOM:
 	{
-		if (player->GetLevel() == MARIO_LEVEL_SMALL)
+		if (player->y < 567)
 		{
 			Mushroom* mushroom = new Mushroom(x, y);
+				mushroom->is_read_mushroom = false;
 			itemsMarioCanEat.push_back(mushroom);
 		}
-		else if (player->GetLevel() == MARIO_LEVEL_BIG)
+		else if (player->GetLevel() == MARIO_LEVEL_SMALL)
 		{
+			Mushroom* mushroom = new Mushroom(x, y);
+			if (player->y < 567)
+				mushroom->is_read_mushroom = false;
+			itemsMarioCanEat.push_back(mushroom);
+		}
+		else if (player->GetLevel() == MARIO_LEVEL_BIG|| player->GetLevel() == MARIO_LEVEL_BIG_TAIL|| player->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
+		{
+			
 			SuperLeaf *superleaf = new SuperLeaf(x, y);
 			itemsMarioCanEat.push_back(superleaf);
 		}
@@ -68,6 +77,7 @@ void CPlayScene::DropItem(int itemType, float x, float y)
 	}
 	case ITEM_MONEY:
 	{
+		DebugOut(L"[hinh nhu rot money] DINPUT::GetDeviceData failed. Error: \n");
 		CoinEffect* coineffect = new CoinEffect(x, y);
 		itemsMarioCanEat.push_back(coineffect);
 		break;
@@ -199,21 +209,25 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: 
 	{	
 		obj = new CGoomba(player);
-		obj->SetState(GOOMBA_STATE_WALKING);
+		//obj->SetState(GOOMBA_STATE_WALKING);
 		break;
 	}
 	case OBJECT_TYPE_PARA_GOOMBA:
 	{
 		obj = new ParaGoomba(player);
-		obj->SetState(PARA_GROOMBA_STATE_JUMP_BIG);
+		//obj->SetState(PARA_GROOMBA_STATE_JUMP_BIG);
 		break;
 	}
 	
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 	case OBJECT_TYPE_CONCO:
-		obj = new CConCo();
-		obj->SetState(CONCO_STATE_WALKING_RIGHT);
+		obj = new CConCo(player);
+		
+
+		dynamic_cast<CConCo*>(obj)->type= atoi(tokens[4].c_str());
+
+		
 		break;
 	case OBJECT_TYPE_PORTAL:
 		{	
@@ -237,14 +251,14 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	{
 		int lv= atof(tokens[4].c_str());
 		obj = new VenusFireTrap(player,lv);
-		obj->SetState(VENUS_STATE_GOING_UP);
+		//obj->SetState(VENUS_STATE_GOING_UP);
 		break;
 	}
 	case 8:
 	{
 		//int lv = atof(tokens[4].c_str());
 		obj = new PiranhaPlant(player);
-		obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
+		//obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
 		break;
 	}
 	case 9:
@@ -256,8 +270,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	}
 	case 10:
 	{
-		//int lv = atof(tokens[4].c_str());
-		obj = new Brick_Coin(y,player);
+		int is_contail_button_p = atoi(tokens[4].c_str());
+		int type = atoi(tokens[5].c_str());
+		obj = new Brick_Coin(y,player, is_contail_button_p,type);
 		obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
 		break;
 	}
@@ -465,7 +480,7 @@ void CPlayScene::Update(DWORD dt)
 			Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
 			if (brick->is_hit == true && brick->dropped == false)
 			{
-				DropItem(0, brick->x, brick->y);
+				DropItem(brick->brick_type, brick->x, brick->y);
 				brick->dropped = true;
 
 				this->the_number_mario_hit_brick++;
@@ -503,10 +518,26 @@ void CPlayScene::Update(DWORD dt)
 		
 	}
 
+	for (size_t i = 0; i < objects.size(); i++)
+	{
+		if (objects[i]->used == true)
+		{
+			delete objects[i];
+			objects[i] = nullptr;
+
+			objects.erase(objects.begin() + i);
+		}
+
+	}
+
 	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
 	{
 		if (itemsMarioCanEat[i]->used == true && !dynamic_cast<RandomBonus*>(itemsMarioCanEat[i]))
 		{
+			if (dynamic_cast<CoinEffect*>(itemsMarioCanEat[i]))
+			{
+				DebugOut(L"huhu coin ef bi xoa rui, delete roi ne\n");
+			}
 			delete itemsMarioCanEat[i];
 			itemsMarioCanEat[i] = nullptr;
 			//DebugOut(L"hihihi, delete roi ne\n");
@@ -516,7 +547,7 @@ void CPlayScene::Update(DWORD dt)
 
 
 
-	if (player->x > 8580)
+	if (player->x > 8580 ||player->is_die==true)
 	{
 		CGame* game_temp = CGame::GetInstance();
 		game_temp->SwitchScene(3);
@@ -577,12 +608,13 @@ void CPlayScene::Render()
 	for (int i = 0; i < listBricks.size(); i++)
 		listBricks[i]->Render();
 	
-
 	for (int i = 0; i < itemsMarioCanEat.size(); i++)
 		itemsMarioCanEat[i]->Render();
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+
+	
 
 	game_time = GameTime::GetInstance();
 	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, point_hub,4,1);
@@ -905,14 +937,13 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 	case DIK_DOWN:
 		//DebugOut(L"UPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp\n", KeyCode);
 
-		/*if (mario->is_in_portal == true);
-		{
+		
 			if (mario->GetLevel() == MARIO_LEVEL_BIG || mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 			mario->SetPosition(mario->x, mario->y - MARIO_BIG_BBOX_HEIGHT / 2 + MARIO_BIG_SITDOWN_BBOX_HEIGHT / 2);
 		else if (mario->GetLevel() == MARIO_LEVEL_BIG_TAIL)
 			mario->SetPosition(mario->x, mario->y - MARIO_BIG_TAIL_BBOX_HEIGHT / 2 + MARIO_BIG_TAIL_SITDOWN_BBOX_HEIGHT / 2);
 
-		}*/
+		
 		break;
 
 	case DIK_A:

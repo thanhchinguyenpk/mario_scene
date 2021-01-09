@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "GameObject.h"
+#include "Mario.h"
 
 #define PLANT_BULLET_WALKING_SPEED 0.08f;
 
@@ -17,7 +18,9 @@ class PlantBullet : public CGameObject
 {
 
 public:
-	PlantBullet() {};
+	bool was_hit_mario = false;
+	CMario *mario = NULL;
+	PlantBullet(CMario *player) { mario = player; };
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);

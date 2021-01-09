@@ -3,136 +3,172 @@
 #include "debug.h"
 #include "Flatform.h"
 #include "Brick.h"
-
+#include "Brick_Coin.h"
 
 #include "Utils.h"
 
 
 void CConCo::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x- (float)CONCO_BBOX_WIDTH/2;
-	top = y- (float)CONCO_BBOX_HEIGHT/2;
-	right = x + (float)CONCO_BBOX_WIDTH/2;
-
-	if (state == CONCO_STATE_DIE) // chua ok
-		bottom = y + (float)CONCO_BBOX_HEIGHT_DIE/2;
-	else
-		bottom = y + (float)CONCO_BBOX_HEIGHT/2;
-
-	if (state == CONCO_STATE_THUT_VAO||state==CONCO_STATE_MAI_RUA_CHAY_PHAI|| state == CONCO_STATE_MAI_RUA_CHAY_TRAI
-		|| state == CONCO_STATE_INDENT_OUT
-		|| state == CONCO_STATE_SHELL_MOVING)
+	if (state != CONCO_STATE_WAS_SHOOTED)
 	{
-		left = x - (float)16*3/2;// ủa tại sao để define thì lại lỗi ????
-		top = y - (float)17*3/2;
-		right = x + (float)16*3/2;
-		bottom = y + (float)17*3/2;
+		left = x - (float)CONCO_BBOX_WIDTH / 2;
+		top = y - (float)CONCO_BBOX_HEIGHT / 2;
+		right = x + (float)CONCO_BBOX_WIDTH / 2;
+
+		if (state == CONCO_STATE_DIE) // chua ok
+			bottom = y + (float)CONCO_BBOX_HEIGHT_DIE / 2;
+		else
+			bottom = y + (float)CONCO_BBOX_HEIGHT / 2;
+
+		if (state == CONCO_STATE_THUT_VAO || state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI
+			|| state == CONCO_STATE_INDENT_OUT
+			|| state == CONCO_STATE_SHELL_MOVING)
+		{
+			left = x - (float)16 * 3 / 2;// ủa tại sao để define thì lại lỗi ????
+			top = y - (float)14 * 3 / 2;// mai rùa hơi cao
+			right = x + (float)16 * 3 / 2;
+			bottom = y + (float)17 * 3 / 2;
+		}
 	}
+	
 }
 
 void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	
-
-	if (is_brought == false)
+	if (mario->x + mario->distance_to_set_state_enemy > this->x && this->is_cam_coming == false)
 	{
-		CGameObject::Update(dt, coObjects);
+		if(type==0||type==2)
+			SetState(CONCO_STATE_WALKING_LEFT);
+		else 
+			SetState(CONCO_STATE_FLY_LEFT);
+
+
+		this->is_cam_coming = true;
 	}
 
-	vy += 0.002 * dt;
+	if (this->is_cam_coming == true)
 
-	
-
-
-	
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
-	coEvents.clear();
-
-
-	//if đã nha nếu mà nấm khác với nấm biến mất thì
-	CalcPotentialCollisions(coObjects, coEvents);
-
-	if (coEvents.size() == 0|| state==CONCO_STATE_WAS_SHOOTED)
 	{
-		x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
-		y += dy;
-	}
-	else // trong trường hợp có va chạm xẩy ra
-	{
-		float min_tx, min_ty, nx = 0, ny;
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-		// filter đối tượng trên từng trục để xử lí va chạm
-
-		// block // đẩy lùi ra so với chiều của các hướng bị va chạm, 0.4f là tránh bị trùng mép
-		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		y += min_ty * dy + ny * 0.4f;
-
-		if (nx != 0)
+		if (is_brought == false)
 		{
-			//vx = 0;
-			//vx = 0;
-			if (state == CONCO_STATE_WALKING_LEFT)
-			{
-				SetState(CONCO_STATE_WALKING_RIGHT);
-				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] cham dau quay qua phải. Error: \n");
-			}
-			else if (state == CONCO_STATE_WALKING_RIGHT)
-			{
-				SetState(CONCO_STATE_WALKING_LEFT);
-				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] cham dau quay qua trái. Error: \n");
-			}
-			else
-				vx = -vx;
-			//if(state==)
-		}// tại sao lại có hai dòng này- theo mình nghĩ là té từ trên cao xuống thì
-		if (ny != 0)
-		{
-			//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] co nhay vo phuong DOC Error: \n");
-			if (state == CONCO_STATE_FLY_LEFT)
-				vy = -0.6; // sẽ bị chặn lại_ không đúng má ơi.
-			else
-				vy = 0;
+			CGameObject::Update(dt, coObjects);
 		}
 
+		vy += 0.002 * dt;
 
 
-		//int boQuaVienDaDongTienDauTienAnNap = 0;
 
-		for (UINT i = 0; i < coEventsResult.size(); i++)
+
+
+		vector<LPCOLLISIONEVENT> coEvents;
+		vector<LPCOLLISIONEVENT> coEventsResult;
+		coEvents.clear();
+
+
+		//if đã nha nếu mà nấm khác với nấm biến mất thì
+		CalcPotentialCollisions(coObjects, coEvents);
+
+		if (coEvents.size() == 0 || state == CONCO_STATE_WAS_SHOOTED)
 		{
+			x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
+			y += dy;
+		}
+		else // trong trường hợp có va chạm xẩy ra
+		{
+			float min_tx, min_ty, nx = 0, ny;
 
-			LPCOLLISIONEVENT e = coEventsResult[i];
+			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+			// filter đối tượng trên từng trục để xử lí va chạm
 
+			// block // đẩy lùi ra so với chiều của các hướng bị va chạm, 0.4f là tránh bị trùng mép
+			x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+			y += min_ty * dy + ny * 0.4f;
 
-		
-
-			if (dynamic_cast<Flatform*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+			if (nx != 0)
 			{
-				if (is_walking_back_and_fort == 1)
+				//vx = 0;
+				//vx = 0;
+				if (state == CONCO_STATE_WALKING_LEFT)
 				{
-					Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
-
-					if (this->x > flatform->x + 273 && state == CONCO_STATE_WALKING_RIGHT)
-						SetState(CONCO_STATE_WALKING_LEFT);
-					if (this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
-						SetState(CONCO_STATE_WALKING_RIGHT);
-					
-				}	
+					SetState(CONCO_STATE_WALKING_RIGHT);
+					//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] cham dau quay qua phải. Error: \n");
+				}
+				else if (state == CONCO_STATE_WALKING_RIGHT)
+				{
+					SetState(CONCO_STATE_WALKING_LEFT);
+					//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] cham dau quay qua trái. Error: \n");
+				}
+				else
+					vx = -vx;
+				//if(state==)
+			}// tại sao lại có hai dòng này- theo mình nghĩ là té từ trên cao xuống thì
+			if (ny != 0)
+			{
+				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] co nhay vo phuong DOC Error: \n");
+				if (state == CONCO_STATE_FLY_LEFT)
+					vy = -0.6; // sẽ bị chặn lại_ không đúng má ơi.
+				else
+					vy = 0;
 			}
 
-			if (dynamic_cast<BrickBlink*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
-			{
-				
-				BrickBlink* brick_blink = dynamic_cast<BrickBlink*>(e->obj);
-				
 
-					if (this->x > brick_blink->x + 24 && state == CONCO_STATE_WALKING_RIGHT&& brick_blink->is_brick == true)
+
+			//int boQuaVienDaDongTienDauTienAnNap = 0;
+
+			for (UINT i = 0; i < coEventsResult.size(); i++)
+			{
+
+				LPCOLLISIONEVENT e = coEventsResult[i];
+
+
+
+
+				if (dynamic_cast<Flatform*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+				{
+					if (is_walking_back_and_fort == 1)
+					{
+						Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
+
+						if(type==2)
+							if (this->x > flatform->x + flatform->width && state == CONCO_STATE_WALKING_RIGHT)
+								SetState(CONCO_STATE_WALKING_LEFT);
+							else if (this->x < flatform->x &&state == CONCO_STATE_WALKING_LEFT)
+								SetState(CONCO_STATE_WALKING_RIGHT);
+
+					}
+				}
+
+				if (dynamic_cast<Brick_Coin*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+				{
+					if (state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI)
+					{
+						Brick_Coin* brick_coin = dynamic_cast<Brick_Coin*>(e->obj);
+
+						if (brick_coin->GetState() == BRICK_COIN_STATE_CHUA_DAP)
+						{
+							brick_coin->SetState(BRICK_COIN_STATE_DA_DAP);
+							brick_coin->is_hit = true;
+						}
+					}
+					
+
+
+				}
+
+				if (dynamic_cast<BrickBlink*>(e->obj)) // if e->obj is Goomba // nếu như là goomba
+				{
+
+					BrickBlink* brick_blink = dynamic_cast<BrickBlink*>(e->obj);
+
+
+					if (this->x > brick_blink->x + 24 && state == CONCO_STATE_WALKING_RIGHT && brick_blink->is_brick == true)
 						SetState(CONCO_STATE_WALKING_LEFT);
-					if (this->x < brick_blink->x-24 &&state == CONCO_STATE_WALKING_LEFT && brick_blink->is_brick == true)
+					if (this->x < brick_blink->x - 24 && state == CONCO_STATE_WALKING_LEFT && brick_blink->is_brick == true)
 						SetState(CONCO_STATE_WALKING_RIGHT);
-					if (brick_blink->is_brick == false&&count_brick<2)
+					if (brick_blink->is_brick == false && count_brick < 2)
 					{
 						count_brick++;
 						y += dy;
@@ -148,44 +184,80 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 							//brick_blink->used = true;
 						}
 					}
-							
-						
-				
-			}
 
+
+
+				}
+
+				if (state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI)
+				{
+					if (dynamic_cast<CGoomba*>(e->obj))
+					{
+						dynamic_cast<CGoomba*>(e->obj)->SetState(GOOMBA_STATE_WAS_SHOOTED);
+					}
+					if (dynamic_cast<CConCo*>(e->obj))
+					{
+						dynamic_cast<CConCo*>(e->obj)->SetState(CONCO_STATE_WAS_SHOOTED);
+					}
+					if (dynamic_cast<ParaGoomba*>(e->obj))
+					{
+						dynamic_cast<ParaGoomba*>(e->obj)->SetState(PARA_GROOMBA_STATE_WAS_SHOOTED);
+					}
+				}
 
 
 			}
 
 		}
 
-	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
 
-	if (state == CONCO_STATE_THUT_VAO && GetTickCount64() - time_to_indent_out > 4000)
-	{
-		SetState(CONCO_STATE_SHELL_MOVING);
-		
-	}
-
-	if (state== CONCO_STATE_SHELL_MOVING && GetTickCount64() - time_to_indent_out > 6000)
-		SetState(CONCO_STATE_INDENT_OUT);
-
-	if (state == CONCO_STATE_INDENT_OUT && GetTickCount64() - time_to_indent_out > 7000)
-	{
-		SetPosition(this->x, this->y - 32);//để khi thọt ra mai rùa không bị rơi xuống
-		SetState(CONCO_STATE_WALKING_LEFT);
-	}
-
-	if (effect)
-	{
-		effect->Update(dt, coObjects);
-		if (effect->used == true)
+		if (state == CONCO_STATE_THUT_VAO && GetTickCount64() - time_to_indent_out > 4000)
 		{
-			delete effect;
-			effect = NULL;
+			SetState(CONCO_STATE_SHELL_MOVING);
+
 		}
+
+		if (state == CONCO_STATE_SHELL_MOVING && GetTickCount64() - time_to_indent_out > 6000)
+			SetState(CONCO_STATE_INDENT_OUT);
+
+		if (state == CONCO_STATE_INDENT_OUT && GetTickCount64() - time_to_indent_out > 7000)
+		{
+			SetPosition(this->x, this->y - 32);//để khi thọt ra mai rùa không bị rơi xuống
+			SetState(CONCO_STATE_WALKING_LEFT);
+		}
+
+		if (effect)
+		{
+			effect->Update(dt, coObjects);
+			if (effect->used == true)
+			{
+				delete effect;
+				effect = NULL;
+			}
+		}
+
+
+		if (mario->GetState() == MARIO_STATE_SPIN)
+		{
+
+			float ml, mt, mr, mb;
+			float il, it, ir, ib;
+
+			this->GetBoundingBox(il, it, ir, ib);
+			mario->GetBoundingBox(ml, mt, mr, mb);
+
+			if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+			{
+				SetState(CONCO_STATE_WAS_SHOOTED);
+			}
+		}
+
+
 	}
+
+
 }
 
 void CConCo::Render()
@@ -257,7 +329,7 @@ void CConCo::SetState(int state)
 		vx = -CONCO_WALKING_SPEED;// -0.13;
 		//vy = 0;
 		nx = -1;
-		vx = 0;
+		//vx = 0.15;
 		vy = 0;
 		break;
 	case CONCO_STATE_FLY_RIGHT:
@@ -271,7 +343,8 @@ void CConCo::SetState(int state)
 		//nx = 1;
 		break;
 	case CONCO_STATE_WAS_SHOOTED:
-		vx = -vx;// 0.1f * 1.5;
+		//vx = -vx;// 0.1f * 1.5;
+		vx = 0.06;
 		vy = -0.25*3;
 		ny = -1;
 		//nx = 1;

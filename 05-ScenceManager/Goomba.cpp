@@ -2,6 +2,8 @@
 #include "debug.h"
 //#include "MarioBullet.h"
 #include "Flatform.h"
+#include "Brick_Coin.h"
+//#include "Game.h"
 
 CGoomba::CGoomba(CMario * player)
 {
@@ -10,10 +12,14 @@ CGoomba::CGoomba(CMario * player)
 
 void CGoomba::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-	left = x- GOOMBA_BBOX_WIDTH/2;
-	top = y- GOOMBA_BBOX_HEIGHT/2;
-	right = x + GOOMBA_BBOX_WIDTH/2;
-	bottom = y + GOOMBA_BBOX_HEIGHT/2;
+	if (state != GOOMBA_STATE_WAS_SHOOTED)
+	{
+		left = x - GOOMBA_BBOX_WIDTH / 2;
+		top = y - GOOMBA_BBOX_HEIGHT / 2;
+		right = x + GOOMBA_BBOX_WIDTH / 2;
+		bottom = y + GOOMBA_BBOX_HEIGHT / 2;
+	}
+
 
 		/*if (state == GOOMBA_STATE_DIE)*/
 
@@ -22,6 +28,18 @@ void CGoomba::GetBoundingBox(float &left, float &top, float &right, float &botto
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+	if (mario->x + mario->distance_to_set_state_enemy > this->x && this->is_cam_coming == false)
+	{
+		SetState(GOOMBA_STATE_WALKING);
+		this->is_cam_coming = true;
+	}
+
+	if (is_cam_coming == true)
+	{
+
+	
+		
+
 	CGameObject::Update(dt, coObjects);
 
 	//
@@ -92,14 +110,23 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				
 
 			}
+
+			if (dynamic_cast<CGoomba*>(e->obj) )
+			{
+				//vx = -vx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
+				//y += dy;
+
+			}
+
+			
 	
-				/*	if (dynamic_cast<MarioBullet*>(e->obj))
-					{
-						SetState(GOOMBA_STATE_WAS_SHOOTED);
+				//	if (dynamic_cast<MarioBullet*>(e->obj))
+					//{
+					//	SetState(GOOMBA_STATE_WAS_SHOOTED);
 						//SetPosition(x, y - 20);
-						DebugOut(L"[ERROR~~~~~~~~~~~~~~~~CO BAO GIO NHAY VO DAY k: \n");
-					}
-					*/
+						//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~CO BAO GIO NHAY VO DAY k: \n");
+					//}
+					
 
 			
 
@@ -137,7 +164,25 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+
+	if (mario->GetState() == MARIO_STATE_SPIN)
+	{
+
+		float ml, mt, mr, mb;
+		float il, it, ir, ib;
+
+		this->GetBoundingBox(il, it, ir, ib);
+		mario->GetBoundingBox(ml, mt, mr, mb);
+
+		if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+		{
+			SetState(GOOMBA_STATE_WAS_SHOOTED);
+		}
+	}
+
 	//DebugOut(L"[ERROR----------vy cua con cua-----------------] DINPUT::GetDeviceData failed. Error: %g\n", vy);
+ } 
+
 }
 
 void CGoomba::Render()
@@ -183,14 +228,14 @@ void CGoomba::SetState(int state)
 		}
 			break;
 		case GOOMBA_STATE_WALKING: 
-			vx = -0.05;//GOOMBA_WALKING_SPEED;
+			vx = -0.07;//GOOMBA_WALKING_SPEED;
 			//vx = 0;
 			//vy = 0;
 			break;
 		case GOOMBA_STATE_WAS_SHOOTED:
 			vy = -0.25 * 3;
-			//vx = 0;
-			vx = -vx;
+			vx = 0.06;
+			//vx=
 			ny = -1;
 			break;
 	}

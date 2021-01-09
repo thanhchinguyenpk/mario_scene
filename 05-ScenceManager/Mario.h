@@ -142,13 +142,14 @@
 
 
 
-#define MARIO_UNTOUCHABLE_TIME 5000
+#define MARIO_UNTOUCHABLE_TIME 2000
 
 
 
 class CMario : public CGameObject
 {
 public:
+	bool is_die = false;
 	int level;
 	int untouchable;
 	float acceleration= MARIO_ACCELERATION;
@@ -219,7 +220,7 @@ public:
 	void SetState(int state);
 	int hihih();
 	void SetIsInObject(bool temp) { is_in_object = temp; }
-	void SetLevel(int l) { level = l; }
+	void SetLevel(int l) { level = l; y = y - 30; }
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount64(); }
 	void SetShoot(bool temp) { is_shoot = temp; }
 	void SetSpin(bool temp) { is_spin = temp; }
@@ -243,4 +244,6 @@ public:
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 
 	void CollideWithEnemy();
+
+	int distance_to_set_state_enemy = 600;
 };

@@ -4,44 +4,27 @@ void PlantBullet::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	CGameObject::Update(dt);
 
+	x += dx;
+	y += dy;
 
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
+	float ml, mt, mr, mb;
+	float il, it, ir, ib;
 
-	coEvents.clear();
+	this->GetBoundingBox(il, it, ir, ib);
 
-	// turn off collision when die 
-	//if (state != MARIO_STATE_DIE)
-	//	CalcPotentialCollisions(coObjects, coEvents);
 
-	if (coEvents.size() == 0)
+
+	mario->GetBoundingBox(ml, mt, mr, mb);
+
+	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb)&& was_hit_mario==false)
 	{
-		x += dx;
-		y += dy;
+		mario->CollideWithEnemy();
+		was_hit_mario = true;
 	}
-	else
-	{
-		float min_tx, min_ty, nx = 0, ny;
+	
 
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+	DeleteWhenOutOfCam();
 
-		// block 
-		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		y += min_ty * dy + ny * 0.4f;
-
-		if (nx != 0) vx = 0;
-		if (ny != 0) vy = 0;
-
-	/*	for (UINT i = 0; i < coEventsResult.size(); i++)
-		{
-		}
-		*/
-	}
-
-
-
-	// clean up collision events
-	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
 
 void PlantBullet::Render()

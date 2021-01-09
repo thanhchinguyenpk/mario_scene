@@ -24,6 +24,10 @@
 107	textures\MARIOPRO.png	255	255	255
 108	textures\ENEMY2.png	255	255	255
 109	textures\CONPHUNLUA.png	255	255	255
+110	textures\power_state.png	176	 224	248
+111	textures\status_bar.png	255	0	255
+112	textures\misc_1.png	176	224	248
+113	textures\MARIO_TAIL_SPIN.png	176	224	248
 
 # id	left	top	width	height	texture_id
 [SPRITES]
@@ -437,6 +441,23 @@
 ##################################################
 # white box
 40115	9	8	78	78	106
+
+##################################################
+# hub
+60010	3	3	232	28	111
+##################################################
+# number
+200000	33	32	8	7	111
+200001	44	32	6	7	111
+200002	53	32	8	7	111
+200003	63	32	8	7	111
+200004	73	32	8	7	111
+200005	83	32	8	7	111
+200006	93	32	8	7	111
+200007	103	32	8	7	111
+200008	113	32	8	7	111
+200009	123	32	8	7	111
+
 ##################################################
 # MAP SELECTION
 # start
@@ -859,7 +880,8 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 # MARIO
 0	120	168	1	1
-
+#hub p meter x,y nhu khong a, de dai animationset a
+#9	1	1	2
 [MAP_SELECTION]
 # id	x	y     is_portal	 t	l	 b	 r	state
 0	120	168	0	-1	2	-1	-1	0

@@ -3,6 +3,8 @@
 #include "debug.h"
 #include "Goomba.h"
 #include "ConCo.h"
+#include "ParaGoomba.h"
+//#include "VenusFireTrap.h"
 
 int is_delete = false;
 extern vector<LPGAMEOBJECT> objects;
@@ -109,6 +111,17 @@ void MarioBullet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				DebugOut(L"[ERROR~~~~~~~~~~~~~~~~CO BAO GIO NHAY VO DAY k: \n");
 			}
 
+			if (dynamic_cast<ParaGoomba*>(e->obj))
+			{
+				ParaGoomba* para = dynamic_cast<ParaGoomba*>(e->obj);
+
+				para->SetState(PARA_GROOMBA_STATE_WAS_SHOOTED);
+				//SetPosition(x, y - 20);
+				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~CO BAO GIO NHAY VO DAY k: \n");
+			}
+
+			
+		
 
 
 		}

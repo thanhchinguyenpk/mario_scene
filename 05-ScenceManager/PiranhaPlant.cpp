@@ -10,36 +10,49 @@ PiranhaPlant::PiranhaPlant(CMario * player)
 
 void PiranhaPlant::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	CGameObject::Update(dt, coObjects);
-
-	y += dy;
-	if (y <= GREEN_PIRANHA_MIN_HEIGHT && !cap_cap_time)
+	if (mario->x + mario->distance_to_set_state_enemy > this->x && this->is_cam_coming == false)
 	{
-		vy = 0;
-		cap_cap_time = GetTickCount64();
-
-	}else if (y >= GREEN_PIRANHA_MAX_HEIGHT && !couch_time)
-	{
-		vy = 0;
-		couch_time= GetTickCount64();
+		SetState(PIRANHA_PLANT_STATE_GOING_UP);
+		this->is_cam_coming = true;
 	}
 
+	if (this->is_cam_coming == true)
 
-	if (cap_cap_time && GetTickCount64() - cap_cap_time > 820)
 	{
-		SetState(PIRANHA_PLANT_STATE_GOING_DOWN);
-		cap_cap_time = 0;
 
-	}else if (couch_time && GetTickCount64() - couch_time > 820)
-	{
-		float l, t, r, b;
-		mario->GetBoundingBox(l, t, r, b);
-		if (!CheckMarioNear(l, t, r, b))
+		CGameObject::Update(dt, coObjects);
+
+		y += dy;
+		if (y <= GREEN_PIRANHA_MIN_HEIGHT && !cap_cap_time)
 		{
-			SetState(PIRANHA_PLANT_STATE_GOING_UP);
-			couch_time = 0;
+			vy = 0;
+			cap_cap_time = GetTickCount64();
+
 		}
-	
+		else if (y >= GREEN_PIRANHA_MAX_HEIGHT && !couch_time)
+		{
+			vy = 0;
+			couch_time = GetTickCount64();
+		}
+
+
+		if (cap_cap_time && GetTickCount64() - cap_cap_time > 820)
+		{
+			SetState(PIRANHA_PLANT_STATE_GOING_DOWN);
+			cap_cap_time = 0;
+
+		}
+		else if (couch_time && GetTickCount64() - couch_time > 820)
+		{
+			float l, t, r, b;
+			mario->GetBoundingBox(l, t, r, b);
+			if (!CheckMarioNear(l, t, r, b))
+			{
+				SetState(PIRANHA_PLANT_STATE_GOING_UP);
+				couch_time = 0;
+			}
+
+		}
 	}
 
 	//DebugOut(L"[ERROR---------pira-----------------] DINPUT::GetDeviceData failed. Error: %d\n", state);

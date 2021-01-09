@@ -5,7 +5,7 @@ class Effect : public CGameObject
 {
 protected:
 	ULONGLONG startEffect;
-	int effectTime;
+	int effectTime=800;
 public:
 	Effect();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

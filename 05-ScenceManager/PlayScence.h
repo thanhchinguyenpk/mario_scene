@@ -27,8 +27,9 @@
 #include "Pine.h"
 #include <vector>
 
-#define ITEM_RANDOM 0
-#define ITEM_MONEY 1
+#define ITEM_MONEY 0
+#define ITEM_RANDOM 1
+
 
 class CPlayScene: public CScene
 {

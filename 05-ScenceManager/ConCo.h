@@ -3,14 +3,14 @@
 #include "MoneyEffect.h"
 #include "BrickBlink.h"
 
-#define CONCO_WALKING_SPEED			 0.07;
-#define CONCO_MAI_RUA_CHAY_SPEED	 0.02;
+#define CONCO_WALKING_SPEED 0.05
+#define CONCO_MAI_RUA_CHAY_SPEED	 0.05
 
 #define CONCO_BBOX_WIDTH		 16*3 //ok
 #define CONCO_BBOX_HEIGHT		 27*3 //ok
 #define CONCO_BBOX_HEIGHT_DIE	 9
-#define CONCO_BBOX_WIDTH_THUT_VAO 15*3;
-#define CONCO_BBOX_HEIGHT_THUT_VAO 17*3;
+#define CONCO_BBOX_WIDTH_THUT_VAO 15*3
+#define CONCO_BBOX_HEIGHT_THUT_VAO 13*3
 
 #define CONCO_STATE_WALKING_LEFT	100
 #define CONCO_STATE_DIE				200
@@ -40,8 +40,11 @@
 class CConCo : public CGameObject
 {
 public:
+	CMario * mario = NULL;
+	CConCo(CMario *player) { mario = player; };
+	int type = 0;
 
-	int is_walking_back_and_fort = 0;
+	int is_walking_back_and_fort = 1;
 	MoneyEffect *effect = NULL;
 	int count_brick = 0;
 

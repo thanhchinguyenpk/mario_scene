@@ -149,25 +149,11 @@ void MapScene::_ParseSection_OBJECTS(string line)
 		player = (CMario*)obj;
 		DebugOut(L"[INFO] Player object created!\n");
 		break;
-	case OBJECT_TYPE_GOOMBA:
-	{
-		obj = new CGoomba(player);
-		obj->SetState(GOOMBA_STATE_WALKING);
-		break;
-	}
-	case OBJECT_TYPE_PARA_GOOMBA:
-	{
-		obj = new ParaGoomba(player);
-		obj->SetState(PARA_GROOMBA_STATE_JUMP_BIG);
-		break;
-	}
+	
+	
 
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
-	case OBJECT_TYPE_CONCO:
-		obj = new CConCo();
-		obj->SetState(CONCO_STATE_WALKING_LEFT);
-		break;
+	
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = atof(tokens[4].c_str());
@@ -186,18 +172,13 @@ void MapScene::_ParseSection_OBJECTS(string line)
 		//dynamic_cast<Flatform*>
 
 	}
-	case 7:
-	{
-		int lv = atof(tokens[4].c_str());
-		obj = new VenusFireTrap(player, lv);
-		obj->SetState(VENUS_STATE_GOING_UP);
-		break;
-	}
-	case 8:
+	
+	
+	case 9:
 	{
 		//int lv = atof(tokens[4].c_str());
-		obj = new PiranhaPlant(player);
-		obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
+		obj = new Hub(player);
+		//obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
 		break;
 	}
 	default:
@@ -293,6 +274,11 @@ void MapScene::Render()
 	}
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+
+	float x = CGame::GetInstance()->GetCamX();
+	float y = CGame::GetInstance()->GetCamY();
+	CSprites::GetInstance()->Get(60010)->DrawFlipX(x + 368, y + 645);//hub
+	game_ui->Render(300, 0, 0, 4, 1);
 
 }
 
@@ -475,7 +461,7 @@ void MapScene::Load()
 
 	current_portal = dynamic_cast<CMapPortal*>(map_portals[0]);
 
-	
+	game_ui = new UI();
 
 }
 

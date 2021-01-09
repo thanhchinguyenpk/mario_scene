@@ -6,6 +6,7 @@
 class CoinEffect :public Effect
 {
 public:
+	bool make_sure_go_down = false;
 	bool vanish = false;
 	float minPosY; //theo thu tu xa gan
 	float maxPosY;

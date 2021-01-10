@@ -30,6 +30,7 @@
 #include "MapScene.h"
 #include "PiranhaPlant.h"
 #include "VenusFireTrap.h"
+#include "MovingFlatform.h"
 
 
 
@@ -301,8 +302,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			vx_flatform = vx;
 
 
-			x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-			y += min_ty * dy + ny * 0.4f;
+			x += min_tx * dx + nx * 0.1f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+			y += min_ty * dy + ny * 0.1f;
 
 			if (nx != 0) vx = 0; // tại sao lại có hai dòng này- theo mình nghĩ là té từ trên cao xuống thì
 			if (ny != 0) vy = 0; // sẽ bị chặn lại_ không đúng má ơi.
@@ -495,7 +496,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					}
 				}
-				
+				if (dynamic_cast<MovingFlatform*>(e->obj))
+				{
+					dynamic_cast<MovingFlatform*>(e->obj)->is_touch = true;
+
+				}
 			}/*
 	#pragma region logic collision
 

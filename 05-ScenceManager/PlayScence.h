@@ -26,6 +26,8 @@
 #include "RandomBonus.h"
 #include "Pine.h"
 #include <vector>
+#include "MovingFlatform.h"
+#include "BoomerangBrother.h"
 
 #define ITEM_MONEY 0
 #define ITEM_RANDOM 1

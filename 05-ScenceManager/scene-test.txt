@@ -1215,8 +1215,11 @@
 #hinh nhu sai sai, 15 la moving flatform
 #15	375	905	28
 
-#
+#brother
 16	175	905	29
+
+#brother weapon
+17	275	905	30
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

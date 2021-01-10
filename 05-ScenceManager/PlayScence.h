@@ -28,6 +28,7 @@
 #include <vector>
 #include "MovingFlatform.h"
 #include "BoomerangBrother.h"
+#include "BoomerangWeapon.h"
 
 #define ITEM_MONEY 0
 #define ITEM_RANDOM 1

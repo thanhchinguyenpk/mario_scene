@@ -156,6 +156,9 @@
     <ClCompile Include="BoomerangBrother.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BoomerangWeapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Brick.h">
@@ -294,6 +297,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BoomerangBrother.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangWeapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

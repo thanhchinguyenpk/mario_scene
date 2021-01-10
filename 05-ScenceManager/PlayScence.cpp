@@ -314,14 +314,14 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case 16:
 	{
 		//int state = atof(tokens[4].c_str());
-		obj = new BoomerangBrother(x,player);
+		obj = new BoomerangBrother(x,y,player);
 		obj->SetState(BROTHER_STATE_MOVE_RIGHT);
 		break;
 	}
 	case 17:
 	{
 		//int state = atof(tokens[4].c_str());
-		obj = new BoomerangWeapon(x, player);
+		obj = new BoomerangWeapon(x,y, player);
 		obj->SetState(BROTHER_STATE_MOVE_RIGHT);
 		break;
 	}

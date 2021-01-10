@@ -31,6 +31,7 @@
 #include "PiranhaPlant.h"
 #include "VenusFireTrap.h"
 #include "MovingFlatform.h"
+#include "BoomerangBrother.h"
 
 
 
@@ -361,14 +362,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 					else
 						CollideWithEnemy();
-
-
-
-					
-
-
-
-
 				}
 				if (dynamic_cast<CGoomba *>(e->obj)) // if e->obj is Goomba // nếu như là goomba
 				{
@@ -412,6 +405,18 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					}
 					else
+						CollideWithEnemy();
+				}
+				if (dynamic_cast<BoomerangBrother*>(e->obj))
+				{
+					if (untouchable) return;
+
+					BoomerangBrother* brother = dynamic_cast<BoomerangBrother*>(e->obj);
+					if (e->ny < 0)
+					{
+						brother->SetState(BROTHER_STATE_DIE);
+						vy = -MARIO_JUMP_DEFLECT_SPEED;
+					}else
 						CollideWithEnemy();
 				}
 				}

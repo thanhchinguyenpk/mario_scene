@@ -15,6 +15,31 @@ void BoomerangBrother::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	
 	CGameObject::Update(dt, coObjects);
 
+
+	if (GetTickCount64() - time_to_attack>4000 && time_to_attack)
+	{
+		is_allow_weapon = true;
+		time_weapon_end = GetTickCount64();
+		weapon->SetWhereToGo(this->x, this->y-40);
+		weapon->SetState(BROTHER_STATE_MOVE_RIGHT);
+		weapon->was_hit_mario = false;
+		time_to_attack = 0;
+	}
+
+	if (is_allow_weapon)
+	{
+		weapon->Update(dt, coObjects);
+	}
+
+	
+	if (GetTickCount64() - time_weapon_end > 1900 && time_weapon_end)
+	{
+		time_weapon_end = 0;
+		is_allow_weapon = false;
+		time_to_attack = GetTickCount64();
+
+	}
+	
 	vy += BROTHER_GRAVITY * dt;
 
 	//x += dx;
@@ -31,10 +56,10 @@ void BoomerangBrother::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	//if đã nha nếu mà nấm khác với nấm biến mất thì
 	CalcPotentialCollisions(coObjects, coEvents);
 
-	if (coEvents.size() == 0)
+	if (coEvents.size() == 0||state== BROTHER_STATE_DIE||state == BROTHER_STATE_WAS_SHOOTED)
 	{
-		DebugOut(L"[x] DINPUT::GetDeviceData failed. Error: %f\n", x);
-		DebugOut(L"[origin +100] DINPUT::GetDeviceData failed. Error: %f\n", original_x + 100);
+		//DebugOut(L"[x] DINPUT::GetDeviceData failed. Error: %f\n", x);
+		//DebugOut(L"[origin +100] DINPUT::GetDeviceData failed. Error: %f\n", original_x + 100);
 		
 		x += dx;
 		y += dy;
@@ -82,9 +107,24 @@ void BoomerangBrother::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 
 
+	if (mario->GetState() == MARIO_STATE_SPIN)
+	{
 
+		float ml, mt, mr, mb;
+		float il, it, ir, ib;
+
+		this->GetBoundingBox(il, it, ir, ib);
+		mario->GetBoundingBox(ml, mt, mr, mb);
+
+		if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+		{
+			SetState(BROTHER_STATE_WAS_SHOOTED);
+		}
+	}
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+
+	
 }
 
 void BoomerangBrother::SetState(int state)
@@ -102,21 +142,42 @@ void BoomerangBrother::SetState(int state)
 	case BROTHER_STATE_JUMP_SMALL:
 		vy = -BROTHER_WALKING_SPEED;
 		break;
+	case BROTHER_STATE_DIE:
+		vy = BROTHER_WALKING_SPEED;
+		vx = 0;
+		break;
+	case BROTHER_STATE_WAS_SHOOTED:
+		vx = -0.06;
+		vy = -0.2 * 3;
+		ny = -1;
+		break;
+		
 	}
 }
 
 void BoomerangBrother::Render()
 {
 	int direction = -1;// texture nos quay ve ben trai nhung minh can quay ve ben phai
-	int ny = 1;
+	if (state == BROTHER_STATE_DIE)
+		ny = -1;
 	animation_set->at(0)->Render(x, y, 0, 255, direction, ny);
+
+	if (is_allow_weapon)
+		weapon->Render();
 
 	RenderBoundingBox();
 }
 
-BoomerangBrother::BoomerangBrother(float x, CMario * player)
+BoomerangBrother::BoomerangBrother(float x, float y, CMario * player)
 {
 	original_x = x;
+	original_y = y;
 	mario = player;
+	weapon = new BoomerangWeapon(original_x, original_y, player);
+	time_to_attack = GetTickCount64();
+
+	CAnimationSets * animation_sets = CAnimationSets::GetInstance();
+	LPANIMATION_SET ani_set = animation_sets->Get(30);
+	weapon->SetAnimationSet(ani_set);
 }
 

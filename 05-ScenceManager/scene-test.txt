@@ -915,7 +915,8 @@
 
 # ==== boomerang brother weapon ====
 784	40136	100	40137	100	40138	100	40139	100
-
+#faster
+785	40136	80	40137	80	40138	80	40139	80
 ###########################################3
 # id	ani1	ani2	ani3
 #
@@ -982,7 +983,7 @@
 # boomerang brothers
 29	781	782	783
 # boomerang brother weapon
-30	784
+30	784	785
 
 
 
@@ -1208,18 +1209,20 @@
 14	6816	386	15	200
 #pine dưới đất
 14	7059	1439	15	300
-#moving flatform
-12	5442	984	14
-#random bonus
 
-#hinh nhu sai sai, 15 la moving flatform
+#12	5442	984	14 nay la cai gi :v
+
+#random bonus
+13	8088	1029	22
+
+#moving flatform
 #15	375	905	28
 
 #brother
 16	175	905	29
 
 #brother weapon
-17	275	905	30
+#17	275	905	30
 
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id

@@ -17,74 +17,43 @@ void BoomerangWeapon::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	//vy += BROTHER_WEAPON_GRAVITY * dt;
 
-	//x += dx;
-	//y += dy;
-	if (x > original_x + 100)
+	x += dx;
+	y += dy;
+
+	if (GetTickCount64() - time_move_down>200 && time_move_down)
+	{
 		SetState(BROTHER_WEAPON_STATE_MOVE_LEFT);
-	else if (x < original_x)
+		time_move_down = 0;
+		
+	}
+	else if (GetTickCount64() - time_move_left > 700 && time_move_left)
+	{
+		SetPosition(original_x, original_y);
 		SetState(BROTHER_WEAPON_STATE_MOVE_RIGHT);
-
-	vector<LPCOLLISIONEVENT> coEvents;
-	vector<LPCOLLISIONEVENT> coEventsResult;
-	coEvents.clear();
-
-	//if đã nha nếu mà nấm khác với nấm biến mất thì
-	CalcPotentialCollisions(coObjects, coEvents);
-
-	if (coEvents.size() == 0)
-	{
-		DebugOut(L"[x] DINPUT::GetDeviceData failed. Error: %f\n", x);
-		DebugOut(L"[origin +100] DINPUT::GetDeviceData failed. Error: %f\n", original_x + 100);
-
-		x += dx;
-		y += dy;
+		time_move_left = 0;
 	}
-	else
+	else if (GetTickCount64() - time_move_right > 1000 && time_move_right)
 	{
-		float min_tx, min_ty, nx = 0, ny;
-
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
-		x += min_tx * dx + nx * 0.4f;
-		y += min_ty * dy + ny * 0.4f;
-
-		if (nx != 0)
-			vx = 0;
-
-		if (ny != 0)
-			vy = 0;
-
-
-
-
-
-
-		for (UINT i = 0; i < coEventsResult.size(); i++)
-		{
-
-			LPCOLLISIONEVENT e = coEventsResult[i];
-
-
-
-			/*if (dynamic_cast<Flatform*>(e->obj))
-			{
-
-				Flatform* flatform = dynamic_cast<Flatform*>(e->obj);
-
-				if (this->x > flatform->x + 243)
-					SetState(CONCO_STATE_WALKING_LEFT);
-				if (this->x < flatform->x)
-					SetState(CONCO_STATE_WALKING_RIGHT);
-			}*/
-
-		}
-
+		SetState(BROTHER_WEAPON_STATE_MOVE_DOWN);
+		time_move_right = 0;
 	}
 
 
+	float ml, mt, mr, mb;
+	float il, it, ir, ib;
+
+	this->GetBoundingBox(il, it, ir, ib);
 
 
-	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+
+	mario->GetBoundingBox(ml, mt, mr, mb);
+
+	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb) && was_hit_mario == false)
+	{
+		mario->CollideWithEnemy();
+		was_hit_mario = true;
+	}
+	
 }
 
 void BoomerangWeapon::SetState(int state)
@@ -93,31 +62,39 @@ void BoomerangWeapon::SetState(int state)
 	switch (state)
 	{
 	case BROTHER_WEAPON_STATE_MOVE_LEFT:
-		vx = -BROTHER_WEAPON_WALKING_SPEED;
-		vy = 0;
+		time_move_left = GetTickCount64();
+		vx = -0.5;
+		vy =0.05;
 		break;
 	case BROTHER_WEAPON_STATE_MOVE_RIGHT:
+		time_move_right = GetTickCount64();
 		vx = BROTHER_WEAPON_WALKING_SPEED;
-		vy = 0;
+		vy = -0.08;
 		break;
-	case BROTHER_WEAPON_STATE_JUMP_SMALL:
-		vy = -BROTHER_WEAPON_WALKING_SPEED;
+	case BROTHER_WEAPON_STATE_MOVE_DOWN:
+		time_move_down = GetTickCount64();
+		vy = 0.5;
+		vx = 0.3;
 		break;
 	}
 }
 
 void BoomerangWeapon::Render()
 {
+	int ani = 0;
 	int direction = -1;// texture nos quay ve ben trai nhung minh can quay ve ben phai
 	int ny = 1;
-	animation_set->at(0)->Render(x, y, 0, 255, direction, ny);
+	if (state == BROTHER_WEAPON_STATE_MOVE_DOWN)
+		ani = 1;
+	animation_set->at(ani)->Render(x, y, 0, 255, direction, ny);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
-BoomerangWeapon::BoomerangWeapon(float x, CMario * player)
+BoomerangWeapon::BoomerangWeapon(float x, float y, CMario * player)
 {
 	original_x = x;
+	original_y = y;
 	mario = player;
 }
 

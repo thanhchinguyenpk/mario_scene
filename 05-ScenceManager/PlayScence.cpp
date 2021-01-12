@@ -461,6 +461,7 @@ void CPlayScene::Update(DWORD dt)
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	
+	
 	GameTime::GetInstance()->Update(dt);
 
 	vector<LPGAMEOBJECT> coObjects;
@@ -489,29 +490,34 @@ void CPlayScene::Update(DWORD dt)
 	}
 
 	
+	player->Update(dt, &coObjects);
 
 
-	for (size_t i = 0; i < objects.size(); i++)
+	if (player->time_to_transform_start == 0)
 	{
-		objects[i]->Update(dt, &coObjects);
-
-		//LPGAMEOBJECT e = objects[i];
-		if (dynamic_cast<Brick_Coin*>(objects[i]))
+		for (size_t i = 1; i < objects.size(); i++)
 		{
-			Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
-			if (brick->is_hit == true && brick->dropped == false)
+			objects[i]->Update(dt, &coObjects);
+
+			//LPGAMEOBJECT e = objects[i];
+			if (dynamic_cast<Brick_Coin*>(objects[i]))
 			{
-				DropItem(brick->brick_type, brick->x, brick->y);
-				brick->dropped = true;
+				Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
+				if (brick->is_hit == true && brick->dropped == false)
+				{
+					DropItem(brick->brick_type, brick->x, brick->y);
+					brick->dropped = true;
 
-				this->the_number_mario_hit_brick++;
-				this->point_hub += 100;
+					this->the_number_mario_hit_brick++;
+					//this->point_hub += 100;
 
-				//DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
+					//DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
+				}
 			}
 		}
-	}
 
+	}
+	
 
 	/*for (auto& item : listBricks)
 	{
@@ -638,7 +644,7 @@ void CPlayScene::Render()
 	
 
 	game_time = GameTime::GetInstance();
-	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, point_hub,4,1);
+	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, player->score,4,1);
 
 	if(is_mario_got_card)
 	{

@@ -263,19 +263,42 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 void CConCo::Render()
 {
 	
-	int ani = CONCO_ANI_WALKING_LEFT;
-	if (state == CONCO_STATE_WALKING_RIGHT)
-		ani = CONCO_ANI_WALKING_RIGHT;
-	else if (state == CONCO_STATE_THUT_VAO || state == CONCO_STATE_WAS_SHOOTED)
-		ani = CONCO_ANI_THUT_VAO;
-	else if (state == CONCO_STATE_MAI_RUA_CHAY_PHAI|| state == CONCO_STATE_MAI_RUA_CHAY_TRAI)
-		ani = CONCO_ANI_MAI_RUA_CHAY;
-	else if (state == CONCO_STATE_INDENT_OUT)
-		ani = CONCO_ANI_INDENT_OUT;
-	else if (state == CONCO_STATE_SHELL_MOVING)
-		ani = CONCO_ANI_SHELL_MOVING;
-	else if (state == CONCO_STATE_FLY_LEFT)
-		ani = CONCO_ANI_FLY_LEFT; // thôi kệ nó đi :(
+	int ani = CONCO_ANI_GREEN_WALKING_LEFT;
+	if (type == 0||type==1)
+	{
+		if (state == CONCO_STATE_WALKING_RIGHT)
+			ani = CONCO_ANI_GREEN_WALKING_RIGHT;
+		else if (state == CONCO_STATE_THUT_VAO || state == CONCO_STATE_WAS_SHOOTED)
+			ani = CONCO_ANI_GREEN_THUT_VAO;
+		else if (state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI)
+			ani = CONCO_ANI_GREEN_MAI_RUA_CHAY;
+		else if (state == CONCO_STATE_INDENT_OUT)
+			ani = CONCO_ANI_GREEN_INDENT_OUT;
+		else if (state == CONCO_STATE_SHELL_MOVING)
+			ani = CONCO_ANI_GREEN_SHELL_MOVING;
+		else if (state == CONCO_STATE_FLY_LEFT)
+			ani = CONCO_ANI_GREEN_FLY_LEFT; // thôi kệ nó đi :(
+	}
+	else if (type == 2)
+	{
+		ani = CONCO_ANI_RED_WALKING_LEFT;
+
+		if (state == CONCO_STATE_WALKING_RIGHT)
+			ani = CONCO_ANI_RED_WALKING_RIGHT;
+		else if (state == CONCO_STATE_THUT_VAO || state == CONCO_STATE_WAS_SHOOTED)
+			ani = CONCO_ANI_RED_THUT_VAO;
+		else if (state == CONCO_STATE_MAI_RUA_CHAY_PHAI || state == CONCO_STATE_MAI_RUA_CHAY_TRAI)
+			ani = CONCO_ANI_RED_MAI_RUA_CHAY;
+		else if (state == CONCO_STATE_INDENT_OUT)
+			ani = CONCO_ANI_RED_INDENT_OUT;
+		else if (state == CONCO_STATE_SHELL_MOVING)
+			ani = CONCO_ANI_RED_SHELL_MOVING;
+		else if (state == CONCO_STATE_FLY_LEFT)
+			ani = CONCO_ANI_RED_FLY_LEFT; // thôi kệ nó đi :(
+
+	}
+	
+	
 
 	if (effect)
 		effect->Render();

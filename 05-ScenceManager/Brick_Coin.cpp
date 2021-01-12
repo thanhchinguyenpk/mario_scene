@@ -42,6 +42,7 @@ void Brick_Coin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
 		{
 			SetState(BRICK_COIN_STATE_DA_DAP);
+			
 		}
 	}
 
@@ -58,6 +59,7 @@ void Brick_Coin::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		
 		vy = 0;
 		y = originalY;
+		is_hit = true;
 		//flag = false;
 	}
 	

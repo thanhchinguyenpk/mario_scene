@@ -27,6 +27,8 @@
 #define MARIO_STATE_MOVE_IN_WORLD_MAP			1300
 #define MARIO_STATE_GO_DOWN_PINE			1400
 #define MARIO_STATE_GO_UP_PINE			1500
+#define MARIO_STATE_TRANSFORM		1600
+#define MARIO_STATE_APPEAR_TAIL		1700
 
 #define MARIO_ANI_BIG_IDLE_RIGHT			0
 #define MARIO_ANI_SMALL_IDLE_RIGHT			1
@@ -110,9 +112,12 @@
 #define MARIO_ANI_ORANGE_IN_MAP			56
 
 
+
 //nhớ còn ani này nha 
 #define MARIO_ANI_TAIL_FLY								57 //need
 
+#define MARIO_ANI_TRANSFORM			58
+#define MARIO_ANI_APPEAR_TAIL			59
 
 
 
@@ -149,6 +154,9 @@
 class CMario : public CGameObject
 {
 public:
+
+	int score = 0;
+
 	bool is_die = false;
 	int level;
 	int untouchable;
@@ -160,6 +168,15 @@ public:
 
 	DWORD untouchable_start;
 	DWORD jumping_start;
+
+
+
+
+	DWORD time_to_transform_start = 0;
+	DWORD time_to_appear_tail = 0;
+
+
+
 
 	DWORD fly_start=0;
 	DWORD fly_high_start = 0;
@@ -220,7 +237,7 @@ public:
 	void SetState(int state);
 	int hihih();
 	void SetIsInObject(bool temp) { is_in_object = temp; }
-	void SetLevel(int l) { level = l; y = y - 30; }
+	void SetLevel(int l) { level = l; y = y - 20; }
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount64(); }
 	void SetShoot(bool temp) { is_shoot = temp; }
 	void SetSpin(bool temp) { is_spin = temp; }

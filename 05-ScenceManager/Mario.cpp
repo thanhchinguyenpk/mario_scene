@@ -83,10 +83,20 @@ void CMario::CheckOverlapWithItems(vector<LPGAMEOBJECT>* itemsMarioCanEat)
 
 		if (this->CheckOverLap(ml, mt, mr, mb, il, it, ir, ib))
 		{
-			if (dynamic_cast<Mushroom*>(item)&& dynamic_cast<Mushroom*>(item)->is_read_mushroom==true)
-				SetLevel(MARIO_LEVEL_BIG);
+			if (dynamic_cast<Mushroom*>(item) && dynamic_cast<Mushroom*>(item)->is_read_mushroom == true)
+			{
+				SetState(MARIO_STATE_TRANSFORM);
+				score += 1000;
+			}
 			else if (dynamic_cast<SuperLeaf*>(item))
-				SetLevel(MARIO_LEVEL_BIG_TAIL);
+			{
+				SetState(MARIO_STATE_APPEAR_TAIL);
+				score += 1000;
+			}
+			else if (dynamic_cast<Coin*>(item))
+			{
+				score += 10;
+			}
 
 			item->used = true;
 		}
@@ -282,10 +292,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		// No collision occured, proceed normally
 		// nếu như không có bất cứ va chạm nào
-		if (coEvents.size() == 0)
+		if (coEvents.size() == 0 )
 		{
-			x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
-			y += dy;
+			if (time_to_transform_start == 0)
+			{
+				x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
+				y += dy;
+			}
 		}
 		else // trong trường hợp có va chạm xẩy ra
 		{
@@ -350,6 +363,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					else if (e->ny < 0)
 					{
+						score += 100;
 						if (conco->GetState() == CONCO_STATE_THUT_VAO)
 							conco->SetState(CONCO_STATE_MAI_RUA_CHAY_PHAI);
 						else if (conco->GetState() == CONCO_STATE_WALKING_LEFT || conco->GetState() == CONCO_STATE_WALKING_RIGHT)
@@ -373,7 +387,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					if (e->ny < 0) //nêu như phương va chạm hướng lên ( lưu ý trục y hướng xuống)
 						// thì cho phép đạp bẹp
 					{
-
+						score += 100;
 						goomba->SetState(GOOMBA_STATE_DIE);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 
@@ -391,7 +405,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					ParaGoomba* paragoomba = dynamic_cast<ParaGoomba*>(e->obj);
 					if (e->ny < 0) // phương va chạm hướng lên
 					{
-
+						score += 100;
 						if (paragoomba->GetState() == PARA_GROOMBA_STATE_WALKING)
 						{
 							paragoomba->SetState(PARA_GROOMBA_STATE_DIE);
@@ -414,6 +428,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					BoomerangBrother* brother = dynamic_cast<BoomerangBrother*>(e->obj);
 					if (e->ny < 0)
 					{
+						score += 100;
 						brother->SetState(BROTHER_STATE_DIE);
 						vy = -MARIO_JUMP_DEFLECT_SPEED;
 					}else
@@ -434,10 +449,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					Brick_Coin* brickcoin = dynamic_cast<Brick_Coin*>(e->obj);
 					if (e->ny > 0) // phương va chạm hướng lên
 					{
+						score += 100;
 						if (brickcoin->GetState() == BRICK_COIN_STATE_CHUA_DAP)
 						{
 							brickcoin->SetState(BRICK_COIN_STATE_DA_DAP);
-							brickcoin->is_hit = true;
+							//brickcoin->is_hit = true;
 						}
 					}
 				}
@@ -449,6 +465,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					{
 						if (e->ny > 0) // phương va chạm hướng lên
 						{
+							score += 10;
 							brick_blink->SetState(BRICK_BLINK_STATE_WAS_HIT);
 							//brick_blink->used = true;
 						}
@@ -485,6 +502,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					}
 					else if (e->ny > 0 && flatform->y < 1311 && flatform->x < 6726)// bé hơn để nắp đậy dưới hầm khỏi bug
 					{
+						if (flatform->x > 4485 && flatform->x < 4641)
+							return;
 						y += (y_flatform + y_flatform);// double for safe
 						vy = vy_flatform;
 					}
@@ -631,10 +650,18 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+	if (time_to_transform_start &&GetTickCount64() - time_to_transform_start > 1800)
+	{
+		SetLevel(MARIO_LEVEL_BIG);
+		time_to_transform_start = 0;
+	}
+	if (time_to_appear_tail &&GetTickCount64() - time_to_appear_tail > 600)
+	{
+		SetLevel(MARIO_LEVEL_BIG_TAIL);
+		time_to_appear_tail = 0;
+	}
 
-	
-
-	DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
+	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
 
 void CMario::Render()
@@ -859,7 +886,11 @@ void CMario::Render()
 			ani = MARIO_ANI_TAIL_WALKING_RIGHT;
 		else if (level == MARIO_LEVEL_BIG_ORANGE)
 			ani = MARIO_ANI_ORANGE_WALKING_RIGHT;
-		
+	
+	if (time_to_transform_start)
+		ani = MARIO_ANI_TRANSFORM;
+	if (time_to_appear_tail)
+		ani = MARIO_ANI_APPEAR_TAIL;
 	/*
 	#define MARIO_ANI_BIG_WALKING_RIGHT			4
 	#define	MARIO_ANI_SMALL_WALKING_RIGHT		5
@@ -951,6 +982,22 @@ void CMario::SetState(int state)
 		//animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
 		//->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->StartTimeAnimation();
 		is_brouse = true;
+		break;
+	case MARIO_STATE_TRANSFORM:
+		//animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
+		//->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->StartTimeAnimation();
+		vx = 0;
+		vy = 0;
+		time_to_transform_start = GetTickCount64();
+		
+		break;
+	case MARIO_STATE_APPEAR_TAIL:
+		//animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
+		//->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->StartTimeAnimation();
+		vx = 0;
+		vy = 0;
+		time_to_appear_tail = GetTickCount64();
+
 		break;
 	}
 }

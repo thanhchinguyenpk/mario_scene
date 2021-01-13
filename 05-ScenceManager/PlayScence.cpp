@@ -493,7 +493,7 @@ void CPlayScene::Update(DWORD dt)
 	player->Update(dt, &coObjects);
 
 
-	if (player->time_to_transform_start == 0)
+	if (player->time_to_transform_start == 0 && player->time_to_die == 0 && player->time_to_appear_tail == 0)
 	{
 		for (size_t i = 1; i < objects.size(); i++)
 		{

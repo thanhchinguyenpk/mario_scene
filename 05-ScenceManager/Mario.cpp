@@ -294,8 +294,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		// nếu như không có bất cứ va chạm nào
 		if (coEvents.size() == 0 )
 		{
-			if (time_to_transform_start == 0)
+			if (time_to_transform_start == 0 && time_to_die == 0 &&time_to_appear_tail==0)
 			{
+				
 				x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
 				y += dy;
 			}
@@ -325,11 +326,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			// Collision logic with Goombas
 			for (UINT i = 0; i < coEventsResult.size(); i++)
 			{
-
-
 				//DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", coEventsResult.size());
 				LPCOLLISIONEVENT e = coEventsResult[i];
-
 
 				if (ny < 0)
 				{
@@ -528,27 +526,13 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			}/*
 	#pragma region logic collision
 
-
-
-				
-
-
-
-				
-
 				if (dynamic_cast<Coin*>(e->obj))
 				{
 					Coin* coin = dynamic_cast<Coin*>(e->obj);
 					coin->used = true;
 
 				}
-
-				
-
 	#pragma endregion
-
-
-
 			}
 		*/
 		}
@@ -560,8 +544,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 #pragma region Animations Mario
 
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-
-
 
 		if (GetState() == MARIO_STATE_SPIN && GetTickCount64() - spin_start >= 150 && spin_start)
 		{
@@ -576,8 +558,6 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			throw_start = 0;
 			//is_render_animation = false;
 		}
-
-
 		if (GetState() == MARIO_STATE_JUMP_SHOOT_BULLET && GetTickCount64() - fly_fire_throw_start > 200 && fly_fire_throw_start)
 		{
 			SetState(MARIO_STATE_IDLE);
@@ -660,7 +640,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		SetLevel(MARIO_LEVEL_BIG_TAIL);
 		time_to_appear_tail = 0;
 	}
-
+	if (time_to_die && GetTickCount64() - time_to_die > 2000)
+	{
+		is_die = true;
+		time_to_die = 0;
+	}
 	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
 
@@ -891,6 +875,8 @@ void CMario::Render()
 		ani = MARIO_ANI_TRANSFORM;
 	if (time_to_appear_tail)
 		ani = MARIO_ANI_APPEAR_TAIL;
+	if (time_to_die)
+		ani = MARIO_ANI_DIE;
 	/*
 	#define MARIO_ANI_BIG_WALKING_RIGHT			4
 	#define	MARIO_ANI_SMALL_WALKING_RIGHT		5
@@ -944,9 +930,7 @@ void CMario::SetState(int state)
 		is_sitdown = false;
 		vx = 0;
 		break;
-	case MARIO_STATE_DIE:
-		vy = -MARIO_DIE_DEFLECT_SPEED;
-		break;
+	
 	case MARIO_STATE_MOVE_IN_WORLD_MAP:
 		//vy = -MARIO_DIE_DEFLECT_SPEED;
 		vx = 0;
@@ -989,7 +973,6 @@ void CMario::SetState(int state)
 		vx = 0;
 		vy = 0;
 		time_to_transform_start = GetTickCount64();
-		
 		break;
 	case MARIO_STATE_APPEAR_TAIL:
 		//animation_set->at(MARIO_ANI_ROUSE_KOOMPASHELL_RIGHT)->ResetCurrentFrame();
@@ -997,7 +980,12 @@ void CMario::SetState(int state)
 		vx = 0;
 		vy = 0;
 		time_to_appear_tail = GetTickCount64();
-
+		break;
+	case MARIO_STATE_DIE:
+		//vy = -MARIO_DIE_DEFLECT_SPEED;
+		vx = 0;
+		vy = 0;
+		time_to_die = GetTickCount64();
 		break;
 	}
 }
@@ -1070,7 +1058,7 @@ void CMario::CollideWithEnemy()
 	}
 	else if (level== MARIO_LEVEL_SMALL)
 	{
-		is_die = true;
+		SetState(MARIO_STATE_DIE);
 	}
 }
 

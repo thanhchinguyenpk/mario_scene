@@ -174,6 +174,7 @@ public:
 
 	DWORD time_to_transform_start = 0;
 	DWORD time_to_appear_tail = 0;
+	DWORD time_to_die = 0;
 
 
 

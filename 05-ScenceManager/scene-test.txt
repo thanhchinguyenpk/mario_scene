@@ -1024,7 +1024,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO tham số cuối là is_moving_in_world_map
-0	375	655	1	0
+0	7000	655	1	0
 	
 # BRICK 
 #1	0	1248	22

@@ -239,7 +239,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				//if (!animations[MARIO_ANI_TAIL_FLY]->IsRenderDone())
 				if (GetTickCount64()-fly_start<=210&& fly_start)
 				{
-					vy = 0.1;
+					vy = 0.07;
 					//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
 				}
 			}
@@ -247,6 +247,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				if (GetTickCount64() - fly_high_start <= 300 && fly_high_start)
 					vy = -0.3;
+				else
+					is_run_for_fly_high = false;
 				//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
 			}
 
@@ -261,8 +263,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		else
 		{
 			vy += MARIO_GRAVITY * dt;
-			//	if(is_run_for_fly_high==true)
-				//	is_run_for_fly_high = false;//đang bay cao lên mà rớt xuống rồi thì hông bay lên cao được được, chỉ rơi xuống hoặc rơi xuống nhẹ.
+				//if(is_run_for_fly_high==true)
+					//is_run_for_fly_high = false;//đang bay cao lên mà rớt xuống rồi thì hông bay lên cao được được, chỉ rơi xuống hoặc rơi xuống nhẹ.
 		}
 
 

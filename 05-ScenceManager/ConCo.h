@@ -24,6 +24,7 @@
 #define CONCO_STATE_WAS_SHOOTED		900
 #define CONCO_STATE_INDENT_OUT		1000
 #define CONCO_STATE_SHELL_MOVING		1100
+#define CONCO_STATE_RED_FLY_Y		1200
 
 #define CONCO_ANI_GREEN_WALKING_LEFT	 0
 #define CONCO_ANI_GREEN_THUT_VAO		 1
@@ -51,8 +52,11 @@ class CConCo : public CGameObject
 {
 public:
 	CMario * mario = NULL;
-	CConCo(CMario *player) { mario = player; };
+	CConCo(CMario *player, float y) ;
 	int type = 0;
+
+	float orginal_y;
+	bool is_change_direction_vy;
 
 	int is_walking_back_and_fort = 1;
 	MoneyEffect *effect = NULL;

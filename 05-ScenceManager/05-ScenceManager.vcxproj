@@ -141,6 +141,7 @@
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="Hub.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="InvisibleObject.cpp" />
     <ClCompile Include="Koopas.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Hub.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="InvisibleObject.h" />
     <ClInclude Include="Koopas.h" />
     <ClInclude Include="Map.h" />

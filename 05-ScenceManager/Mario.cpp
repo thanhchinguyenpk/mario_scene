@@ -364,7 +364,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 					else if (e->ny < 0)
 					{
 						score += 100;
-						if (conco->GetState() == CONCO_STATE_THUT_VAO)
+						if(conco->GetState()== CONCO_STATE_RED_FLY_Y)
+							conco->SetState(CONCO_STATE_WALKING_LEFT);
+						else if (conco->GetState() == CONCO_STATE_THUT_VAO)
 							conco->SetState(CONCO_STATE_MAI_RUA_CHAY_PHAI);
 						else if (conco->GetState() == CONCO_STATE_WALKING_LEFT || conco->GetState() == CONCO_STATE_WALKING_RIGHT)
 						{

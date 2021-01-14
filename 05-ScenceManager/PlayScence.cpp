@@ -222,7 +222,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_KOOPAS: obj = new CKoopas(); break;
 	case OBJECT_TYPE_CONCO:
-		obj = new CConCo(player);
+		obj = new CConCo(player,y);
 		
 
 		dynamic_cast<CConCo*>(obj)->type= atoi(tokens[4].c_str());

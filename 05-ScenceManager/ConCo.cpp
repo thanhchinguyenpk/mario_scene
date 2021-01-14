@@ -8,6 +8,13 @@
 #include "Utils.h"
 
 
+CConCo::CConCo(CMario * player, float y)
+{
+	mario = player;
+	orginal_y = y; 
+	
+}
+
 void CConCo::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	if (state != CONCO_STATE_WAS_SHOOTED)
@@ -41,8 +48,10 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	{
 		if(type==0||type==2)
 			SetState(CONCO_STATE_WALKING_LEFT);
-		else 
+		else if(type==1)
 			SetState(CONCO_STATE_FLY_LEFT);
+		else if(type==3)
+			SetState(CONCO_STATE_RED_FLY_Y);
 
 
 		this->is_cam_coming = true;
@@ -57,9 +66,22 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			CGameObject::Update(dt, coObjects);
 		}
 
-		vy += 0.002 * dt;
+		if( state!= CONCO_STATE_RED_FLY_Y)
+			vy += 0.002 * dt;
 
-
+		if (type == 3 && state == CONCO_STATE_RED_FLY_Y)
+		{
+			if (y > orginal_y + 300 && is_change_direction_vy == false)
+			{
+				vy = -vy;
+				is_change_direction_vy = true;
+			}
+			if (y < orginal_y&&is_change_direction_vy == true)
+			{
+				vy = -vy;
+				is_change_direction_vy = false;
+			}
+		}
 
 
 
@@ -73,7 +95,8 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		if (coEvents.size() == 0 || state == CONCO_STATE_WAS_SHOOTED)
 		{
-			x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
+			if(type!=3)
+				x += dx; // quãng đường di chuyển thực sự trong frame , nếu như k có va chạm
 			y += dy;
 		}
 		else // trong trường hợp có va chạm xẩy ra
@@ -279,7 +302,7 @@ void CConCo::Render()
 		else if (state == CONCO_STATE_FLY_LEFT)
 			ani = CONCO_ANI_GREEN_FLY_LEFT; // thôi kệ nó đi :(
 	}
-	else if (type == 2)
+	else if (type == 2|| type == 3)
 	{
 		ani = CONCO_ANI_RED_WALKING_LEFT;
 
@@ -293,7 +316,7 @@ void CConCo::Render()
 			ani = CONCO_ANI_RED_INDENT_OUT;
 		else if (state == CONCO_STATE_SHELL_MOVING)
 			ani = CONCO_ANI_RED_SHELL_MOVING;
-		else if (state == CONCO_STATE_FLY_LEFT)
+		else if (state == CONCO_STATE_RED_FLY_Y)
 			ani = CONCO_ANI_RED_FLY_LEFT; // thôi kệ nó đi :(
 
 	}
@@ -368,7 +391,7 @@ void CConCo::SetState(int state)
 	case CONCO_STATE_WAS_SHOOTED:
 		//vx = -vx;// 0.1f * 1.5;
 		vx = 0.06;
-		vy = -0.25*3;
+		vy = -0.25;
 		ny = -1;
 		//nx = 1;
 		break;
@@ -378,6 +401,13 @@ void CConCo::SetState(int state)
 	case CONCO_STATE_SHELL_MOVING:
 
 		break;
+	case CONCO_STATE_RED_FLY_Y:
+		vx = 0;
+		vy = 0.13;
+		break;
+
+
+		
 
 	}
 }

@@ -1,4 +1,4 @@
-﻿  Game.cpp
+﻿  Mario.cpp
 c:\users\admin\desktop\game new\mario_scene\05-scencemanager\timercustom.h(17): warning C4244: '=': conversion from 'ULONGLONG' to 'int', possible loss of data
 c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.h(163): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.h(242): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
@@ -9,6 +9,26 @@ c:\users\admin\desktop\game new\mario_scene\05-scencemanager\flatform.h(4): warn
   c:\users\admin\desktop\game new\mario_scene\05-scencemanager\brick.h(5): note: see previous definition of 'BRICK_BBOX_HEIGHT'
 c:\users\admin\desktop\game new\mario_scene\05-scencemanager\pine.h(10): warning C4005: 'PARA_GROOMBA_WALKING_SPEED': macro redefinition
   c:\users\admin\desktop\game new\mario_scene\05-scencemanager\paragoomba.h(13): note: see previous definition of 'PARA_GROOMBA_WALKING_SPEED'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\game.cpp(417): warning C4018: '<': signed/unsigned mismatch
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\game.cpp(439): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\coinfly.h(4): warning C4005: 'GOOMBA_WALKING_SPEED': macro redefinition
+  c:\users\admin\desktop\game new\mario_scene\05-scencemanager\goomba.h(8): note: see previous definition of 'GOOMBA_WALKING_SPEED'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(114): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(174): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(179): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(242): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(249): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(265): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(291): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(361): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(377): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(394): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(420): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(435): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(849): warning C4018: '<': signed/unsigned mismatch
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(919): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(924): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(927): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(967): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(979): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(986): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.cpp(992): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
   05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\game new\mario_scene\Debug\05-ScenceManager.exe

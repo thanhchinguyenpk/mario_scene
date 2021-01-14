@@ -1035,7 +1035,7 @@
 2	2679	1140	5
 
 #4	1587	1185	8	0
-#CONCO3860-4033			loai 0=xanh 1=cocanh  2=do 
+#CONCO3860-4033			loai 0=xanh 1=cocanh  2=do   3=do co canh
 4	1761	1068	8	2
 
 4	3936	969	8	1
@@ -1045,6 +1045,9 @@
 4	4446	1194	8	0
 
 4	6309	1080	8	2
+
+#test
+4	7300	780	8	3
 #red goomba
 5	2900	1148	6
 #flatform

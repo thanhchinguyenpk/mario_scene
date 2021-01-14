@@ -147,6 +147,7 @@
     <ClCompile Include="MapScene.cpp" />
     <ClCompile Include="MarioBullet.cpp" />
     <ClCompile Include="MoneyEffect.cpp" />
+    <ClCompile Include="MovingCameraScence.cpp" />
     <ClCompile Include="MovingFlatform.cpp" />
     <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="ParaGoomba.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="MapScene.h" />
     <ClInclude Include="MarioBullet.h" />
     <ClInclude Include="MoneyEffect.h" />
+    <ClInclude Include="MovingCameraScence.h" />
     <ClInclude Include="MovingFlatform.h" />
     <ClInclude Include="Mushroom.h" />
     <ClInclude Include="ParaGoomba.h" />

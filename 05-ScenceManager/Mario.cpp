@@ -32,6 +32,7 @@
 #include "VenusFireTrap.h"
 #include "MovingFlatform.h"
 #include "BoomerangBrother.h"
+#include "BrickBlinkCoin.h"
 
 
 
@@ -457,6 +458,23 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 							brickcoin->SetState(BRICK_COIN_STATE_DA_DAP);
 							//brickcoin->is_hit = true;
 						}
+					}
+				}
+
+				if (dynamic_cast<BrickBlinkCoin*>(e->obj))
+				{
+					BrickBlinkCoin* brickblinkcoin = dynamic_cast<BrickBlinkCoin*>(e->obj);
+					if (e->ny > 0) // phương va chạm hướng lên
+					{
+						if (brickblinkcoin->count_to_stand_still <= 11)
+						{ 
+							brickblinkcoin->SetState(BRICK_COIN_STATE_DA_DAP);
+							brickblinkcoin->count_to_stand_still++;
+						}
+						else if(brickblinkcoin->count_to_stand_still ==12)
+							brickblinkcoin->SetState(BRICK_COIN_STATE_STAND_STILL);
+						
+						
 					}
 				}
 				if (dynamic_cast<BrickBlink*>(e->obj))

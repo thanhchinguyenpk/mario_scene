@@ -83,6 +83,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <DisableSpecificWarnings>28251;26812;4005;4244;4018;4553;4715;4101;4805;26495;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;dxguid.lib;dxerr.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -129,6 +130,7 @@
     <ClCompile Include="BoomerangWeapon.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="BrickBlink.cpp" />
+    <ClCompile Include="BrickBlinkCoin.cpp" />
     <ClCompile Include="Brick_Coin.cpp" />
     <ClCompile Include="CMapPortal.cpp" />
     <ClCompile Include="Coin.cpp" />
@@ -180,6 +182,7 @@
     <ClInclude Include="BoomerangWeapon.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="BrickBlink.h" />
+    <ClInclude Include="BrickBlinkCoin.h" />
     <ClInclude Include="Brick_Coin.h" />
     <ClInclude Include="CMapPortal.h" />
     <ClInclude Include="Coin.h" />

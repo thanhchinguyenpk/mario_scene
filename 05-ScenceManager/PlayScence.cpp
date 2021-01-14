@@ -325,6 +325,13 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj->SetState(BROTHER_STATE_MOVE_RIGHT);
 		break;
 	}
+	case 18:
+	{
+		//int state = atof(tokens[4].c_str());
+		obj = new BrickBlinkCoin(y, player);
+		//obj->SetState(BROTHER_STATE_MOVE_RIGHT);
+		break;
+	}
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;

@@ -29,6 +29,7 @@
 #include "MovingFlatform.h"
 #include "BoomerangBrother.h"
 #include "BoomerangWeapon.h"
+#include "BrickBlinkCoin.h"
 
 #define ITEM_MONEY 0
 #define ITEM_RANDOM 1

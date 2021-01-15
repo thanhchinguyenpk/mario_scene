@@ -270,9 +270,9 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	}
 	case 10:
 	{
-		int is_contail_button_p = atoi(tokens[4].c_str());
+		int is_constain_button_p = atoi(tokens[4].c_str());
 		int type = atoi(tokens[5].c_str());
-		obj = new Brick_Coin(y,player, is_contail_button_p,type);
+		obj = new Brick_Coin(y,player, is_constain_button_p,type);
 		obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
 		break;
 	}
@@ -510,7 +510,7 @@ void CPlayScene::Update(DWORD dt)
 			if (dynamic_cast<Brick_Coin*>(objects[i]))
 			{
 				Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
-				if (brick->is_hit == true && brick->dropped == false)
+				if (brick->is_hit == true && brick->dropped == false &&brick->is_contain_button_p==false)
 				{
 					DropItem(brick->brick_type, brick->x, brick->y);
 					brick->dropped = true;

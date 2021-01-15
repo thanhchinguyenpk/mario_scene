@@ -572,6 +572,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			SetState(MARIO_STATE_IDLE);
 			SetSpin(false);
 			spin_start = 0;
+			is_press_h = false;
 			//is_render_animation = false;
 		}
 		if (GetState() == MARIO_STATE_SHOOT_BULLET && GetTickCount64() - throw_start > 200 && throw_start)

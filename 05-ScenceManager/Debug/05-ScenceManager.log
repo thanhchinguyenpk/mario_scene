@@ -1,13 +1,1 @@
-﻿  PlayScence.cpp
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\mario.h(163): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1045): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1049): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1066): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1070): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1139): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1143): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1169): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1173): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1236): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\admin\desktop\game new\mario_scene\05-scencemanager\playscence.cpp(1242): warning C4305: 'argument': truncation from 'double' to 'float'
-  05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\game new\mario_scene\Debug\05-ScenceManager.exe
+﻿  05-ScenceManager.vcxproj -> C:\Users\admin\Desktop\game new\mario_scene\Debug\05-ScenceManager.exe

@@ -236,16 +236,16 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 
 
-		if (state == CONCO_STATE_THUT_VAO && GetTickCount64() - time_to_indent_out > 4000)
+		if (state == CONCO_STATE_THUT_VAO && GetTickCount64() - time_to_indent_out > 9000)
 		{
 			SetState(CONCO_STATE_SHELL_MOVING);
 
 		}
 
-		if (state == CONCO_STATE_SHELL_MOVING && GetTickCount64() - time_to_indent_out > 6000)
+		if (state == CONCO_STATE_SHELL_MOVING && GetTickCount64() - time_to_indent_out > 10000)
 			SetState(CONCO_STATE_INDENT_OUT);
 
-		if (state == CONCO_STATE_INDENT_OUT && GetTickCount64() - time_to_indent_out > 7000)
+		if (state == CONCO_STATE_INDENT_OUT && GetTickCount64() - time_to_indent_out > 12000)
 		{
 			SetPosition(this->x, this->y - 32);//để khi thọt ra mai rùa không bị rơi xuống
 			SetState(CONCO_STATE_WALKING_LEFT);

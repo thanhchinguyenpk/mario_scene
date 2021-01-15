@@ -368,7 +368,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						if(conco->GetState()== CONCO_STATE_RED_FLY_Y)
 							conco->SetState(CONCO_STATE_WALKING_LEFT);
 						else if (conco->GetState() == CONCO_STATE_THUT_VAO)
-							conco->SetState(CONCO_STATE_MAI_RUA_CHAY_PHAI);
+						{
+							if (this->x < conco->x)
+								conco->SetState(CONCO_STATE_MAI_RUA_CHAY_PHAI);
+							else
+								conco->SetState(CONCO_STATE_MAI_RUA_CHAY_TRAI);
+						}
 						else if (conco->GetState() == CONCO_STATE_WALKING_LEFT || conco->GetState() == CONCO_STATE_WALKING_RIGHT)
 						{
 							conco->SetState(CONCO_STATE_THUT_VAO);
@@ -499,6 +504,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 						brick_blink->used = true;
 					}
+					vx = vx_flatform;
 				}
 				if (dynamic_cast<Flatform*>(e->obj))
 				{
@@ -572,7 +578,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			SetState(MARIO_STATE_IDLE);
 			SetSpin(false);
 			spin_start = 0;
-			is_press_h = false;
+			//is_press_h = false;
 			//is_render_animation = false;
 		}
 		if (GetState() == MARIO_STATE_SHOOT_BULLET && GetTickCount64() - throw_start > 200 && throw_start)
@@ -623,14 +629,15 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 
 			this->hold_somthing->SetPosition(this->x + 40, this->y);
+
 			if (this->nx < 0)
 				this->hold_somthing->SetPosition(this->x - 40, this->y);
 
 			if (level == MARIO_LEVEL_SMALL)
 			{
-				this->hold_somthing->SetPosition(this->x + 40, this->y - 50);
+				this->hold_somthing->SetPosition(this->x + 40, this->y - 10);
 				if (this->nx < 0)
-					this->hold_somthing->SetPosition(this->x - 40, this->y - 50);
+					this->hold_somthing->SetPosition(this->x - 40, this->y - 10);
 			}
 
 			if (level == MARIO_LEVEL_BIG_TAIL)
@@ -668,6 +675,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		is_die = true;
 		time_to_die = 0;
 	}
+
+
+	if (y > 1293)
+		is_run_for_fly_high = false;
 	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 }
 
@@ -1060,8 +1071,11 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	}
 	else if (level == MARIO_LEVEL_SMALL)
 	{
-		//	left = x - MARIO_SMALL_BBOX_WIDTH / 2;
-			//top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
+		//left = x - MARIO_SMALL_BBOX_WIDTH / 2;
+		//top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
+
+		left = x - MARIO_SMALL_BBOX_WIDTH / 2;
+		top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
 		right = x + MARIO_SMALL_BBOX_WIDTH / 2;
 		bottom = y + MARIO_SMALL_BBOX_HEIGHT / 2;
 	}

@@ -853,7 +853,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 			mario->SetLevel(MARIO_LEVEL_BIG);
 			mario->SetPosition(50.0f,0.0f);
 			mario->SetSpeed(0, 0);*/
-		mario->is_press_h = true; // cho trạng thái cấm mai rùa
+		mario->is_press_h = true; // cho trạng thái cầm mai rùa
 
 		DebugOut(L"[INFO] ssssssssssssssssssssssssssssssssssssssssssssss: %d\n", KeyCode);
 
@@ -950,6 +950,7 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 			//mario->SetSpin(false);
 	case DIK_H:
 
+
 		if (mario->hold_somthing != NULL)
 		{
 			mario->is_press_h = false;
@@ -988,7 +989,7 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 		//mario->is_run_for_fly_high = false;
 
 
-
+		//mario->is_press_h = false;
 		if (mario->hold_somthing != NULL) {
 			mario->is_press_h = false;
 			CConCo* conco = dynamic_cast<CConCo*>(mario->hold_somthing);

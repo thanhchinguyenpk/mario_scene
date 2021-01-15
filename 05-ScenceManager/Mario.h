@@ -5,7 +5,7 @@
 
 #define MARIO_WALKING_SPEED			0.3 
 #define MARIO_JUMP_SPEED_Y			0.9
-#define MARIO_JUMP_DEFLECT_SPEED	1.2
+#define MARIO_JUMP_DEFLECT_SPEED	0.9
 #define MARIO_GRAVITY				0.003
 #define MARIO_DIE_DEFLECT_SPEED	 1.5
 #define MARIO_ACCELERATION		 0.0005
@@ -156,6 +156,7 @@ class CMario : public CGameObject
 public:
 
 	int score = 0;
+	int number_brick_coin_hit = 0;
 
 	bool is_die = false;
 	int level;

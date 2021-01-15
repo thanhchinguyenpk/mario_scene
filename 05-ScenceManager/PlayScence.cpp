@@ -8,6 +8,7 @@
 #include "Portal.h"
 #include "ConCo.h"
 #include "Pmeter.h"
+#include "BrickBlinkCoin.h"
 
 
 using namespace std;
@@ -506,7 +507,6 @@ void CPlayScene::Update(DWORD dt)
 		{
 			objects[i]->Update(dt, &coObjects);
 
-			//LPGAMEOBJECT e = objects[i];
 			if (dynamic_cast<Brick_Coin*>(objects[i]))
 			{
 				Brick_Coin*brick = dynamic_cast<Brick_Coin*>(objects[i]);
@@ -515,10 +515,18 @@ void CPlayScene::Update(DWORD dt)
 					DropItem(brick->brick_type, brick->x, brick->y);
 					brick->dropped = true;
 
-					this->the_number_mario_hit_brick++;
-					//this->point_hub += 100;
+					player->number_brick_coin_hit++;
+				}
+			}
 
-					//DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
+			if (dynamic_cast<BrickBlinkCoin*>(objects[i]))
+			{
+				BrickBlinkCoin* brickblinkcoin = dynamic_cast<BrickBlinkCoin*>(objects[i]);
+				if (brickblinkcoin->dropped==true&& brickblinkcoin->count_to_stand_still < 12)
+				{
+					DropItem(0, brickblinkcoin->x, brickblinkcoin->y);
+					brickblinkcoin->dropped = false;
+					player->number_brick_coin_hit++;
 				}
 			}
 		}
@@ -651,7 +659,7 @@ void CPlayScene::Render()
 	
 
 	game_time = GameTime::GetInstance();
-	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, player->score,4,1);
+	game_ui->Render(300 - game_time->GetTime(), player->number_brick_coin_hit, player->score,4,1);
 
 	if(is_mario_got_card)
 	{

@@ -1024,7 +1024,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink  18 brickbinkcoin
 # MARIO tham số cuối là is_moving_in_world_map
-0	5850	955	1	0
+0	350	955	1	0
 	
 # BRICK 
 #1	0	1748	22
@@ -1038,16 +1038,16 @@
 #CONCO3860-4033			loai 0=xanh 1=cocanh  2=do   3=do co canh
 4	1761	1068	8	2
 
-#4	3936	969	8	1
-#4	4090	860	8	1
-#4	4277	670	8	1
+4	3936	969	8	1
+4	4090	860	8	1
+4	4277	670	8	1
 
 4	4446	1194	8	0
 
 4	6309	1080	8	2
 
 #test
-4	7300	780	8	3
+#4	7300	780	8	3
 #red goomba
 5	2900	1148	6
 #flatform
@@ -1251,13 +1251,13 @@
 #15	375	905	28
 
 #brother
-16	175	905	29
+#16	175	905	29
 
 #brother weapon
 #17	275	905	30
 
 #brick blink coin
-18	7500	1100	2
+#18	7500	1100	2
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
 #50	115	98	0	148	150	1

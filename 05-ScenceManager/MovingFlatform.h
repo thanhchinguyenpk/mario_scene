@@ -3,8 +3,8 @@
 #include "GameObject.h"
 #include "Mario.h"
 
-#define	 MOVING_FLATFORM_BBOX_WIDTH 20*3
-#define	 MOVING_FLATFORM_BBOX_HEIGHT 15*3
+#define	 MOVING_FLATFORM_BBOX_WIDTH 48*3
+#define	 MOVING_FLATFORM_BBOX_HEIGHT 16*3
 
 #define	MOVING_FLATFORM_WALKING_SPEED			 0.03f;
 

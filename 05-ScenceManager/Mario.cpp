@@ -475,9 +475,12 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 						{ 
 							brickblinkcoin->SetState(BRICK_COIN_STATE_DA_DAP);
 							brickblinkcoin->count_to_stand_still++;
+							brickblinkcoin->dropped = true;
 						}
 						else if(brickblinkcoin->count_to_stand_still ==12)
 							brickblinkcoin->SetState(BRICK_COIN_STATE_STAND_STILL);
+
+
 						
 						
 					}
@@ -896,14 +899,17 @@ void CMario::Render()
 		ani = MARIO_ANI_TAIL_GO_DOWN;
 
 	if (is_auto_running == true)
+	{
 		if (level == MARIO_LEVEL_SMALL)
 			ani = MARIO_ANI_SMALL_WALKING_RIGHT;
-		else if(level == MARIO_LEVEL_BIG)
+		else if (level == MARIO_LEVEL_BIG)
 			ani = MARIO_ANI_BIG_WALKING_RIGHT;
 		else if (level == MARIO_LEVEL_BIG_TAIL)
 			ani = MARIO_ANI_TAIL_WALKING_RIGHT;
 		else if (level == MARIO_LEVEL_BIG_ORANGE)
 			ani = MARIO_ANI_ORANGE_WALKING_RIGHT;
+		nx = 1;
+	}
 	
 	if (time_to_transform_start)
 		ani = MARIO_ANI_TRANSFORM;

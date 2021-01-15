@@ -280,7 +280,8 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	}
 
-
+	if (y > 1290)
+		used = true;
 }
 
 void CConCo::Render()

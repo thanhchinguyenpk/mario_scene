@@ -1,4 +1,4 @@
-#haha
+﻿#haha
 #id 	file_path 		 row_map     column_map   file_texture   row_tiled    columtile   
 [MAP]
 0	textures\map_thanh.txt	41	176	textures\Final1.png	30 	29
@@ -1038,6 +1038,8 @@
 #CONCO3860-4033			loai 0=xanh 1=cocanh  2=do   3=do co canh
 4	1761	1068	8	2
 
+#4	777	1050	8	2
+
 4	3936	969	8	1
 4	4090	860	8	1
 4	4277	670	8	1
@@ -1251,11 +1253,11 @@
 #15	375	905	28
 
 #brother
-#16	175	905	29
+16	175	905	29
 
 #brother weapon
 #17	275	905	30
-
+#hihi
 #brick blink coin
 #18	7500	1100	2
 # --- SCENE PORTAL ----

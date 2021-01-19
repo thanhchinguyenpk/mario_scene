@@ -1,1 +1,27 @@
-﻿  05-ScenceManager.vcxproj -> C:\Users\win\Desktop\game\mario_scene\Debug\05-ScenceManager.exe
+﻿  Mario.cpp
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.h(164): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(115): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(246): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(253): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(295): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(386): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(403): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(429): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(444): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(961): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(966): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.cpp(969): warning C4305: '=': truncation from 'double' to 'float'
+  MovingCameraScence.cpp
+c:\users\win\desktop\game\mario_scene\05-scencemanager\mario.h(164): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1049): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1053): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1070): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1074): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1143): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1147): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1173): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1177): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1240): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\win\desktop\game\mario_scene\05-scencemanager\movingcamerascence.cpp(1246): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+  05-ScenceManager.vcxproj -> C:\Users\win\Desktop\game\mario_scene\Debug\05-ScenceManager.exe

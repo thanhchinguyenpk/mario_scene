@@ -11,8 +11,8 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
-	if(is_touch)
-	vy += MOVING_FLATFORM_GRAVITY * dt;
+	if(state== MOVING_FLATFORM_STATE_IS_TOUCH)
+		vy += MOVING_FLATFORM_GRAVITY * dt;
 
 	//x += dx;
 	//y += dy;
@@ -27,7 +27,7 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (coEvents.size() == 0)
 	{
 		x += dx;
-		if (is_touch)
+		if (state== MOVING_FLATFORM_STATE_IS_TOUCH)
 			y += dy;
 	}
 	else
@@ -74,14 +74,18 @@ void MovingFlatform::SetState(int state)
 	switch (state)
 	{
 	case MOVING_FLATFORM_STATE_MOVE_LEFT:
-		vx = MOVING_FLATFORM_WALKING_SPEED;
+		vx = -MOVING_FLATFORM_WALKING_SPEED;
 		vy = 0;
 		break;
 	case MOVING_FLATFORM_STATE_MOVE_RIGHT:
-		vx = -MOVING_FLATFORM_WALKING_SPEED;
+		vx = MOVING_FLATFORM_WALKING_SPEED;
 		break;
 	case MOVING_FLATFORM_STATE_JUMP_SMALL:
 		vy = -MOVING_FLATFORM_WALKING_SPEED;
+		break;
+	case MOVING_FLATFORM_STATE_IS_TOUCH:
+		vx = 0;
+		vy = 0;
 		break;
 	}
 }

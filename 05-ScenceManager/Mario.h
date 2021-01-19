@@ -193,6 +193,8 @@ public:
 	DWORD go_down_pine_then_move_cam = 0;
 	bool is_in_portal = false;
 
+	bool is_in_end_scene = false; 
+
 	bool is_moving_in_world_map = false;
 	bool is_on_the_ground = false;
 

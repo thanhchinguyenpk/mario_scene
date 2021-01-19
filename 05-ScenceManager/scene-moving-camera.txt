@@ -1,4 +1,4 @@
-#haha
+﻿#haha
 #id 	file_path 		 row_map     column_map   file_texture   row_tiled    columtile   
 [MAP]
 0	textures\map-1-4.txt	29	161	textures\Final1.png	30	29
@@ -1023,7 +1023,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO tham số cuối là is_moving_in_world_map
-0	350	655	1	0
+0	5850	655	1	0
 
 #flat form
 6	0	1053	1	480	48	0
@@ -1189,10 +1189,10 @@
 #random bonus
 13	7368	984	22
 
-#flatform
-6	5808	1104	1	96	96	0
+#flatform96
+6	5808	1008	1	96	192	0
 #6	5880	1008	1	24	48	0
-6	5910	1104	1	144	96	0
+6	5930	1104	1	120	96	0
 
 6	6576	1152	1	96	96	0
 

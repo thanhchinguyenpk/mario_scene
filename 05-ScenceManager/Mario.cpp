@@ -124,7 +124,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if ((GetTickCount64() - go_down_pine_then_move_cam > 2000)&& go_down_pine_then_move_cam)
 		{
-			if(is_on_the_ground==false)
+			if(is_in_end_scene==true)				//scene cam
+				this->SetPosition(6610, 1095);
+			else if(is_on_the_ground==false)
 				this->SetPosition(6363 + 16, 1521);
 			else
 				this->SetPosition(2336 * 3, 360 * 3);
@@ -132,6 +134,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			is_on_the_ground = !is_on_the_ground;//truyền biến xử lý cam ở play scene;
 			//this->SetPosition(6363 + 16, 1521);
 			is_go_down_pine = false;
+			is_in_end_scene = false;				//scene cam
 			go_down_pine_then_move_cam = 0;
 		}
 	}
@@ -551,7 +554,10 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				}
 				if (dynamic_cast<MovingFlatform*>(e->obj))
 				{
-					dynamic_cast<MovingFlatform*>(e->obj)->is_touch = true;
+					MovingFlatform* movingflatform = dynamic_cast<MovingFlatform*>(e->obj);
+
+					if(movingflatform->GetState()!= MOVING_FLATFORM_STATE_IS_TOUCH)
+					dynamic_cast<MovingFlatform*>(e->obj)->SetState(MOVING_FLATFORM_STATE_IS_TOUCH);
 
 				}
 			}/*

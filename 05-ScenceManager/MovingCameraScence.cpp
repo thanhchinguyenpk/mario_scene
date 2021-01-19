@@ -598,7 +598,7 @@ void MovingCameraScence::Update(DWORD dt)
 
 	if (cx < 0)
 		return;
-	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
+	if (cx > 7720 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
 
 	if (player->y < 570) //trên trời
@@ -610,15 +610,24 @@ void MovingCameraScence::Update(DWORD dt)
 		}
 		CGame::GetInstance()->SetCamPos(cx, cy);
 
-	}else if (player->is_on_the_ground == false)// mặt đất
-		CGame::GetInstance()->SetCamPos(cx, 700);
-	else // dưới lòng đất
-		
-	{
-		if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
-			return;
-		CGame::GetInstance()->SetCamPos(cx, 1368);
 	}
+	else if (player->is_in_end_scene == true)// mặt đất
+	{
+		//cx = 6192;
+		CGame::GetInstance()->SetCamPos(cx, 700);
+		
+	}
+	else if(player->is_in_end_scene == false)
+		CGame::GetInstance()->SetCamPos(cx, 700);
+		//CGame::GetInstance()->SetCamPos(350, 700);
+	//CGame::GetInstance()->SetCamPos(2064 * 3, 700);
+	//else // dưới lòng đất
+		
+	//{
+		//if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
+			//return;
+		//CGame::GetInstance()->SetCamPos(cx, 1368);
+	//}
 
 
 
@@ -904,13 +913,19 @@ void MovingCameraScenceKeyHandler::OnKeyDown(int KeyCode)
 		break;
 	case DIK_DOWN:
 	
+		//CGame::GetInstance()->SetCamPos(2064*3, 0);
 		//float x, y;
 		mario->GetPosition(x, y);
-		if (x>6774 && x<6852)
+		if (x>5829 && x<5874)
 		{
+			mario->is_in_end_scene = true;
+			
+
 			mario->is_go_down_pine = true;
 			mario->go_down_pine_then_move_cam = GetTickCount64();
 			mario->SetState(MARIO_STATE_GO_DOWN_PINE);
+			//mario->go_down_pine_then_move_cam = GetTickCount64();
+			//mario->SetState(MARIO_STATE_GO_DOWN_PINE);
 		}
 		else if (mario->GetLevel() == MARIO_LEVEL_BIG || mario->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 			mario->SetPosition(mario->x, mario->y + MARIO_BIG_BBOX_HEIGHT / 2 - MARIO_BIG_SITDOWN_BBOX_HEIGHT / 2);

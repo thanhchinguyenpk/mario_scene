@@ -309,7 +309,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	{
 		//int state = atof(tokens[4].c_str());
 		obj = new MovingFlatform();
-		//obj->SetState(state);
+		obj->SetState(MOVING_FLATFORM_STATE_MOVE_LEFT);
 		break;
 	}
 	case 16:

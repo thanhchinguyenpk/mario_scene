@@ -601,7 +601,7 @@ void IntroScence::Update(DWORD dt)
 	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
 
-	if (player->y < 570) //trên trời
+	/*if (player->y < 570) //trên trời
 	{
 		if (cy < 0)
 		{
@@ -618,9 +618,9 @@ void IntroScence::Update(DWORD dt)
 		if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
 			return;
 		CGame::GetInstance()->SetCamPos(cx, 1368);
-	}
+	}*/
 
-
+	CGame::GetInstance()->SetCamPos(0, 0);
 
 }
 

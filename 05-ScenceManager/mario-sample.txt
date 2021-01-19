@@ -1,5 +1,5 @@
 [SETTINGS]
-start	5
+start	6
 #scene list
 [SCENES]
 #1	scene1.txt
@@ -7,3 +7,4 @@ start	5
 3	scene-world-map.txt	1
 4	scene-test.txt	0
 5	scene-moving-camera.txt	2
+6	scene-intro.txt	3

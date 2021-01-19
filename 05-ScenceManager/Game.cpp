@@ -7,6 +7,7 @@
 #include "PlayScence.h"
 #include "MapScene.h"
 #include "MovingCameraScence.h"
+#include "IntroScene.h"
 
 #define TYPE_PLAY_MAP 0
 #define TYPE_WORLD_MAP 1
@@ -372,6 +373,11 @@ void CGame::_ParseSection_SCENES(string line)
 	{
 		scene = new	MovingCameraScence(id, path);
 		
+	}
+	else if (type_scene == 3)
+	{
+		scene = new	IntroScence(id, path);
+
 	}
 	else
 	{

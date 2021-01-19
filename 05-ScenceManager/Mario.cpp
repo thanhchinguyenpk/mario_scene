@@ -556,9 +556,18 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				{
 					MovingFlatform* movingflatform = dynamic_cast<MovingFlatform*>(e->obj);
 
-					if(movingflatform->GetState()!= MOVING_FLATFORM_STATE_IS_TOUCH)
-					dynamic_cast<MovingFlatform*>(e->obj)->SetState(MOVING_FLATFORM_STATE_IS_TOUCH);
+					//MovingFlatform* movingflatform = dynamic_cast<MovingFlatform*>(e->obj);
 
+					if (e->ny < 0) // phương va chạm hướng lên
+					{
+						if (movingflatform->GetState() != MOVING_FLATFORM_STATE_IS_TOUCH)
+							dynamic_cast<MovingFlatform*>(e->obj)->SetState(MOVING_FLATFORM_STATE_IS_TOUCH);
+					}
+
+					if (e->nx != 0)
+					{
+						this->SetPosition(this->x - 2, this->y);
+					}
 				}
 			}/*
 	#pragma region logic collision

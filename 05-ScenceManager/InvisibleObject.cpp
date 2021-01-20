@@ -12,6 +12,8 @@ InvisibleObject::InvisibleObject(float x, float y, float width, float height, in
 
 	if (state == STATE_GUARD)
 		vx = 0.05f;
+	else if (state == STATE_CURTAIN)
+		vy = -0.2f;
 }
 
 void InvisibleObject::GetBoundingBox(float & left, float & top, float & right, float & bottom)
@@ -42,6 +44,12 @@ void InvisibleObject::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		x += dx;
 
 	}
+	else if (state == STATE_CURTAIN) {
+
+		CGameObject::Update(dt);
+		y += dy;
+
+	}
 }
 
 void InvisibleObject::Render()
@@ -59,6 +67,9 @@ void InvisibleObject::Render()
 		ani = ANI_3_INTRO;
 	else if (state == STATE_ARROW)
 		ani = ANI_ARROW;
+	else if (state == STATE_CURTAIN)
+		ani = ANI_CURTAIN;
+
 	animation_set->at(ani)->Render(x+24, y+24, 0, 255, nx, ny);
 	//RenderBoundingBox();
 }

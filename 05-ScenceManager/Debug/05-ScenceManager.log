@@ -1,14 +1,2 @@
-﻿  Mario.cpp
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.h(164): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(115): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(246): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(253): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(295): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(386): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(403): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(429): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(444): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(970): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(975): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\win\desktop\game update\mario_scene\05-scencemanager\mario.cpp(978): warning C4305: '=': truncation from 'double' to 'float'
+﻿  InvisibleObject.cpp
   05-ScenceManager.vcxproj -> C:\Users\win\Desktop\game update\mario_scene\Debug\05-ScenceManager.exe

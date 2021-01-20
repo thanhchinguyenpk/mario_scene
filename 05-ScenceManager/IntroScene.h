@@ -29,6 +29,7 @@
 #include "MovingFlatform.h"
 #include "BoomerangBrother.h"
 #include "BoomerangWeapon.h"
+#include "InvisibleObject.h"
 
 #define ITEM_MONEY 0
 #define ITEM_RANDOM 1
@@ -51,7 +52,7 @@ public:
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> itemsMarioCanEat;
 	vector<LPGAMEOBJECT> listBricks;
-
+	vector<LPGAMEOBJECT> ghost_platforms;
 
 	void DropItem(int itemType, float x, float y);
 
@@ -62,6 +63,8 @@ public:
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+
+	void _ParseSection_STATIC_OBJECTS(string line);
 
 	void _ParseSection_MAP(string line);
 	

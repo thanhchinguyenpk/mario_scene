@@ -8,15 +8,19 @@
 #define STATE_CACTUS 1
 #define STATE_HELP_TAG 2
 #define STATE_GUARD 3
-#define STATE_3_INTRO 4
-#define STATE_ARROW 5
+#define STATE_CURTAIN 4
+#define STATE_3_INTRO 5
+#define STATE_ARROW 6
+
 
 #define ANI_GHOST_PLATFORM 0
 #define ANI_CACTUS 1
 #define ANI_HELP_TAG 2
 #define ANI_GUARD 3
-#define ANI_3_INTRO 4
-#define ANI_ARROW 5
+#define ANI_CURTAIN 4
+#define ANI_3_INTRO 5
+#define ANI_ARROW 6
+
 
 class InvisibleObject : public CGameObject
 {

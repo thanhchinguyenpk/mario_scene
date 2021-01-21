@@ -631,11 +631,16 @@ void CPlayScene::Update(DWORD dt)
 
 	}
 	else if (player->is_on_the_ground == false)// mặt đất
-	   //CGame::GetInstance()->SetCamPos(cx, 700);
+	   
 	{
+
+		CGame::GetInstance()->SetCamPos(cx, 700);
 		//CGame::GetInstance()->SetCamPos()
-		float x = CGame::GetInstance()->GetCamX();
-		CGame::GetInstance()->SetCamPos(x+ 0.04f * dt, 700);
+
+
+
+	
+		
 	}
 	else // dưới lòng đất
 		

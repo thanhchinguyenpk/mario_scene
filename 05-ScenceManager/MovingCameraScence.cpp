@@ -588,13 +588,20 @@ void MovingCameraScence::Update(DWORD dt)
 
 	// Update camera to follow mario
 	float cx, cy;
-	player->GetPosition(cx, cy);
 
-	CGame *game = CGame::GetInstance();
-	cx -= game->GetScreenWidth() / 2;
-	cy -= game->GetScreenHeight() / 2;
+	cx=CGame::GetInstance()->GetCamX();
+	cy=CGame::GetInstance()->GetCamY();
+	//
+	if (player->is_in_end_scene)
+	{
+		player->GetPosition(cx, cy);
+		CGame *game = CGame::GetInstance();
+		cx -= game->GetScreenWidth() / 2;
+		cy -= game->GetScreenHeight() / 2;
+	}
 
-	cx += 200;
+
+	//cx += 200;
 
 	if (cx < 0)
 		return;
@@ -618,12 +625,16 @@ void MovingCameraScence::Update(DWORD dt)
 
 	if (player->is_in_end_scene == true)// mặt đất
 	{
-		//cx = 6192;
 		CGame::GetInstance()->SetCamPos(cx, 700);
 		
 	}
-	else if(player->is_in_end_scene == false)
-		CGame::GetInstance()->SetCamPos(cx, 700);
+	else if (player->is_in_end_scene == false)
+	{
+		
+		float x = CGame::GetInstance()->GetCamX();
+		CGame::GetInstance()->SetCamPos(x + 0.6f * dt, 700);
+		//CGame::GetInstance()->SetCamPos(cx, 700);
+	}
 		//CGame::GetInstance()->SetCamPos(350, 700);
 	//CGame::GetInstance()->SetCamPos(2064 * 3, 700);
 	//else // dưới lòng đất
@@ -635,6 +646,7 @@ void MovingCameraScence::Update(DWORD dt)
 	//}
 
 
+			
 
 }
 

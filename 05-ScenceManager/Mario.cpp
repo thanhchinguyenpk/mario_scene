@@ -129,15 +129,9 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				this->SetPosition(6610, 1095);
 				this->is_in_near_end_scene = true;
 			}
-			else if(is_on_the_ground==false)
-				this->SetPosition(6363 + 16, 1521);
-			else
-				this->SetPosition(2336 * 3, 360 * 3);
-
-			is_on_the_ground = !is_on_the_ground;//truyền biến xử lý cam ở play scene;
-			//this->SetPosition(6363 + 16, 1521);
+			
 			is_go_down_pine = false;
-			is_in_end_scene = false;				//scene cam
+			//is_in_end_scene = false;				//scene cam
 			go_down_pine_then_move_cam = 0;
 		}
 	}
@@ -701,6 +695,21 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if (y > 1293)
 		is_run_for_fly_high = false;
 	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
+
+	if (this->is_in_end_scene == false && this->is_auto_running==false)
+	{
+		if (this->x < CGame::GetInstance()->GetCamX() + 20)
+		{
+			SetPosition(CGame::GetInstance()->GetCamX() + 20, this->y);
+		}
+
+		if (this->x > CGame::GetInstance()->GetCamX() + 760 - 20)
+		{
+			SetPosition(CGame::GetInstance()->GetCamX() + 760 - 20, this->y);
+		}
+	}
+
+	
 }
 
 void CMario::Render()

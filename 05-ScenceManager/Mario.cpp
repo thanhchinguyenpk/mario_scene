@@ -491,7 +491,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					if (brick_blink->is_brick == true)
 					{
-						if (e->ny > 0) // phương va chạm hướng lên
+						if (e->ny > 0&& level != MARIO_LEVEL_SMALL) // phương va chạm hướng lên
 						{
 							score += 10;
 							brick_blink->SetState(BRICK_BLINK_STATE_WAS_HIT);

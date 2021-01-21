@@ -1024,7 +1024,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink  18 brickbinkcoin
 # MARIO tham số cuối là is_moving_in_world_map
-0	350	1155	1	0
+0	5800	1155	1	0
 	
 # BRICK 
 #1	0	1848	22
@@ -1240,7 +1240,7 @@
 
 14	7008	1201	15	200
 #pine trên cao // Á, SỬA LẠI @@
-14	5853	386	15	200
+14	6816	386	15	200
 #pine dưới đất
 14	7059	1439	15	300
 
@@ -1250,7 +1250,7 @@
 13	8088	1029	22
 
 #moving flatform
-15	96	1230	28
+#15	96	1230	28
 
 #brother
 #16	175	905	29

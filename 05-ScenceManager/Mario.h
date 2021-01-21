@@ -157,6 +157,7 @@ public:
 
 	int score = 0;
 	int number_brick_coin_hit = 0;
+	vector <int> cards;
 
 	bool is_die = false;
 	int level;
@@ -170,7 +171,7 @@ public:
 	DWORD untouchable_start;
 	DWORD jumping_start;
 
-
+	
 
 
 	DWORD time_to_transform_start = 0;

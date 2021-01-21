@@ -66,10 +66,17 @@ void InvisibleObject::Render()
 	else if (state == STATE_3_INTRO)
 		ani = ANI_3_INTRO;
 	else if (state == STATE_ARROW)
+	{
 		ani = ANI_ARROW;
+		if (arrow_two_player == true)
+			y = 493+50;
+		else
+			y = 493 ;
+	}
 	else if (state == STATE_CURTAIN)
 		ani = ANI_CURTAIN;
 
+	
 	animation_set->at(ani)->Render(x+24, y+24, 0, 255, nx, ny);
 	//RenderBoundingBox();
 }

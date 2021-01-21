@@ -308,7 +308,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case 15:
 	{
 		//int state = atof(tokens[4].c_str());
-		obj = new MovingFlatform();
+		obj = new MovingFlatform(player);
 		obj->SetState(MOVING_FLATFORM_STATE_MOVE_LEFT);
 		break;
 	}
@@ -629,8 +629,14 @@ void CPlayScene::Update(DWORD dt)
 		}
 		CGame::GetInstance()->SetCamPos(cx, cy);
 
-	}else if (player->is_on_the_ground == false)// mặt đất
-		CGame::GetInstance()->SetCamPos(cx, 700);
+	}
+	else if (player->is_on_the_ground == false)// mặt đất
+	   //CGame::GetInstance()->SetCamPos(cx, 700);
+	{
+		//CGame::GetInstance()->SetCamPos()
+		float x = CGame::GetInstance()->GetCamX();
+		CGame::GetInstance()->SetCamPos(x+ 0.04f * dt, 700);
+	}
 	else // dưới lòng đất
 		
 	{

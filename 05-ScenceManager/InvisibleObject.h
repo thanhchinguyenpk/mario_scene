@@ -25,6 +25,7 @@
 class InvisibleObject : public CGameObject
 {
 public:
+	bool arrow_two_player = false;
 	int w;
 	int h;
 	InvisibleObject(float x, float y, float width, float height, int state = 0);

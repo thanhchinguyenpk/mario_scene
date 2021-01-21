@@ -124,8 +124,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 		if ((GetTickCount64() - go_down_pine_then_move_cam > 2000)&& go_down_pine_then_move_cam)
 		{
-			if(is_in_end_scene==true)				//scene cam
+			if (is_in_end_scene == true)				//scene cam
+			{
 				this->SetPosition(6610, 1095);
+				this->is_in_near_end_scene = true;
+			}
 			else if(is_on_the_ground==false)
 				this->SetPosition(6363 + 16, 1521);
 			else
@@ -566,7 +569,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 					if (e->nx != 0)
 					{
-						this->SetPosition(this->x - 2, this->y);
+						//this->SetPosition(this->x + 1, this->y);
 					}
 				}
 			}/*

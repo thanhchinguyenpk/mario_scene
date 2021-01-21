@@ -308,7 +308,7 @@ void IntroScence::_ParseSection_OBJECTS(string line)
 	case 15:
 	{
 		//int state = atof(tokens[4].c_str());
-		obj = new MovingFlatform();
+		obj = new MovingFlatform(player);
 		//obj->SetState(state);
 		break;
 	}
@@ -698,8 +698,8 @@ void IntroScence::Render()
 
 	
 
-	game_time = GameTime::GetInstance();
-	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, player->score,4,1);
+	//game_time = GameTime::GetInstance();
+	//game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, player->score,4,1);
 
 	if(is_mario_got_card)
 	{
@@ -855,7 +855,12 @@ void IntroSceneKeyHandler::OnKeyDown(int KeyCode)
 			mario->SetIsFly(true);
 		}
 
-		//	}
+		
+		{
+			LPGAMEOBJECT temp = ((IntroScence*)scence)->ghost_platforms[1];
+			((InvisibleObject*)temp)->arrow_two_player = !((InvisibleObject*)temp)->arrow_two_player;
+
+		}
 		break;
 	case DIK_LEFT:
 		mario->is_press_left = true;

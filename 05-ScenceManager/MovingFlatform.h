@@ -21,10 +21,12 @@
 class MovingFlatform :public CGameObject
 {
 public:
+	CMario *mario = NULL;
 	bool is_touch = false;
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	virtual void SetState(int state);
 	virtual void Render();
+	MovingFlatform(CMario *player) { mario = player; };
 };
 

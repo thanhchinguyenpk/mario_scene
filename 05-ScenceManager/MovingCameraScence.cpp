@@ -307,7 +307,7 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 	case 15:
 	{
 		//int state = atof(tokens[4].c_str());
-		obj = new MovingFlatform();
+		obj = new MovingFlatform(player);
 		//obj->SetState(state);
 		break;
 	}
@@ -600,8 +600,11 @@ void MovingCameraScence::Update(DWORD dt)
 		return;
 	if (cx > 7720 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
-
-	if (player->y < 570) //trên trời
+	if (cx > 6140 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2 && player->is_in_near_end_scene == false)
+		return;
+	if (cx < 6192 && player->is_in_near_end_scene == true)
+		return;
+	/*if (player->y < 570) //trên trời
 	{
 		if (cy < 0)
 		{
@@ -611,7 +614,9 @@ void MovingCameraScence::Update(DWORD dt)
 		CGame::GetInstance()->SetCamPos(cx, cy);
 
 	}
-	else if (player->is_in_end_scene == true)// mặt đất
+	else */
+
+	if (player->is_in_end_scene == true)// mặt đất
 	{
 		//cx = 6192;
 		CGame::GetInstance()->SetCamPos(cx, 700);
@@ -805,7 +810,7 @@ void MovingCameraScenceKeyHandler::OnKeyDown(int KeyCode)
 		//case 14:
 		float x, y;
 		mario->GetPosition(x, y);
-		if (x > 7030 && mario->is_on_the_ground)
+		/*if (x > 7030 && mario->is_on_the_ground)
 		{
 			mario->is_go_down_pine = true;
 			mario->SetPosition(x, y - 40);
@@ -813,7 +818,9 @@ void MovingCameraScenceKeyHandler::OnKeyDown(int KeyCode)
 
 			mario->go_down_pine_then_move_cam = GetTickCount64();
 
-		}else if (mario->GetIsInObject() == true && mario->is_run_for_fly_high == false)
+		}else*/ 
+
+		if (mario->GetIsInObject() == true && mario->is_run_for_fly_high == false)
 		{
 			mario->StartJumping();
 			mario->SetState(MARIO_STATE_JUMP);

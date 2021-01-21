@@ -29,6 +29,10 @@
 112	textures\misc_1.png	176	224	248
 113	textures\MARIO_TAIL_SPIN.png	176	224	248
 114	textures\curtain.png	176	224	248
+115	textures\gameover_board.png	1	1	1
+116	textures\arrow_selection.png	156	252	240
+117	textures\3.png	255	255	255
+
 
 
 # id	left	top	width	height	texture_id
@@ -575,6 +579,19 @@
 # curtain
 40141	2	2	291	236	114
 
+###################################################
+# GAMEOVER BOARD
+40125	5	3	118	58	115
+40126	1	2	6	7	116
+
+####################################################
+# 3 in intro
+40127	1	0	42	41	117
+40128	47	0	42	41	117
+40129	94	0	42	41	117
+40130	140	0	42	41	117
+
+
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]
 # ==== MARIO =========
@@ -953,6 +970,16 @@
 785	40136	80	40137	80	40138	80	40139	80
 # ==== mario transform ====
 786	10021	300	40140	300	10021	300	40140	300	10021	300	40140	300
+
+
+# ==== gameover board ==== 
+787	40125	100
+788	40126	100
+
+# ==== 3 in intro ==== 
+789	40127	100	40128	100	40129	100	40130	100
+
+
 ###########################################
 # id	ani1	ani2	ani3
 #
@@ -1005,8 +1032,8 @@
 # POINT
 23	755	756	757	758
 # MAP SELECTION
-#		catus	help	guard	curtain
-24	703	759	760	761	100000
+#		catus	help	guard	curtain s? 3	arrow	
+24	703	759	760	761	100000	789	788
 # white box
 25	767
 # map selection
@@ -1020,7 +1047,8 @@
 29	781	782	783
 # boomerang brother weapon
 30	784	785
-
+# game over board
+31	787	788
 
 
 
@@ -1034,6 +1062,11 @@
 0	350	1155	1	0
 [STATIC_OBJECTS]
 # loai	x	y	w	h    ani_set  state	type_obj
-# state: cactus = 1, help_tag = 2, guard = 3, 4 = curtain
+# state: cactus = 1, help_tag = 2, guard = 3, 4 = curtain, 5=s? 3, 6= arrow 
+
+# s? 3
+5	350	380	48	48	24	5	1
+# arrow
+5	170	493	48	48	24	6	1
 # curtain
 5	350	250	48	48	24	4	1

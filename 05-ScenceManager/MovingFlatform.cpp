@@ -1,4 +1,6 @@
 ﻿#include "MovingFlatform.h"
+#include "Game.h"
+
 void MovingFlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x - MOVING_FLATFORM_BBOX_WIDTH / 2;
@@ -36,7 +38,7 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
-		//x += min_tx * dx + nx * 0.4f;
+		x += min_tx * dx + nx * 0.4f;
 		//y += min_ty * dy + ny * 0.4f;
 
 		if (nx != 0)
@@ -66,6 +68,27 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+
+
+
+	
+	/*this->SetPosition(CGame::GetInstance()->GetCamX(), y);
+
+
+	float ml, mt, mr, mb;
+	float il, it, ir, ib;
+
+	this->GetBoundingBox(il, it, ir, ib);
+	mario->GetBoundingBox(ml, mt, mr, mb);
+
+	if (this->CheckOverLap(il, it, ir, ib, ml, mt, mr, mb))
+	{
+		//SetState(CONCO_STATE_WAS_SHOOTED);
+		float x, y;
+		mario->GetPosition(x, y);
+		mario->SetPosition(x + 0.1, y);
+	}
+		*/
 }
 
 void MovingFlatform::SetState(int state)
@@ -74,7 +97,7 @@ void MovingFlatform::SetState(int state)
 	switch (state)
 	{
 	case MOVING_FLATFORM_STATE_MOVE_LEFT:
-		vx = -MOVING_FLATFORM_WALKING_SPEED;
+		vx = 0.04;
 		vy = 0;
 		break;
 	case MOVING_FLATFORM_STATE_MOVE_RIGHT:

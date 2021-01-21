@@ -1023,10 +1023,24 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink
 # MARIO tham số cuối là is_moving_in_world_map
-0	5850	655	1	0
+0	5500	655	1	0
 
-#flat form
+#####################################
+#flatform
+#flat form ô đầu tiên mario đứng á
 6	0	1053	1	480	48	0
+#chặt đầu
+6	-48	0	1	48	1392	0
+
+#chặt trước endscene
+6	6096	0	1	48	1392	0
+6	6144	0	1	48	1392	0
+
+#chặt cuối
+6	7728	0	1	48	1392	0
+
+#nền dưới khỏi rơi
+6	0	1300	1	6000	5	0
 
 #dưới cống
 6	5763	1200	1	378	90	0
@@ -1187,7 +1201,7 @@
 16	6240	1000	29
 
 #random bonus
-13	7368	984	22
+13	7392	1009	22
 
 #flatform96
 6	5808	1008	1	96	192	0
@@ -1196,6 +1210,13 @@
 
 6	6576	1152	1	96	96	0
 
+#hub p meter x,y nhu khong a, de dai animationset a
+9	100	100	27
+
+#pine gần cuối
+14	5856	1056	15	200
+#pine cuối
+14	6623	1200	15	200
 
 #Red fly koompa,	loai 0=xanh 1=cocanh  2=do   3=do co canh
 4	5646	813	8	3

@@ -871,7 +871,16 @@ void CMario::Render()
 		else if (is_in_object == true)
 		{
 			if (state == MARIO_STATE_GO_DOWN_PINE)
-				ani = MARIO_ANI_TAIL_GO_DOWN;
+			{
+				/*if(level== MARIO_LEVEL_SMALL)
+					ani = MARIO_ANI_SMALL_GO_DOWN;
+				else if (level == MARIO_LEVEL_BIG)
+					ani = MARIO_ANI_BIG_GO_DOWN;
+				else if (level == MARIO_LEVEL_BIG_TAIL)
+					ani = MARIO_ANI_TAIL_GO_DOWN;
+				else if (level == MARIO_LEVEL_BIG_ORANGE)
+					ani = MARIO_ANI_ORANGE_GO_DOWN;*/
+			}
 			else if (is_sitdown == true) // trên object thì nó mới sitdown được, if bên ngoài
 				ani = MARIO_ANI_TAIL_SITDOWN_RIGHT;
 			else if (is_bring == true)
@@ -914,7 +923,16 @@ void CMario::Render()
 	//DebugOut(L"[ERROR----state cua nó la %d\n", state);
 
 	if (is_go_down_pine == true)
-		ani = MARIO_ANI_TAIL_GO_DOWN;
+	{
+		if (level == MARIO_LEVEL_SMALL)
+			ani = MARIO_ANI_SMALL_GO_DOWN;
+		else if (level == MARIO_LEVEL_BIG)
+			ani = MARIO_ANI_BIG_GO_DOWN;
+		else if (level == MARIO_LEVEL_BIG_TAIL)
+			ani = MARIO_ANI_TAIL_GO_DOWN;
+		else if (level == MARIO_LEVEL_BIG_ORANGE)
+			ani = MARIO_ANI_ORANGE_GO_DOWN;
+	}
 
 	if (is_auto_running == true)
 	{

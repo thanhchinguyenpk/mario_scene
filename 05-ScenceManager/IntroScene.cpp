@@ -763,9 +763,17 @@ void IntroSceneKeyHandler::OnKeyDown(int KeyCode)
 
 	CMario *mario = ((IntroScence*)scence)->GetPlayer();
 	//vector<LPGAMEOBJECT> objects = ((IntroScence*)scence)->objects;
+	CGame* game_temp = CGame::GetInstance();
 
 	switch (KeyCode)
 	{
+	case DIK_W:
+		{
+			LPGAMEOBJECT temp = ((IntroScence*)scence)->ghost_platforms[1];
+			if (((InvisibleObject*)temp)->arrow_two_player == false)
+					game_temp->SwitchScene(3);
+		}
+		break;
 
 	case DIK_K:
 		CGame::GetInstance()->SetCamPos(CGame::GetInstance()->GetCamX() + 100, CGame::GetInstance()->GetCamY());
@@ -844,18 +852,7 @@ void IntroSceneKeyHandler::OnKeyDown(int KeyCode)
 		mario->is_press_h = true;
 		break;
 	case DIK_Q:
-		//mario->SetPosition(mario->GetX()+5, mario->GetY());
-		//mario->SetState(MARIO_STATE_JUMP);
-	//	if (mario->GetIsInObject() == false)
-	//	{
-		if (mario->is_run_for_fly_high)
-		{
-			mario->SetIsInObject(false);
-			mario->SetState(MARIO_STATE_FLY_HIGH);
-			mario->SetIsFly(true);
-		}
 
-		
 		{
 			LPGAMEOBJECT temp = ((IntroScence*)scence)->ghost_platforms[1];
 			((InvisibleObject*)temp)->arrow_two_player = !((InvisibleObject*)temp)->arrow_two_player;

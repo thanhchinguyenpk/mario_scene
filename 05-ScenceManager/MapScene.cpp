@@ -485,7 +485,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 		if (map_scene->current_portal->is_portal) {
 			
 			game_temp->SwitchScene(4);
-			DebugOut(L"hé liu PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp----->  \n");
+			//DebugOut(L"hé liu PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp----->  \n");
 
 		}
 		break;

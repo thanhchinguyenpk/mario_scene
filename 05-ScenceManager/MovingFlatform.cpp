@@ -118,7 +118,7 @@ void MovingFlatform::SetState(int state)
 	switch (state)
 	{
 	case MOVING_FLATFORM_STATE_MOVE_LEFT:
-		vx = -0.04;
+		vx = -0.04f;
 		vy = 0;
 		break;
 	case MOVING_FLATFORM_STATE_MOVE_RIGHT:

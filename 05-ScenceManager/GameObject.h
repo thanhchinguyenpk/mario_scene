@@ -45,6 +45,10 @@ class CGameObject
 {
 public:
 
+	int w;
+	int h;
+	int id_grid;
+
 	bool is_cam_coming = false;
 
 	float x; 

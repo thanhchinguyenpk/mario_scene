@@ -45,6 +45,8 @@ public:
 
 	CMario * GetPlayer() { return player; };
 
+	void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) { objects.clear(); objects = listEnemy; }
+
 };
 
 class MapSceneKeyHandler : public CScenceKeyHandler

@@ -152,7 +152,7 @@ void RandomBonus::SetState(int state)
 	case STATE_GOT_BONUS_MUSHROOM:
 	case STATE_GOT_BONUS_STAR:
 	case STATE_GOT_BONUS_FIRE_FLOWER:
-		vy = -0.3;
+		vy = -0.3f;
 		break;
 	}
 }

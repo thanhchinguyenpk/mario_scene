@@ -132,7 +132,7 @@ void CConCo::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			{
 				//DebugOut(L"[ERROR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~] co nhay vo phuong DOC Error: \n");
 				if (state == CONCO_STATE_FLY_LEFT)
-					vy = -0.6; // sẽ bị chặn lại_ không đúng má ơi.
+					vy = -0.6f; // sẽ bị chặn lại_ không đúng má ơi.
 				else
 					vy = 0;
 			}
@@ -391,8 +391,8 @@ void CConCo::SetState(int state)
 		break;
 	case CONCO_STATE_WAS_SHOOTED:
 		//vx = -vx;// 0.1f * 1.5;
-		vx = 0.06;
-		vy = -0.25;
+		vx = 0.06f;
+		vy = -0.25f;
 		ny = -1;
 		//nx = 1;
 		break;
@@ -404,7 +404,7 @@ void CConCo::SetState(int state)
 		break;
 	case CONCO_STATE_RED_FLY_Y:
 		vx = 0;
-		vy = 0.13;
+		vy = 0.13f;
 		break;
 
 

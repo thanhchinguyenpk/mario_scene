@@ -139,7 +139,7 @@ void Mushroom::SetState(int state)
 	{
 	case MUSHROOM_STATE_GOING_UP:
 		vx = 0;
-		vy = -0.1;
+		vy = -0.1f;
 		break;
 	case MUSHROOM_STATE_MOVING_LEFT:
 		vx = -MUSHROOM_MOVING_SPEED;

@@ -147,9 +147,9 @@ void BoomerangBrother::SetState(int state)
 		vx = 0;
 		break;
 	case BROTHER_STATE_WAS_SHOOTED:
-		vx = -0.06;
-		vy = -0.2 * 3;
-		ny = -1;
+		vx = -0.06f;
+		vy = -0.6f;
+		ny = -1.0f;
 		break;
 		
 	}

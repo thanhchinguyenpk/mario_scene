@@ -112,7 +112,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	{
 		CGameObject::Update(dt);
 		x += dx;
-		vx = 0.3;// 0.3 thì chạy, 0.15 khong chạy @@
+		vx = 0.3f;// 0.3 thì chạy, 0.15 khong chạy @@
 
 		//if(y<1194)
 		//	y += 10;
@@ -240,14 +240,14 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 				//if (!animations[MARIO_ANI_TAIL_FLY]->IsRenderDone())
 				if (GetTickCount64()-fly_start<=210&& fly_start)
 				{
-					vy = 0.07;
+					vy = 0.07f;
 					//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
 				}
 			}
 			else if (GetState() == MARIO_STATE_FLY_HIGH)
 			{
 				if (GetTickCount64() - fly_high_start <= 300 && fly_high_start)
-					vy = -0.3;
+					vy = -0.3f;
 				else
 					is_run_for_fly_high = false;
 				//DebugOut(L"Heloo có vô cái bayyyyyy bayyyyy đây hem dạ, vy lúc này là 0.1\n");
@@ -997,12 +997,12 @@ void CMario::SetState(int state)
 	case MARIO_STATE_GO_DOWN_PINE:
 		//vy = -MARIO_JUMP_SPEED_Y;
 		vx = 0;
-		vy =  0.03;
+		vy =  0.03f;
 		break;
 	case MARIO_STATE_GO_UP_PINE:
 		//vy = -MARIO_JUMP_SPEED_Y;
 		vx = 0;
-		vy = -0.03;
+		vy = -0.03f;
 		break;
 	case MARIO_STATE_JUMP:
 		vy = -MARIO_JUMP_SPEED_Y;

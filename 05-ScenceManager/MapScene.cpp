@@ -494,7 +494,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 		{
 			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->r]);
 			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
-			mario->vx = 0.4;
+			mario->vx = 0.4f;
 		}
 		break;
 	case DIK_LEFT:
@@ -502,7 +502,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 		{
 			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->l]);
 			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
-			mario->vx = -0.4;
+			mario->vx = -0.4f;
 		}
 		break;
 	case DIK_UP:
@@ -510,7 +510,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 		{
 			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->t]);
 			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
-			mario->vy = -0.4;
+			mario->vy = -0.4f;
 		}
 		break;
 	case DIK_DOWN:
@@ -518,7 +518,7 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 		{
 			map_scene->current_portal = dynamic_cast<CMapPortal*>(map_scene->map_portals[map_scene->current_portal->b]);
 			//mario->SetPosition(map_scene->current_portal->x, map_scene->current_portal->y);
-			mario->vy = 0.4;
+			mario->vy = 0.4f;
 		}
 		break;
 	

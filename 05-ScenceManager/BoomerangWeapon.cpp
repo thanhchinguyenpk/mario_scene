@@ -63,18 +63,18 @@ void BoomerangWeapon::SetState(int state)
 	{
 	case BROTHER_WEAPON_STATE_MOVE_LEFT:
 		time_move_left = GetTickCount64();
-		vx = -0.5;
-		vy =0.05;
+		vx = -0.5f;
+		vy =0.05f;
 		break;
 	case BROTHER_WEAPON_STATE_MOVE_RIGHT:
 		time_move_right = GetTickCount64();
 		vx = BROTHER_WEAPON_WALKING_SPEED;
-		vy = -0.08;
+		vy = -0.08f;
 		break;
 	case BROTHER_WEAPON_STATE_MOVE_DOWN:
 		time_move_down = GetTickCount64();
-		vy = 0.5;
-		vx = 0.3;
+		vy = 0.5f;
+		vx = 0.3f;
 		break;
 	}
 }

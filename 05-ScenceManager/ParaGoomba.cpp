@@ -166,10 +166,10 @@ void ParaGoomba::SetState(int state)
 		moving_time = GetTickCount64();
 		break;
 	case PARA_GROOMBA_STATE_JUMP_SMALL:
-		vy = -0.13;
+		vy = -0.13f;
 		break;
 	case PARA_GROOMBA_STATE_JUMP_BIG:
-		vy = -0.4;
+		vy = -0.4f;
 		//vx = -PARA_GROOMBA_WALKING_SPEED;
 		break;
 	case PARA_GROOMBA_STATE_WALKING:
@@ -185,8 +185,8 @@ void ParaGoomba::SetState(int state)
 			effect = new MoneyEffect(this->x, this->y - 50);
 		break;
 	case PARA_GROOMBA_STATE_WAS_SHOOTED:
-		vx = 0.06;
-		vy = -0.35;
+		vx = 0.06f;
+		vy = -0.35f;
 		ny = -1;
 		break;
 

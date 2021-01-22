@@ -1,37 +1,62 @@
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\vc141.pdb
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\vc141.idb
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\textures.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\sprites.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\scence.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\playscence.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\mario.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\main.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\goomba.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\gameobject.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\game.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\utils.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\portal.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\map.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\koopas.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\debug.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\brick.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\animations.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\timercustom.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\conco.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\flatform.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\paragoomba.obj
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\debug\05-scencemanager.exe
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\debug\05-scencemanager.ilk
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\debug\05-scencemanager.pdb
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\cl.command.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\cl.read.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\cl.write.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224-cvtres.read.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224-cvtres.write.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224-rc.read.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224-rc.write.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224.read.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.17224.write.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.command.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.read.1.tlog
-c:\users\admin\desktop\gameconvert - copy\game_mario\project 5\gamedev-intro-tutorials\05-scencemanager\debug\05-scencemanager.tlog\link.write.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\vc141.pdb
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\vc141.idb
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\introscene.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\hub.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\grid.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\goomba.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\gametime.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\flatform.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\effect.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\debug.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\debrisbrick.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\conco.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\coineffect.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\coin.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\cmapportal.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\brick_coin.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\brickblinkcoin.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\brickblink.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\brick.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\boomerangweapon.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\boomerangbrother.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\animations.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\timercustom.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\textandnumber.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\switchblock.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\superleaf.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\randombonus.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\portal.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\pmeter.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\plantbullet.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\piranhaplant.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\pine.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\paragoomba.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\mushroom.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\movingflatform.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\movingcamerascence.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\moneyeffect.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\mariobullet.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\mapscene.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\map.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\koopas.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\invisibleobject.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\venusfiretrap.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\textures.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\sprites.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\scence.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\playscence.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\mario.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\main.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\gameobject.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\game.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\utils.obj
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\ui.obj
+c:\users\win\desktop\game update\mario_scene\debug\05-scencemanager.exe
+c:\users\win\desktop\game update\mario_scene\debug\05-scencemanager.ilk
+c:\users\win\desktop\game update\mario_scene\debug\05-scencemanager.pdb
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\cl.command.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\cl.read.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\cl.write.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\link.command.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\link.read.1.tlog
+c:\users\win\desktop\game update\mario_scene\05-scencemanager\debug\05-scencemanager.tlog\link.write.1.tlog

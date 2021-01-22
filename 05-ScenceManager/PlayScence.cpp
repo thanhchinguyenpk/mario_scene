@@ -36,6 +36,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath):
 #define SCENE_SECTION_ANIMATION_SETS	5
 #define SCENE_SECTION_OBJECTS	6
 #define SCENE_SECTION_MAP	7
+#define SCENE_SECTION_OBJECTS_GRID 8
 
 #define OBJECT_TYPE_MARIO	0
 #define OBJECT_TYPE_BRICK	1
@@ -355,12 +356,29 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		DebugOut(L"[ERR]mấy viên? object type: %d\n", object_type);
 	} else if (dynamic_cast<RandomBonus*>(obj)|| dynamic_cast<Coin*>(obj))
 		itemsMarioCanEat.push_back(obj);
+	else if (dynamic_cast<Flatform*>(obj))
+		ghost_platforms.push_back(obj);
 	else
 		objects.push_back(obj);
 
 
 	
 }
+
+void CPlayScene::_ParseSection_OBJECTS_GRID(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return; // skip invalid lines
+	wstring objPath = ToWSTR(tokens[0].c_str());
+	wstring gridPath = ToWSTR(tokens[1].c_str());
+
+	//grid = new CGrid(objPath.c_str(), gridPath.c_str());
+	//grid->ReadFileObj();
+	//grid->ReadFileGrid();
+}
+
+
 
 void CPlayScene::_ParseSection_MAP(string line)
 {
@@ -440,6 +458,9 @@ void CPlayScene::Load()
 		if (line == "[MAP]") {
 			section = SCENE_SECTION_MAP; continue;
 		}
+		if (line == "[OBJECTS_GRID]") {
+			section = SCENE_SECTION_OBJECTS_GRID; continue;
+		}
 
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	// một là đang ở dòng data
 		//hai là đang ở section không biết đó là gì , để tránh khi đôi lúc chế section mà quên if vô 
@@ -456,6 +477,7 @@ void CPlayScene::Load()
 			case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 			case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 			case SCENE_SECTION_MAP: _ParseSection_MAP(line); break; 
+			case SCENE_SECTION_OBJECTS_GRID: _ParseSection_OBJECTS_GRID(line); break;
 		}
 	}
 
@@ -486,13 +508,20 @@ void CPlayScene::Update(DWORD dt)
 	for (size_t i = 0; i < listBricks.size(); i++)
 		coObjects.push_back(listBricks[i]);
 
+	for (size_t i = 0; i < ghost_platforms.size(); i++)
+		coObjects.push_back(ghost_platforms[i]);
+	
 
-
+	for (size_t i = 0; i < ghost_platforms.size(); i++)
+	{
+		ghost_platforms[i]->Update(dt, &coObjects);
+	}
 
 	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
 	{
 		itemsMarioCanEat[i]->Update(dt, &coObjects);
 	}
+
 
 	player->CheckOverlapWithItems(&itemsMarioCanEat);
 
@@ -655,6 +684,10 @@ void CPlayScene::Render()
 {
 	map->Draw();
 	
+	
+		for (int i = 0; i < ghost_platforms.size(); i++)
+			ghost_platforms[i]->Render();
+
 	for (int i = 0; i < listBricks.size(); i++)
 		listBricks[i]->Render();
 	
@@ -699,6 +732,11 @@ void CPlayScene::Unload()
 		delete listBricks[i];
 	listBricks.clear();
 
+
+	for (int i = 0; i < ghost_platforms.size(); i++)
+		delete ghost_platforms[i];
+	ghost_platforms.clear();
+	
 
 	
 	player = NULL;// có khả năng là mình quay lại cảnh đó!

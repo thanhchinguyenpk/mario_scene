@@ -74,7 +74,7 @@ void Brick_Coin::SetState(int state)
 	switch (state)
 	{
 	case BRICK_COIN_STATE_DA_DAP:
-		vy = -0.2;
+		vy = -0.2f;
 		{
 		/*Mushroom* mr = new Mushroom(this->x,this->y);
 		//mr->AddAnimation(11001);

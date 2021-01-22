@@ -31,6 +31,9 @@
 #include "BoomerangWeapon.h"
 #include "BrickBlinkCoin.h"
 
+#include "Grid.h"
+
+
 #define ITEM_MONEY 0
 #define ITEM_RANDOM 1
 
@@ -39,6 +42,8 @@ class CPlayScene: public CScene
 {
 public: 
 
+	CGrid * grid;
+
 	int card = 0;
 	bool is_mario_got_card = false;
 	CMario *player;					// A play scene has to have player, right? 
@@ -46,23 +51,30 @@ public:
 	int point_hub = 0;
 	int the_number_mario_hit_brick = 0;
 
+
 	UI* game_ui;
 	GameTime* game_time;
+	
 
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> itemsMarioCanEat;
 	vector<LPGAMEOBJECT> listBricks;
+	vector<LPGAMEOBJECT> ghost_platforms;
 
 
 	void DropItem(int itemType, float x, float y);
 
 	Map* map;
 
+
+	
+
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	void _ParseSection_OBJECTS_GRID(string line);
 
 	void _ParseSection_MAP(string line);
 	
@@ -80,7 +92,9 @@ public:
 
 	CMario * GetPlayer() { return player; } 
 
-	//friend class CPlayScenceKeyHandler;
+	
+
+	void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) { objects.clear(); objects = listEnemy; }
 };
 
 class CPlayScenceKeyHandler : public CScenceKeyHandler

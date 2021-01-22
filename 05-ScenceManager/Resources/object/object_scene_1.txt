@@ -1,0 +1,3 @@
+#	 type	x	y	w	h	ani_set_id	extra_settings per object type
+
+12	2	2640	1147	48	48	5	2	100

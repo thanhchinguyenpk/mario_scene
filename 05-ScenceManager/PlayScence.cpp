@@ -373,9 +373,9 @@ void CPlayScene::_ParseSection_OBJECTS_GRID(string line)
 	wstring objPath = ToWSTR(tokens[0].c_str());
 	wstring gridPath = ToWSTR(tokens[1].c_str());
 
-	//grid = new CGrid(objPath.c_str(), gridPath.c_str());
-	//grid->ReadFileObj();
-	//grid->ReadFileGrid();
+	grid = new CGrid(objPath.c_str(), gridPath.c_str(),player);
+	grid->ReadFileObj();
+	grid->ReadFileGrid();
 }
 
 

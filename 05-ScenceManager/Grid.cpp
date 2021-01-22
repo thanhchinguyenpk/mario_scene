@@ -1,4 +1,17 @@
 ﻿#include "Grid.h"
+#include "Goomba.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdio.h> 
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include "debug.h"
+
+
+#include "Utils.h"
+
 
 void CGrid::Classify(LPGAMEOBJECT obj)
 {
@@ -43,9 +56,9 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 
 }
 
-void CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra, int nx, int angle, int id_grid)
+LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra, int nx, int angle, int id_grid)
 {
-	/*CAnimationSets * animation_sets = CAnimationSets::GetInstance();
+	CAnimationSets * animation_sets = CAnimationSets::GetInstance();
 
 	CGameObject *obj = NULL;
 
@@ -54,8 +67,8 @@ void CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int a
 
 	case 2:
 		{
-			//obj = new CGoomba(player);
-			//obj->SetState(GOOMBA_STATE_WALKING);
+			obj = new CGoomba(player);
+			obj->SetState(GOOMBA_STATE_WALKING);
 			break;
 		}
 	}
@@ -69,15 +82,87 @@ void CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int a
 	// nhớ thêm đoạn code animation set mà null chẳng hạn 0:32:38
 	obj->SetAnimationSet(ani_set);
 
-	return obj;*/
+	return obj;
 	//return NULL;
 }
 
-CGrid::CGrid(LPCWSTR objFilePath, LPCWSTR gridFilePath)
+void CGrid::ReadFileObj()
+{
+	ifstream f;
+	f.open(objFilePath);
+	char str[MAX_SCENE_LINE];
+
+	while (f.getline(str, MAX_SCENE_LINE))
+	{
+		string line(str);
+		vector<string> tokens = split(line);
+		if (line[0] == '#') {
+			continue;
+		}
+		if (tokens.size() < 8) continue;
+		int id_grid = atoi(tokens[0].c_str());
+		int object_type = atoi(tokens[1].c_str());
+		float x = atof(tokens[2].c_str());
+		float y = atof(tokens[3].c_str());
+
+		float w = atof(tokens[4].c_str());
+		float h = atof(tokens[5].c_str());
+
+		int ani_id = atoi(tokens[6].c_str());
+
+
+		int type = atoi(tokens[7].c_str());
+		int extra = 0;
+		if (object_type == 2 || object_type == 3 ||
+			object_type == 6 || object_type == 11 ||
+			object_type == 1)
+			extra = atoi(tokens[8].c_str());
+
+		//AddObjectIntoGrid(object_type, x, y, w, h, ani_id, type, extra);
+		LPGAMEOBJECT obj = CreateNewObj(object_type, x, y, w, h, ani_id, type, extra, 1, 1, id_grid);
+		total_obj.push_back(obj);
+	}
+
+	f.close();
+}
+
+void CGrid::ReadFileGrid()
+{
+	//objs.clear();
+	ifstream f;
+	f.open(gridFilePath);
+	char str[MAX_SCENE_LINE];
+
+	while (f.getline(str, MAX_SCENE_LINE))
+	{
+		string line(str);
+		vector<string> tokens = split(line);
+		if (line[0] == '#') {
+			continue;
+		}
+		if (tokens.size() < 3) continue;
+		int i = atoi(tokens[0].c_str());
+		int j = atoi(tokens[1].c_str());
+		for (int k = 2; k < tokens.size(); k++) {
+			int id = atoi(tokens[k].c_str());
+			for (LPGAMEOBJECT obj : total_obj)
+				if (obj->id_grid == id) {
+					cells[i][j].push_back(obj);
+				}
+
+		}
+	}
+
+	f.close();
+
+	DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", cells[6][14].size());
+}
+
+CGrid::CGrid(LPCWSTR objFilePath, LPCWSTR gridFilePath, CMario *mario)
 {
 	//DebugOut(L"new\n");
 	this->objFilePath = objFilePath;
 	this->gridFilePath = gridFilePath;
 
-	//player = mario;
+	player = mario;
 }

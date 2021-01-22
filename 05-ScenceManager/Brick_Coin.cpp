@@ -8,12 +8,12 @@
 
 void Brick_Coin::Render()
 {
-	int ani = 0;
+	int ani = BRICK_COIN_ANI_CHUA_DAP;
 
 	 if (state == BRICK_COIN_STATE_DA_DAP)
-		ani = 1;
-	 else if(is_contain_button_p)
-		 ani = 2;
+		ani = BRICK_COIN_ANI_DA_DAP;
+	 else if(is_contain_button_p || brick_type==3 || brick_type == 4)
+		 ani = BRICK_COIN_ANI_BLINK_BLINK;
 	//DebugOut(L"[ERROR------------------------------] DINPUT::GetDeviceData failed. Error: %d\n", ani);
 
 

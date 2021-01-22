@@ -54,14 +54,9 @@ void CPlayScene::DropItem(int itemType, float x, float y)
 	switch (itemType)
 	{
 	case ITEM_RANDOM:
+	case 4:
 	{
-		if (player->y < 567)
-		{
-			Mushroom* mushroom = new Mushroom(x, y);
-				mushroom->is_read_mushroom = false;
-			itemsMarioCanEat.push_back(mushroom);
-		}
-		else if (player->GetLevel() == MARIO_LEVEL_SMALL)
+		 if (player->GetLevel() == MARIO_LEVEL_SMALL)
 		{
 			Mushroom* mushroom = new Mushroom(x, y);
 			if (player->y < 567)
@@ -75,6 +70,15 @@ void CPlayScene::DropItem(int itemType, float x, float y)
 			itemsMarioCanEat.push_back(superleaf);
 		}
 		break;
+	}
+	case 2: //green mushroom
+	case 3:
+	{
+		
+			Mushroom* mushroom = new Mushroom(x, y);
+			mushroom->is_read_mushroom = false;
+			itemsMarioCanEat.push_back(mushroom);
+			break;
 	}
 	case ITEM_MONEY:
 	{
@@ -630,17 +634,10 @@ void CPlayScene::Update(DWORD dt)
 		CGame::GetInstance()->SetCamPos(cx, cy);
 
 	}
-	else if (player->is_on_the_ground == false)// mặt đất
-	   
+	else if (player->is_on_the_ground == false)// mặt đất   
 	{
-
 		CGame::GetInstance()->SetCamPos(cx, 700);
 		//CGame::GetInstance()->SetCamPos()
-
-
-
-	
-		
 	}
 	else // dưới lòng đất
 		

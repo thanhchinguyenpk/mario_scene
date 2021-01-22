@@ -53,26 +53,30 @@ void MovingCameraScence::DropItem(int itemType, float x, float y)
 	switch (itemType)
 	{
 	case ITEM_RANDOM:
+	case 4:
 	{
-		if (player->y < 567)
-		{
-			Mushroom* mushroom = new Mushroom(x, y);
-				mushroom->is_read_mushroom = false;
-			itemsMarioCanEat.push_back(mushroom);
-		}
-		else if (player->GetLevel() == MARIO_LEVEL_SMALL)
+		if (player->GetLevel() == MARIO_LEVEL_SMALL)
 		{
 			Mushroom* mushroom = new Mushroom(x, y);
 			if (player->y < 567)
 				mushroom->is_read_mushroom = false;
 			itemsMarioCanEat.push_back(mushroom);
 		}
-		else if (player->GetLevel() == MARIO_LEVEL_BIG|| player->GetLevel() == MARIO_LEVEL_BIG_TAIL|| player->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
+		else if (player->GetLevel() == MARIO_LEVEL_BIG || player->GetLevel() == MARIO_LEVEL_BIG_TAIL || player->GetLevel() == MARIO_LEVEL_BIG_ORANGE)
 		{
-			
+
 			SuperLeaf *superleaf = new SuperLeaf(x, y);
 			itemsMarioCanEat.push_back(superleaf);
 		}
+		break;
+	}
+	case 2: //green mushroom
+	case 3:
+	{
+
+		Mushroom* mushroom = new Mushroom(x, y);
+		mushroom->is_read_mushroom = false;
+		itemsMarioCanEat.push_back(mushroom);
 		break;
 	}
 	case ITEM_MONEY:
@@ -308,7 +312,7 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 	{
 		//int state = atof(tokens[4].c_str());
 		obj = new MovingFlatform(player);
-		//obj->SetState(state);
+		obj->SetState(MOVING_FLATFORM_STATE_MOVE_LEFT);
 		break;
 	}
 	case 16:
@@ -323,6 +327,13 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 		//int state = atof(tokens[4].c_str());
 		obj = new BoomerangWeapon(x,y, player);
 		obj->SetState(BROTHER_STATE_MOVE_RIGHT);
+		break;
+	}
+	case 18:
+	{
+		//int state = atof(tokens[4].c_str());
+		obj = new BrickBlinkCoin(y, player);
+		//obj->SetState(BROTHER_STATE_MOVE_RIGHT);
 		break;
 	}
 	default:
@@ -509,6 +520,21 @@ void MovingCameraScence::Update(DWORD dt)
 
 					//DebugOut(L"[ERROR------------vo tao mushroom khong a--------------] DINPUT::GetDeviceData failed. Error: \n");
 				}
+
+				
+			}
+
+			if (dynamic_cast<BrickBlinkCoin*>(objects[i]))
+			{
+				DebugOut(L"[ERROR------------vvô moving chu?--------------] DINPUT::GetDeviceData failed. Error: %f\n");
+
+				BrickBlinkCoin* brickblinkcoin = dynamic_cast<BrickBlinkCoin*>(objects[i]);
+				if (brickblinkcoin->dropped == true && brickblinkcoin->count_to_stand_still < 12)
+				{
+					DropItem(0, brickblinkcoin->x, brickblinkcoin->y);
+					brickblinkcoin->dropped = false;
+					player->number_brick_coin_hit++;
+				}
 			}
 		}
 
@@ -587,11 +613,16 @@ void MovingCameraScence::Update(DWORD dt)
 	if (player == NULL) return; 
 
 	// Update camera to follow mario
-	float cx, cy;
+	
+
+
+
+
+	/*float cx, cy;
 
 	cx=CGame::GetInstance()->GetCamX();
 	cy=CGame::GetInstance()->GetCamY();
-	//
+
 	if (player->is_in_end_scene)
 	{
 		player->GetPosition(cx, cy);
@@ -601,7 +632,7 @@ void MovingCameraScence::Update(DWORD dt)
 	}
 
 
-	//cx += 200;
+
 
 	if (cx < 0)
 		return;
@@ -611,17 +642,7 @@ void MovingCameraScence::Update(DWORD dt)
 		return;
 	if (cx < 6192 && player->is_in_near_end_scene == true)
 		return;
-	/*if (player->y < 570) //trên trời
-	{
-		if (cy < 0)
-		{
-			CGame::GetInstance()->SetCamPos(cx, 0);
-			return;
-		}
-		CGame::GetInstance()->SetCamPos(cx, cy);
 
-	}
-	else */
 
 	if (player->is_in_end_scene == true)// mặt đất
 	{
@@ -632,18 +653,51 @@ void MovingCameraScence::Update(DWORD dt)
 	{
 		
 		float x = CGame::GetInstance()->GetCamX();
-		CGame::GetInstance()->SetCamPos(x + 0.6f * dt, 700);
-		//CGame::GetInstance()->SetCamPos(cx, 700);
+		CGame::GetInstance()->SetCamPos(x + 0.1f * dt, 700);
+	}*/
+
+
+
+	float cx, cy;
+	player->GetPosition(cx, cy);
+
+	CGame *game = CGame::GetInstance();
+	cx -= game->GetScreenWidth() / 2;
+	cy -= game->GetScreenHeight() / 2;
+
+	cx += 200;
+
+	if (cx < 0)
+		return;
+	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
+		return;
+
+	if (player->y < 570) //trên trời
+	{
+		if (cy < 0)
+		{
+			CGame::GetInstance()->SetCamPos(cx, 0);
+			return;
+		}
+		CGame::GetInstance()->SetCamPos(cx, cy);
+
 	}
-		//CGame::GetInstance()->SetCamPos(350, 700);
-	//CGame::GetInstance()->SetCamPos(2064 * 3, 700);
-	//else // dưới lòng đất
-		
-	//{
-		//if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
-			//return;
-		//CGame::GetInstance()->SetCamPos(cx, 1368);
-	//}
+	else if (player->is_on_the_ground == false)// mặt đất   
+	{
+		CGame::GetInstance()->SetCamPos(cx, 700);
+		//CGame::GetInstance()->SetCamPos()
+	}
+	else // dưới lòng đất
+
+	{
+		if (cx > 7251 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)//7251 là cạnh phải của hộp hình chữ nhật camera
+			return;
+		CGame::GetInstance()->SetCamPos(cx, 1368);
+	}
+
+
+
+
 
 
 			

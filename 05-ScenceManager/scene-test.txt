@@ -1024,8 +1024,7 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink  18 brickbinkcoin
 # MARIO tham số cuối là is_moving_in_world_map
-0	5800	1155	1	0
-	
+0	500	1155	1	0	
 # BRICK 
 #1	0	1848	22
 # con cua//6670
@@ -1134,7 +1133,7 @@
 8	5424	1160	19	
 #hub p meter x,y nhu khong a, de dai animationset a
 9	100	100	27
-#brick question
+#brick question: 0 ? chứ tiền, 1 ? chưa item, 2 ? nam xam, 3 blink nam xanh, 4 blink chua item
 #test				nút p	chứ item
 10	552	1080	2	0	0
 10	600	1080	2	0	0
@@ -1150,6 +1149,8 @@
 
 10	4440	1128	2	0	1
 
+#test
+10	500	1100	2	0	4
 #brick blink
 11	5856	1224	3
 11	5904	1224	3
@@ -1175,7 +1176,8 @@
 
 11	6288	1176	3
 
-10	4350	445	2	0	1
+//chua nam xanh
+10	4350	445	2	0	2
 # coin
 #coin trên mặt đất
 12	3240	979	14
@@ -1239,7 +1241,7 @@
 14	5616	1176	15	100
 
 14	7008	1201	15	200
-#pine trên cao // Á, SỬA LẠI @@
+#pine trên cao 
 14	6816	386	15	200
 #pine dưới đất
 14	7059	1439	15	300
@@ -1259,8 +1261,8 @@
 #17	275	905	30
 #hihi
 #hihi?
-#brick blink coin
-#18	7500	1100	2
+brick blink coin
+#18	500	1100	2
 # --- SCENE PORTAL ----
 # type	l	t	ani_set_id	r	b	scene_id
 #50	115	98	0	148	150	1

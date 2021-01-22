@@ -696,7 +696,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		is_run_for_fly_high = false;
 	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 
-	if (this->is_in_end_scene == false && this->is_auto_running==false)
+	/*if (this->is_in_end_scene == false && this->is_auto_running==false)
 	{
 		if (this->x < CGame::GetInstance()->GetCamX() + 20)
 		{
@@ -707,7 +707,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 			SetPosition(CGame::GetInstance()->GetCamX() + 760 - 20, this->y);
 		}
-	}
+	}*/
 
 	
 }

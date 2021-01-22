@@ -1,5 +1,6 @@
 ﻿#include "MovingFlatform.h"
 #include "Game.h"
+#include "BrickBlink.h"
 
 void MovingFlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
@@ -34,12 +35,26 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	else
 	{
+		float vy_flatform = 0;
+		float vx_flatform = 0;
+
+		float y_flatform = 0;
+		float x_flatform = 0;
+
+
+
 		float min_tx, min_ty, nx = 0, ny;
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
 		x += min_tx * dx + nx * 0.4f;
 		//y += min_ty * dy + ny * 0.4f;
+
+		x_flatform = min_tx * dx + nx * 0.4f;
+		y_flatform = min_ty * dy + ny * 0.4f;
+
+		vy_flatform = vy;
+		vx_flatform = vx;
 
 		if (nx != 0)
 			vx = 0;
@@ -57,9 +72,15 @@ void MovingFlatform::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 			LPCOLLISIONEVENT e = coEventsResult[i];
 
+			if (dynamic_cast<BrickBlink*>(e->obj))
+			{
+				
+				y += (y_flatform + y_flatform);// double for safe
+				x += (x_flatform + x_flatform);
+				x += dx;
+				y += dy;
+			}
 
-
-			
 		}
 
 	}
@@ -97,7 +118,7 @@ void MovingFlatform::SetState(int state)
 	switch (state)
 	{
 	case MOVING_FLATFORM_STATE_MOVE_LEFT:
-		vx = 0.04;
+		vx = -0.04;
 		vy = 0;
 		break;
 	case MOVING_FLATFORM_STATE_MOVE_RIGHT:

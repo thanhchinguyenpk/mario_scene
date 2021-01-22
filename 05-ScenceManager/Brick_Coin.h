@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GameObject.h"
 #include "Game.h"
 #include "PlayScence.h"
@@ -14,6 +14,10 @@
 
 #define BRICK_COIN_ANI_CHUA_DAP	 0
 #define BRICK_COIN_ANI_DA_DAP	 1
+#define BRICK_COIN_ANI_BLINK_BLINK	 2
+
+#define IS_QUESTION		0
+#define IS_BLINK		1
 
 //extern vector<LPGAMEOBJECT> itemsMarioCanEat;
 
@@ -23,12 +27,13 @@ class Brick_Coin : public CGameObject
 	//float originalX;
 public:
 
-	int brick_type = 0;
+	int brick_type = 0; //0 ? chứ tiền, 1 ? chưa item, 2 ? nam xam, 3 blink nam xanh, 4 blink chua item
 
 	CMario * mario = NULL;
 	float originalY;
 
 	int is_contain_button_p = 0;
+	//int is_contain_item = 0;
 	
 	bool is_hit = false;
 	bool dropped = false;

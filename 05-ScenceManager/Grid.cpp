@@ -41,13 +41,13 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 			for (int k = 0; k < cells[i][j].size(); k++) {
 				//DebugOut(L"id %d\n", cells[i][j].at(k)->GetId());
 				//if (cells[i][j].at(k)->GetHealth()) {
-				//if (cells[i][j].at(k)->is_appeared == false)
+				if (cells[i][j].at(k)->is_appeared == false&& cells[i][j].at(k)->used==false)
 					//{//  && 
 					//if (j >= left && j <= right)
-				//{
+				{
 					Classify(cells[i][j].at(k));
-					//cells[i][j].at(k)->is_appeared = true;
-				//}
+					cells[i][j].at(k)->is_appeared = true;
+				}
 				//}
 					//if (!cells[i][j].at(k)->is_in_grid && cells[i][j].at(k)->is_appeared) {
 				
@@ -88,9 +88,9 @@ void CGrid::UpdatePositionInGrid(float cam_x, float cam_y)
 				if (j < 0) j = 0;
 				if (i < 0) i = 0;
 				for (int k = 0; k < cells[i][j].size(); k++) {
-					//if (cells[i][j].at(k)->id_grid == enemy->id_grid) {
+					if (cells[i][j].at(k)->id_grid == enemy->id_grid) {
 						cells[i][j].erase(cells[i][j].begin() + k);
-					//}
+					}
 				}
 			}
 
@@ -129,7 +129,27 @@ LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float 
 			obj->SetState(GOOMBA_STATE_WALKING);
 			break;
 		}
+	case 7:
+	{
+		int lv =1;
+		obj = new VenusFireTrap(player, lv);
+		//obj->SetState(VENUS_STATE_GOING_UP);
+		break;
 	}
+	case 4:
+
+	{	obj = new CConCo(player, y);
+
+
+		dynamic_cast<CConCo*>(obj)->type = 2; //loại cò
+
+
+		break;
+	}
+
+
+	}
+
 
 	obj->SetPosition(x, y);
 	obj->w = w;

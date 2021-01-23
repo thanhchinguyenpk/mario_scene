@@ -521,7 +521,7 @@ void CPlayScene::Update(DWORD dt)
 	for (size_t i = 0; i < enemies.size(); i++)
 	{
 		enemies[i]->Update(dt, &coObjects);
-		//enemies[i]->is_appeared = false;
+		enemies[i]->is_appeared = false;
 	}
 
 	for (size_t i = 0; i < ghost_platforms.size(); i++)
@@ -617,13 +617,26 @@ void CPlayScene::Update(DWORD dt)
 
 	}
 
+	for (size_t i = 0; i < enemies.size(); i++)
+	{
+		if (enemies[i]->used == true)
+		{
+			DebugOut(L"huhu xoa con cua chua, delete roi ne\n");
+			delete enemies[i];
+			enemies[i] = nullptr;
+
+			enemies.erase(enemies.begin() + i);
+		}
+
+	}
+
 	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
 	{
 		if (itemsMarioCanEat[i]->used == true && !dynamic_cast<RandomBonus*>(itemsMarioCanEat[i]))
 		{
 			if (dynamic_cast<CoinEffect*>(itemsMarioCanEat[i]))
 			{
-				DebugOut(L"huhu coin ef bi xoa rui, delete roi ne\n");
+				
 			}
 			delete itemsMarioCanEat[i];
 			itemsMarioCanEat[i] = nullptr;

@@ -1,3 +1,9 @@
 #	 type	x	y	w	h	ani_set_id	extra_settings per object type
-
+//con cua
+11	2	2497	1147	48	48	5	2	100
 12	2	2640	1147	48	48	5	2	100
+
+//cay hoa
+20	7	1106	1080	48	96	13	2	1
+//conco
+14	4	1728	1051	48	78	8	2	100

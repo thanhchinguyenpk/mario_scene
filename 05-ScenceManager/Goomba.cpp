@@ -180,6 +180,9 @@ void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+	if (y > 1500)
+		used = true;
+
 	//DebugOut(L"[ERROR----------vy cua con cua-----------------] DINPUT::GetDeviceData failed. Error: %g\n", vy);
  } 
 

@@ -74,7 +74,7 @@ public:
 
 	CGrid(LPCWSTR objFilePath, LPCWSTR gridFilePath,CMario *mario);
 	~CGrid() {};
-	//CGrid() {};
+
 
 };
 

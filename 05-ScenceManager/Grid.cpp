@@ -39,7 +39,7 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 			DebugOut(L"size %d\n", cells[i][j].size());*/
 
 			for (int k = 0; k < cells[i][j].size(); k++) {
-				//DebugOut(L"id %d\n", cells[i][j].at(k)->GetId());
+				DebugOut(L"id %d\n", cells[i][j].at(k)->id_grid);
 				//if (cells[i][j].at(k)->GetHealth()) {
 				if (cells[i][j].at(k)->is_appeared == false&& cells[i][j].at(k)->used==false)
 					//{//  && 
@@ -131,21 +131,33 @@ LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float 
 		}
 	case 7:
 	{
-		int lv =1;
+		int lv =type;
 		obj = new VenusFireTrap(player, lv);
 		//obj->SetState(VENUS_STATE_GOING_UP);
 		break;
 	}
-	case 4:
-
-	{	obj = new CConCo(player, y);
-
-
-		dynamic_cast<CConCo*>(obj)->type = 2; //loại cò
-
-
+	case 8:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new PiranhaPlant(player);
+		//obj->SetState(PIRANHA_PLANT_STATE_GOING_UP);
 		break;
 	}
+
+	case 4:
+
+	{
+		obj = new CConCo(player, y);
+		dynamic_cast<CConCo*>(obj)->type = type; //loại cò
+		break;
+	}
+	case 5:
+	{
+		obj = new ParaGoomba(player);
+		//obj->SetState(PARA_GROOMBA_STATE_JUMP_BIG);
+		break;
+	}
+
 
 
 	}

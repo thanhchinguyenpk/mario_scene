@@ -722,11 +722,13 @@ void CPlayScene::Render()
 	for (int i = 0; i < itemsMarioCanEat.size(); i++)
 		itemsMarioCanEat[i]->Render();
 
-	for (int i = 0; i < objects.size(); i++)
-		objects[i]->Render();
+	
 
 	for (int i = 0; i < enemies.size(); i++)
 		enemies[i]->Render();
+
+	for (int i = 0; i < objects.size(); i++)
+		objects[i]->Render();
 	
 
 	

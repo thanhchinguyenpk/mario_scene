@@ -64,10 +64,13 @@ public:
 	void Classify(LPGAMEOBJECT obj);
 	void GetListObjInGrid(float cam_x, float cam_y);
 
+	void UpdatePositionInGrid(float cam_x, float cam_y);
+
 	LPGAMEOBJECT CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra = 0, int nx = 1, int angle = 1, int id_grid = 0);
 
 	void ReadFileObj();
 	void ReadFileGrid();
+
 
 	CGrid(LPCWSTR objFilePath, LPCWSTR gridFilePath,CMario *mario);
 	~CGrid() {};

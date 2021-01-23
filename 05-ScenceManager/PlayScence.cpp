@@ -494,7 +494,11 @@ void CPlayScene::Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
-	
+
+	CGame* game = CGame::GetInstance();
+	grid->GetListObjInGrid(game->GetCamX(), game->GetCamY());
+
+	DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", objects.size());
 	
 	GameTime::GetInstance()->Update(dt);
 
@@ -510,7 +514,15 @@ void CPlayScene::Update(DWORD dt)
 
 	for (size_t i = 0; i < ghost_platforms.size(); i++)
 		coObjects.push_back(ghost_platforms[i]);
+
+	for (size_t i = 0; i < enemies.size(); i++)
+		coObjects.push_back(enemies[i]);
 	
+	for (size_t i = 0; i < enemies.size(); i++)
+	{
+		enemies[i]->Update(dt, &coObjects);
+		//enemies[i]->is_appeared = false;
+	}
 
 	for (size_t i = 0; i < ghost_platforms.size(); i++)
 	{
@@ -621,6 +633,9 @@ void CPlayScene::Update(DWORD dt)
 	}
 
 
+	grid->UpdatePositionInGrid(game->GetCamX(), 750);
+
+
 
 	if (player->x > 8580 ||player->is_die==true)
 	{
@@ -642,7 +657,7 @@ void CPlayScene::Update(DWORD dt)
 	float cx, cy;
 	player->GetPosition(cx, cy);
 
-	CGame *game = CGame::GetInstance();
+	//CGame *game = CGame::GetInstance();
 	cx -= game->GetScreenWidth() / 2;
 	cy -= game->GetScreenHeight() / 2;
 
@@ -696,6 +711,10 @@ void CPlayScene::Render()
 
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
+
+	for (int i = 0; i < enemies.size(); i++)
+		enemies[i]->Render();
+	
 
 	
 

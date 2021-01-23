@@ -48,6 +48,8 @@ public:
 	int w;
 	int h;
 	int id_grid;
+	int id;
+	bool is_appeared = false;
 
 	bool is_cam_coming = false;
 

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include "debug.h"
+#include "PlayScence.h"
 
 
 #include "Utils.h"
@@ -24,10 +25,10 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 	enemies.clear();
 
 	int top = (int)((cam_y) / CELL_HEIGHT);
-	int bottom = (int)((cam_y + game->GetScreenHeight()) / CELL_HEIGHT) - 1;
+	int bottom = (int)((cam_y + 730) / CELL_HEIGHT);
 
 	int left = (int)((cam_x) / CELL_WIDTH);
-	int right = (int)((cam_x + game->GetScreenWidth()) / CELL_WIDTH);
+	int right = (int)((cam_x + 760) / CELL_WIDTH);
 
 	for (int i = top - 1; i <= bottom + 1; i++)
 		for (int j = left - 1; j <= right + 1; j++) {
@@ -40,10 +41,16 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 			for (int k = 0; k < cells[i][j].size(); k++) {
 				//DebugOut(L"id %d\n", cells[i][j].at(k)->GetId());
 				//if (cells[i][j].at(k)->GetHealth()) {
+				//if (cells[i][j].at(k)->is_appeared == false)
+					//{//  && 
 					//if (j >= left && j <= right)
-						//cells[i][j].at(k)->is_appeared = true;
+				//{
+					Classify(cells[i][j].at(k));
+					//cells[i][j].at(k)->is_appeared = true;
+				//}
+				//}
 					//if (!cells[i][j].at(k)->is_in_grid && cells[i][j].at(k)->is_appeared) {
-						Classify(cells[i][j].at(k));
+				
 					//	cells[i][j].at(k)->is_in_grid = true;
 				//	}
 
@@ -53,6 +60,57 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 
 	game->GetCurrentScene()->SetEnemiesInScene(enemies);
 	//game->GetCurrentScene()->SetEnemiesInScene(enemies);
+
+}
+
+void CGrid::UpdatePositionInGrid(float cam_x, float cam_y)
+{
+	CGame* game = CGame::GetInstance();
+	int top_cell = (int)((cam_y) / CELL_HEIGHT);
+	int bottom_cell = (int)((cam_y + game->GetScreenHeight()) / CELL_HEIGHT) - 1;
+
+	int left_cell = (int)((cam_x) / CELL_WIDTH);
+	int right_cell = (int)((cam_x + game->GetScreenWidth()) / CELL_WIDTH);
+	enemies.clear();
+	//items.clear();
+
+
+	CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+	enemies = scene->enemies;
+	//items = scene->items;
+	// update  vị trí của enemy trong cam từ cell này qua cell khác
+	// chõ này Phương xóa ra khỏi cell rồi đặt vô?
+	for (int m = 0; m < enemies.size(); m++) {
+		LPGAMEOBJECT enemy = enemies[m];
+
+		for (int i = top_cell - 1; i <= bottom_cell + 1; i++)
+			for (int j = left_cell +1; j <= right_cell-1; j++) {
+				if (j < 0) j = 0;
+				if (i < 0) i = 0;
+				for (int k = 0; k < cells[i][j].size(); k++) {
+					//if (cells[i][j].at(k)->id_grid == enemy->id_grid) {
+						cells[i][j].erase(cells[i][j].begin() + k);
+					//}
+				}
+			}
+
+		int top = (int)(enemy->GetY() / CELL_HEIGHT);
+		int bottom = (int)((enemy->GetY() + enemy->h) / CELL_HEIGHT);
+		int left = (int)(enemy->GetX() / CELL_WIDTH);
+		int right = (int)((enemy->GetX() + enemy->w) / CELL_WIDTH);
+
+		//DebugOut(L"left %d\n", left);
+		//DebugOut(L"right %d\n", right);
+		for (int i = top; i <= bottom; i++)
+			for (int j = left; j <= right; j++) {
+				cells[i][j].push_back(enemy);
+			}
+	}
+
+	
+
+
+
 
 }
 
@@ -155,7 +213,7 @@ void CGrid::ReadFileGrid()
 
 	f.close();
 
-	DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", cells[6][14].size());
+	//DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", cells[6][14].size());
 }
 
 CGrid::CGrid(LPCWSTR objFilePath, LPCWSTR gridFilePath, CMario *mario)

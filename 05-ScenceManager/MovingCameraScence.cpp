@@ -35,6 +35,8 @@ MovingCameraScence::MovingCameraScence(int id, LPCWSTR filePath):
 #define SCENE_SECTION_ANIMATION_SETS	5
 #define SCENE_SECTION_OBJECTS	6
 #define SCENE_SECTION_MAP	7
+#define SCENE_SECTION_MOVE_CAM	8
+#define SCENE_SECTION_OBJECTS_GRID 9
 
 #define OBJECT_TYPE_MARIO	0
 #define OBJECT_TYPE_BRICK	1
@@ -312,7 +314,7 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 	{
 		//int state = atof(tokens[4].c_str());
 		obj = new MovingFlatform(player);
-		obj->SetState(MOVING_FLATFORM_STATE_MOVE_LEFT);
+		
 		break;
 	}
 	case 16:
@@ -351,7 +353,7 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 	if(dynamic_cast<BrickBlink*>(obj))
 	{
 		listBricks.push_back(obj);
-		DebugOut(L"[ERR]mấy viên? object type: %d\n", object_type);
+		//DebugOut(L"[ERR]mấy viên? object type: %d\n", object_type);
 	} else if (dynamic_cast<RandomBonus*>(obj)|| dynamic_cast<Coin*>(obj))
 		itemsMarioCanEat.push_back(obj);
 	else
@@ -359,6 +361,39 @@ void MovingCameraScence::_ParseSection_OBJECTS(string line)
 
 
 	
+}
+
+void MovingCameraScence::_ParseSection_CAMERA(string line)
+{
+	CGame* game_temp = CGame::GetInstance();
+	MovingCameraScence* map_scene = (MovingCameraScence*)game_temp->GetCurrentScene();
+
+
+	vector<string> tokens = split(line);
+	DebugOut(L"[bao nhieu phan tu DINPUT::GetDeviceData failed. Error: %d\n", tokens.size());
+
+	for (int k = 0; k < tokens.size(); k++) {
+		int temp = atoi(tokens[k].c_str());
+		map_scene->arr.push_back(temp);
+
+	}
+
+	
+
+}
+
+void MovingCameraScence::_ParseSection_OBJECTS_GRID(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 2) return; // skip invalid lines
+	wstring objPath = ToWSTR(tokens[0].c_str());
+	wstring gridPath = ToWSTR(tokens[1].c_str());
+
+	//DebugOut(L"cvô tới chỗ này chưa?\n");
+	grid = new CGrid(objPath.c_str(), gridPath.c_str(), player);
+	grid->ReadFileObj();
+	grid->ReadFileGrid();
 }
 
 void MovingCameraScence::_ParseSection_MAP(string line)
@@ -433,7 +468,23 @@ void MovingCameraScence::Load()
 		if (line == "[OBJECTS]") { 
 			section = SCENE_SECTION_OBJECTS; continue; }
 		if (line == "[MAP]") {
-			section = SCENE_SECTION_MAP; continue;
+			section = SCENE_SECTION_MAP;
+			DebugOut(L"phai vo mmove map: %d\n");
+			//DebugOut(L"huhuhuhuhu1?  chưa?\n");
+			continue;
+		
+		
+		}
+
+		if (line == "[MOVE_CAM]") {
+			section = SCENE_SECTION_MOVE_CAM;
+
+			continue;
+		}
+		if (line == "[OBJECTS_GRID]") {
+			section = SCENE_SECTION_OBJECTS_GRID;
+			DebugOut(L"huhuhuhuhu?  chưa?\n");
+			continue;
 		}
 
 		if (line[0] == '[') { section = SCENE_SECTION_UNKNOWN; continue; }	// một là đang ở dòng data
@@ -451,6 +502,8 @@ void MovingCameraScence::Load()
 			case SCENE_SECTION_ANIMATION_SETS: _ParseSection_ANIMATION_SETS(line); break;
 			case SCENE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 			case SCENE_SECTION_MAP: _ParseSection_MAP(line); break; 
+			case SCENE_SECTION_MOVE_CAM: _ParseSection_CAMERA(line); break;
+			case SCENE_SECTION_OBJECTS_GRID: _ParseSection_OBJECTS_GRID(line); break;
 		}
 	}
 
@@ -467,7 +520,12 @@ void MovingCameraScence::Update(DWORD dt)
 {
 	// We know that Mario is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
-	
+	CGame* game = CGame::GetInstance();
+	if (player->is_on_the_ground == false)
+
+
+
+	grid->GetListObjInGrid(game->GetCamX(), game->GetCamY());
 	
 	GameTime::GetInstance()->Update(dt);
 
@@ -481,12 +539,17 @@ void MovingCameraScence::Update(DWORD dt)
 	for (size_t i = 0; i < listBricks.size(); i++)
 		coObjects.push_back(listBricks[i]);
 
+	for (size_t i = 0; i < Items.size(); i++)
+		coObjects.push_back(Items[i]);
 
 
 
 	for (size_t i = 0; i < itemsMarioCanEat.size(); i++)
 	{
 		itemsMarioCanEat[i]->Update(dt, &coObjects);
+		//if(dynamic_cast<RandomBonus*>(itemsMarioCanEat[i]))
+			//DebugOut(L"ua bi null ha ca nha?\n");
+
 	}
 
 	player->CheckOverlapWithItems(&itemsMarioCanEat);
@@ -494,8 +557,13 @@ void MovingCameraScence::Update(DWORD dt)
 	for (size_t i = 0; i < listBricks.size(); i++)
 	{
 		listBricks[i]->Update(dt, &coObjects);
+		listBricks[i]->is_appeared = false;
 	}
-
+	for (size_t i = 0; i < Items.size(); i++)
+	{
+		Items[i]->Update(dt, &coObjects);
+		Items[i]->is_appeared = false;
+	}
 	
 	player->Update(dt, &coObjects);
 
@@ -594,7 +662,8 @@ void MovingCameraScence::Update(DWORD dt)
 		}
 	}
 
-
+	if (player->is_on_the_ground == false)
+		grid->UpdatePositionInGrid(game->GetCamX(), 750);
 
 	if (player->x > 8580 ||player->is_die==true)
 	{
@@ -617,8 +686,7 @@ void MovingCameraScence::Update(DWORD dt)
 
 
 
-
-	/*float cx, cy;
+	float cx, cy;
 
 	cx=CGame::GetInstance()->GetCamX();
 	cy=CGame::GetInstance()->GetCamY();
@@ -654,11 +722,11 @@ void MovingCameraScence::Update(DWORD dt)
 		
 		float x = CGame::GetInstance()->GetCamX();
 		CGame::GetInstance()->SetCamPos(x + 0.1f * dt, 700);
-	}*/
+	}
+	
 
-
-
-	float cx, cy;
+	
+/*	float cx, cy;
 	player->GetPosition(cx, cy);
 
 	CGame *game = CGame::GetInstance();
@@ -669,7 +737,7 @@ void MovingCameraScence::Update(DWORD dt)
 
 	if (cx < 0)
 		return;
-	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
+	if (cx > 7728 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
 
 	if (player->y < 570) //trên trời
@@ -695,12 +763,12 @@ void MovingCameraScence::Update(DWORD dt)
 		CGame::GetInstance()->SetCamPos(cx, 1368);
 	}
 
-
-
-
-
-
-			
+	*/
+	
+	
+	
+	// đừng động zô, cái này ấn nút để chuyển tới cái vị trí khác
+	//CGame::GetInstance()->SetCamPos(arr[indexmove], 700);
 
 }
 
@@ -717,17 +785,18 @@ void MovingCameraScence::Render()
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 
-	
+	for (int i = 0; i < Items.size(); i++)
+		Items[i]->Render();
 
 	game_time = GameTime::GetInstance();
 	game_ui->Render(300 - game_time->GetTime(), the_number_mario_hit_brick, player->score,4,1);
 
-	if(is_mario_got_card)
+	if(player->is_hit_bonus)
 	{
 		float x = CGame::GetInstance()->GetCamX();
 		float y = CGame::GetInstance()->GetCamY();
 
-		CSprites::GetInstance()->Get(40040 + card)->DrawFlipX(x + 534, y + 645, 0, 255, 1, 1);
+		CSprites::GetInstance()->Get(40040 + player->which_card)->DrawFlipX(x + 534, y + 645, 0, 255, 1, 1);
 	}
 			
 	
@@ -776,9 +845,18 @@ void MovingCameraScenceKeyHandler::OnKeyDown(int KeyCode)
 	CMario *mario = ((MovingCameraScence*)scence)->GetPlayer();
 	//vector<LPGAMEOBJECT> objects = ((MovingCameraScence*)scence)->objects;
 
+	CGame* game_temp = CGame::GetInstance();
+	MovingCameraScence* map_scene = (MovingCameraScence*)game_temp->GetCurrentScene();
+
+	
 	switch (KeyCode)
 	{
-
+	case DIK_P:
+		//CGame::GetInstance()->SetCamPos(CGame::GetInstance()->GetCamX() + 100, CGame::GetInstance()->GetCamY());
+			map_scene->indexmove++;
+		if (map_scene->indexmove == 7)
+			map_scene->indexmove = 0;
+		break;
 	case DIK_K:
 		CGame::GetInstance()->SetCamPos(CGame::GetInstance()->GetCamX() + 100, CGame::GetInstance()->GetCamY());
 		break;

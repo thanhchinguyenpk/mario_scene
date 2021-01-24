@@ -76,11 +76,11 @@ void Map::FreeMap(int row, int column)
 
 	//Free each sub-array
 	for (int i = 0; i < row; ++i) {
-		delete[] TileMapArray2D[i];
+		//delete[] TileMapArray2D[i];
 	}
 
 	//Free the array of pointers
-	delete[] TileMapArray2D;
+	//delete[] TileMapArray2D;
 
 
 	DebugOut(L"[INFO] Finish delete map. \n");

@@ -28,6 +28,8 @@ void CGoomba::GetBoundingBox(float &left, float &top, float &right, float &botto
 
 void CGoomba::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+
+	//DebugOut(L"update goomba\n");
 	if (mario->x + mario->distance_to_set_state_enemy > this->x && this->is_cam_coming == false)
 	{
 		SetState(GOOMBA_STATE_WALKING);

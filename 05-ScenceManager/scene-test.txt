@@ -1,4 +1,5 @@
-﻿#haha
+﻿
+#haha
 #id 	file_path 		 row_map     column_map   file_texture   row_tiled    columtile   
 [MAP]
 0	textures\map_thanh.txt	41	176	textures\Final1.png	30 	29
@@ -945,7 +946,7 @@
 #faster
 785	40136	80	40137	80	40138	80	40139	80
 # ==== mario transform ====
-786	10021	300	40140	300	10021	300	40140	300	10021	300	40140	300
+786	10021	200	40140	200	10021	200	40140	200	10021	200	40140	200
 ###########################################
 # id	ani1	ani2	ani3
 #
@@ -1023,14 +1024,14 @@
 # type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas,4=conco
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 #9 =		,10=questionbrick	,11=brick blink  18 brickbinkcoin
-# MARIO tham số cuối là is_moving_in_world_map
-0	2220	1155	1	0	
+# MARIO tham số cuối là is_moving_in_world_map6420	1155
+0	348	968	1	0	
 
 
 #flatform
 #4=width 5=height //flat form thi khong render so 22 de choi thoi
 #nen duoi dat	
-6	6288	1872	1	1000	5	0
+6	8288	1872	1	1000	5	0
 #cong tren mat dat
 #6	300	1180	1	50	70	1
 #cong duoi mat dat
@@ -1062,8 +1063,8 @@
 6	6768	1776	1	336	48	0
 6	6720	1824	1	384	48	0
 #chùm hai viên riêng lẻ
-6	6336	1440	1	96	48	0
-#chặn 4 mặt dưới lòng đất
+6	6370	1440	1	96	48	0
+#chặn 4 mặt dưsới lòng đất
 6	5952	1392	1	1536	48	0
 6	5952	1440	1	384	432	0
 6	5952	1872	1	1536	96	0
@@ -1115,6 +1116,8 @@
 ##################################################################
 #hub p meter x,y nhu khong a, de dai animationset a
 9	100	100	27
+#red goomba
+5	2900	1148	6
 #brick question: 0 ? chứ tiền, 1 ? chưa item, 2 ? nam xam, 3 blink nam xanh, 4 blink chua item
 #test				nút p	chứ item
 10	552	1080	2	0	0

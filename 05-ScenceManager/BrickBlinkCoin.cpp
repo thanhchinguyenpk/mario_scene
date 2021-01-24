@@ -56,7 +56,7 @@ void BrickBlinkCoin::SetState(int state)
 	switch (state)
 	{
 	case BRICK_COIN_STATE_DA_DAP:
-		vy = -0.2f;
+		vy = -0.4f;
 		break;
 	case BRICK_COIN_STATE_STAND_STILL:
 		vx = 0;

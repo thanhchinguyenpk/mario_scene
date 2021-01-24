@@ -1060,6 +1060,8 @@
 #9 =		,10=questionbrick	,11=brick blink  18 brickbinkcoin
 # MARIO tham s? cu?i là is_moving_in_world_map
 0	350	1155	1	0
+
+
 [STATIC_OBJECTS]
 # loai	x	y	w	h    ani_set  state	type_obj
 # state: cactus = 1, help_tag = 2, guard = 3, 4 = curtain, 5=s? 3, 6= arrow 

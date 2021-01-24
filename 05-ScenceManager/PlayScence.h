@@ -59,8 +59,8 @@ public:
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> itemsMarioCanEat;
 	vector<LPGAMEOBJECT> listBricks;
-	vector<LPGAMEOBJECT> ghost_platforms;
-	vector<LPGAMEOBJECT> enemies;
+	vector<LPGAMEOBJECT> ghost_platforms;//cd
+	vector<LPGAMEOBJECT> enemies;//dr
 
 
 	void DropItem(int itemType, float x, float y);
@@ -96,6 +96,7 @@ public:
 	
 
 	void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) { enemies.clear(); enemies = listEnemy; }
+	void SetItemsInScene(vector<LPGAMEOBJECT> listItem) { }
 };
 
 class CPlayScenceKeyHandler : public CScenceKeyHandler

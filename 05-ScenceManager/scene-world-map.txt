@@ -880,10 +880,11 @@
 #  5=red goom ba, 6=flatform, 7 venus trap, 8 = piranha
 # MARIO
 0	120	168	1	1
+
 #hub p meter x,y nhu khong a, de dai animationset a
 #9	1	1	2
 [MAP_SELECTION]
-# id	x	y     is_portal	 t	l	 b	 r	state
+# id	x	y     is_portal	 t	r	 b	 l	state
 0	120	168	0	-1	2	-1	-1	0
 
 1	216	72	1	-1	6	2	-1	1
@@ -904,7 +905,7 @@
 14	408	456	0	13	-1	-1	9	6
 
 15	504	72	0	-1	18	-1	10	3
-16	504	168	0	-1	19	-1	11	4
+16	504	168	1	-1	19	-1	11	4
 17	504	360	0	-1	20	-1	13	8
 
 18	600	72	0	-1	-1	19	15	8	

@@ -6,6 +6,7 @@
 BrickBlink::BrickBlink(CMario * player)
 {
 	mario = player;
+	type = 2;
 }
 
 void BrickBlink::Render()
@@ -112,8 +113,4 @@ void BrickBlink::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (number_debris == 4)
 		this->used = true;
 	
-}
-
-BrickBlink::BrickBlink()
-{
 }

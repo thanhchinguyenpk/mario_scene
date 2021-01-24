@@ -74,6 +74,11 @@ void CMario::CheckOverlapWithItems(vector<LPGAMEOBJECT>* itemsMarioCanEat)
 	float ml, mt, mr, mb;
 	float il, it, ir, ib;
 
+	if (this == NULL)
+	{
+		DebugOut(L"ua bi null ha ca nha?\n");
+	}
+
 	this->GetBoundingBox(ml, mt, mr, mb);
 
 	for (UINT i = 0; i < itemsMarioCanEat->size(); i++)
@@ -97,6 +102,14 @@ void CMario::CheckOverlapWithItems(vector<LPGAMEOBJECT>* itemsMarioCanEat)
 			else if (dynamic_cast<Coin*>(item))
 			{
 				score += 10;
+			}
+			else if (dynamic_cast<RandomBonus*>(item))
+			{
+				/*RandomBonus* randombonus = dynamic_cast<RandomBonus*>(item);
+				randombonus->got_bonus = true;
+				randombonus->time_order_to_render_text = GetTickCount64();
+
+				this->is_hit_bonus = true;*/
 			}
 
 			item->used = true;
@@ -215,6 +228,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 			if (is_max_speed == true)
 				is_run_for_fly_high = true;
+			else
+				is_run_for_fly_high = false;
 			//
 					//if (vx >= 0)nx = 1;
 				//	else  nx = -1;//if(vx<0)
@@ -237,7 +252,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		//chạy nhanh để cất cánh bay
 
 
-		DebugOutTitle(L"04 - collision %0.1f, %0.1f", this->x, this->y);
+		//DebugOutTitle(L"04 - collision %0.1f, %0.1f", this->x, this->y);
 
 
 		//phải gia tốc hướng tâm, để có hiệu ứng chầm chầm
@@ -337,7 +352,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			// Collision logic with Goombas
 			for (UINT i = 0; i < coEventsResult.size(); i++)
 			{
-				//DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", coEventsResult.size());
+				
 				LPCOLLISIONEVENT e = coEventsResult[i];
 
 				if (ny < 0)
@@ -601,7 +616,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			SetState(MARIO_STATE_IDLE);
 			SetSpin(false);
 			spin_start = 0;
-			//is_press_h = false;
+			is_press_h = false;
 			//is_render_animation = false;
 		}
 		if (GetState() == MARIO_STATE_SHOOT_BULLET && GetTickCount64() - throw_start > 200 && throw_start)
@@ -683,7 +698,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
-	if (time_to_transform_start &&GetTickCount64() - time_to_transform_start > 1800)
+	if (time_to_transform_start &&GetTickCount64() - time_to_transform_start > 1200)
 	{
 		SetLevel(MARIO_LEVEL_BIG);
 		time_to_transform_start = 0;
@@ -704,7 +719,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		is_run_for_fly_high = false;
 	//DebugOut(L"state PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp-----> %d \n", state);
 
-	/*if (this->is_in_end_scene == false && this->is_auto_running==false)
+
+	if (this->is_in_end_scene == false && this->is_auto_running==false)
 	{
 		if (this->x < CGame::GetInstance()->GetCamX() + 20)
 		{
@@ -715,7 +731,7 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		{
 			SetPosition(CGame::GetInstance()->GetCamX() + 760 - 20, this->y);
 		}
-	}*/
+	}
 
 	
 }
@@ -1085,6 +1101,11 @@ void CMario::SetState(int state)
 
 void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
+
+
+	
+
+	
 	//left = x;
 	//top = y; 
 	left = x - MARIO_BIG_BBOX_WIDTH / 2;
@@ -1130,14 +1151,14 @@ void CMario::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	}
 	else if (level == MARIO_LEVEL_SMALL)
 	{
-		//left = x - MARIO_SMALL_BBOX_WIDTH / 2;
-		//top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
+		
 
 		left = x - MARIO_SMALL_BBOX_WIDTH / 2;
 		top = y - MARIO_SMALL_BBOX_HEIGHT / 2;
 		right = x + MARIO_SMALL_BBOX_WIDTH / 2;
 		bottom = y + MARIO_SMALL_BBOX_HEIGHT / 2;
 	}
+
 }
 
 void CMario::CollideWithEnemy()

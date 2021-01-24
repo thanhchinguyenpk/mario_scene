@@ -4,7 +4,7 @@
 
 
 #define MARIO_WALKING_SPEED			0.3f
-#define MARIO_JUMP_SPEED_Y			1.0f//0.66
+#define MARIO_JUMP_SPEED_Y			0.66f
 #define MARIO_JUMP_DEFLECT_SPEED	0.72f
 #define MARIO_GRAVITY				0.003f
 #define MARIO_DIE_DEFLECT_SPEED	 1.5f
@@ -147,7 +147,7 @@
 
 
 
-#define MARIO_UNTOUCHABLE_TIME 2000
+#define MARIO_UNTOUCHABLE_TIME 1500
 
 
 
@@ -167,6 +167,7 @@ public:
 
 	bool is_hit_bonus = false;
 	bool is_auto_running = false;
+	int which_card = 0;
 
 	DWORD untouchable_start;
 	DWORD jumping_start;
@@ -268,5 +269,5 @@ public:
 
 	void CollideWithEnemy();
 
-	int distance_to_set_state_enemy = 600;
+	int distance_to_set_state_enemy = 750;
 };

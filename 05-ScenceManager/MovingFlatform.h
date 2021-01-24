@@ -6,7 +6,7 @@
 #define	 MOVING_FLATFORM_BBOX_WIDTH 48*3
 #define	 MOVING_FLATFORM_BBOX_HEIGHT 16*3
 
-#define	MOVING_FLATFORM_WALKING_SPEED			 0.03f;
+#define	MOVING_FLATFORM_WALKING_SPEED			0.05f// 0.09f;
 
 #define  MOVING_FLATFORM_STATE_MOVE_LEFT		100
 #define  MOVING_FLATFORM_STATE_MOVE_RIGHT		200
@@ -27,6 +27,6 @@ public:
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	virtual void SetState(int state);
 	virtual void Render();
-	MovingFlatform(CMario *player) { mario = player; };
+	MovingFlatform(CMario *player) { mario = player; type = 1; };
 };
 

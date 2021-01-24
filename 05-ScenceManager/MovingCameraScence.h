@@ -37,10 +37,16 @@
 class MovingCameraScence: public CScene
 {
 public: 
+	vector<int> arr = {0,2000};//, 2000, 3000, 4000, 5000, 6000, 7000, 8000
+
+
+	CGrid * grid;
+
+	int indexmove = 0;
 
 	int card = 0;
-	bool is_mario_got_card = false;
-	CMario *player;					// A play scene has to have player, right? 
+	//bool is_mario_got_card = false;
+	CMario *player=NULL;					// A play scene has to have player, right? 
 
 	int point_hub = 0;
 	int the_number_mario_hit_brick = 0;
@@ -51,6 +57,9 @@ public:
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> itemsMarioCanEat;
 	vector<LPGAMEOBJECT> listBricks;
+	vector<LPGAMEOBJECT> Items;// này làm moving flatform
+	vector<LPGAMEOBJECT> enemies;
+	
 
 
 	void DropItem(int itemType, float x, float y);
@@ -62,6 +71,8 @@ public:
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ANIMATION_SETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	void _ParseSection_CAMERA(string line);
+	void _ParseSection_OBJECTS_GRID(string line);
 
 	void _ParseSection_MAP(string line);
 	
@@ -79,8 +90,9 @@ public:
 
 	CMario * GetPlayer() { return player; } 
 
-	void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) { objects.clear(); objects = listEnemy; }
-
+	void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) { enemies.clear(); enemies = listEnemy; }
+	void SetItemsInScene(vector<LPGAMEOBJECT> listItem) { Items.clear(); Items = listItem; }
+	void SetBrickInScene(vector<LPGAMEOBJECT> listBrick) { listBricks.clear(); listBricks = listBrick; }
 	//friend class CPlayScenceKeyHandler;
 };
 

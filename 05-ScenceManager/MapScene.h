@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Scence.h"
 #include "Mario.h"
 #include "Map.h"
@@ -31,7 +31,7 @@ public:
 	void _ParseSection_OBJECTS(string line);
 	void _ParseSection_STATIC_OBJECTS(string line);
 
-	void _ParseSection_MAP_SELECTION(string line);
+	void _ParseSection_MAP_SELECTION(string line);//mấy cái cổng 
 
 	void _ParseSection_MAP(string line);
 

@@ -45,6 +45,7 @@ class CGameObject
 {
 public:
 
+	int type;
 	int w;
 	int h;
 	int id_grid;

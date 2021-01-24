@@ -496,9 +496,17 @@ void CPlayScene::Update(DWORD dt)
 	// TO-DO: This is a "dirty" way, need a more organized way 
 
 	CGame* game = CGame::GetInstance();
+
+	if(player->is_on_the_ground==false)
+
+
+
 	grid->GetListObjInGrid(game->GetCamX(), game->GetCamY());
 
-	DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", objects.size());
+
+	//DebugOut(L"update\n");
+
+	//DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", objects.size());
 	
 	GameTime::GetInstance()->Update(dt);
 
@@ -645,8 +653,8 @@ void CPlayScene::Update(DWORD dt)
 		}
 	}
 
-
-	grid->UpdatePositionInGrid(game->GetCamX(), 750);
+	if (player->is_on_the_ground == false)
+		grid->UpdatePositionInGrid(game->GetCamX(), 750);
 
 
 
@@ -678,7 +686,7 @@ void CPlayScene::Update(DWORD dt)
 
 	if (cx < 0)
 		return;
-	if (cx > 8447 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
+	if (cx > 8442 - SCREEN_WIDTH + MARIO_BIG_BBOX_WIDTH / 2)
 		return;
 
 	if (player->y < 570) //trên trời
@@ -691,7 +699,7 @@ void CPlayScene::Update(DWORD dt)
 		CGame::GetInstance()->SetCamPos(cx, cy);
 
 	}
-	else if (player->is_on_the_ground == false)// mặt đất   
+	else if (player->is_on_the_ground == false)// trên mặt đất   
 	{
 		CGame::GetInstance()->SetCamPos(cx, 700);
 		//CGame::GetInstance()->SetCamPos()
@@ -736,12 +744,12 @@ void CPlayScene::Render()
 	game_time = GameTime::GetInstance();
 	game_ui->Render(300 - game_time->GetTime(), player->number_brick_coin_hit, player->score,4,1);
 
-	if(is_mario_got_card)
+	if(player->is_hit_bonus)
 	{
 		float x = CGame::GetInstance()->GetCamX();
 		float y = CGame::GetInstance()->GetCamY();
 
-		CSprites::GetInstance()->Get(40040 + card)->DrawFlipX(x + 534, y + 645, 0, 255, 1, 1);
+		CSprites::GetInstance()->Get(40040+player->which_card )->DrawFlipX(x + 534, y + 645, 0, 255, 1, 1);
 	}
 			
 	
@@ -902,7 +910,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 			mario->SetState(MARIO_STATE_GO_UP_PINE);
 
 			mario->go_down_pine_then_move_cam = GetTickCount64();
-
+		//phần bay dưới này
 		}else if (mario->GetIsInObject() == true && mario->is_run_for_fly_high == false)
 		{
 			mario->StartJumping();
@@ -911,7 +919,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		}
 		else
 		{
-			if (mario->is_run_for_fly_high == true)
+			if (mario->is_run_for_fly_high == true && mario->GetLevel() == MARIO_LEVEL_BIG_TAIL)
 			{
 				mario->SetIsInObject(false);
 				mario->SetState(MARIO_STATE_FLY_HIGH);

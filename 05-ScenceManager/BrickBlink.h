@@ -34,5 +34,5 @@ public:
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void SetState(int state);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
-	BrickBlink();
+	
 };

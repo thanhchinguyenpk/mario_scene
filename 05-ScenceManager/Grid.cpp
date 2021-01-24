@@ -9,6 +9,7 @@
 #include <fstream>
 #include "debug.h"
 #include "PlayScence.h"
+#include "MovingCameraScence.h"
 
 
 #include "Utils.h"
@@ -16,13 +17,22 @@
 
 void CGrid::Classify(LPGAMEOBJECT obj)
 {
-	enemies.push_back(obj);
+	//type 1 moving flatform, 2 la gach blink
+	if(obj->type==1 )
+		items.push_back(obj);
+	else if(obj->type == 2)
+		bricks.push_back(obj);
+	else
+		enemies.push_back(obj);
 }
 
 void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 {
 	CGame* game = CGame::GetInstance();
+
 	enemies.clear();
+	items.clear();
+	bricks.clear();
 
 	int top = (int)((cam_y) / CELL_HEIGHT);
 	int bottom = (int)((cam_y + 730) / CELL_HEIGHT);
@@ -30,8 +40,12 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 	int left = (int)((cam_x) / CELL_WIDTH);
 	int right = (int)((cam_x + 760) / CELL_WIDTH);
 
+	
+
 	for (int i = top - 1; i <= bottom + 1; i++)
-		for (int j = left - 1; j <= right + 1; j++) {
+		for (int j = left ; j <= right ; j++) {
+
+	
 			if (j < 0) j = 0;
 			if (i < 0) i = 0;
 			/*DebugOut(L"i %d\n", i);
@@ -39,9 +53,9 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 			DebugOut(L"size %d\n", cells[i][j].size());*/
 
 			for (int k = 0; k < cells[i][j].size(); k++) {
-				DebugOut(L"id %d\n", cells[i][j].at(k)->id_grid);
+				//DebugOut(L"id %d\n", cells[i][j].at(k)->id);
 				//if (cells[i][j].at(k)->GetHealth()) {
-				if (cells[i][j].at(k)->is_appeared == false&& cells[i][j].at(k)->used==false)
+				if (cells[i][j].at(k)->is_appeared == false && cells[i][j].at(k)->used==false)
 					//{//  && 
 					//if (j >= left && j <= right)
 				{
@@ -59,7 +73,8 @@ void CGrid::GetListObjInGrid(float cam_x, float cam_y)
 		}
 
 	game->GetCurrentScene()->SetEnemiesInScene(enemies);
-	//game->GetCurrentScene()->SetEnemiesInScene(enemies);
+	game->GetCurrentScene()->SetItemsInScene(items);
+	game->GetCurrentScene()->SetBrickInScene(bricks);
 
 }
 
@@ -71,41 +86,120 @@ void CGrid::UpdatePositionInGrid(float cam_x, float cam_y)
 
 	int left_cell = (int)((cam_x) / CELL_WIDTH);
 	int right_cell = (int)((cam_x + game->GetScreenWidth()) / CELL_WIDTH);
-	enemies.clear();
-	//items.clear();
+	
+	
+	
 
+	if (dynamic_cast<CPlayScene*>(game->GetCurrentScene()))
+	{
+		enemies.clear();
 
-	CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
-	enemies = scene->enemies;
-	//items = scene->items;
-	// update  vị trí của enemy trong cam từ cell này qua cell khác
-	// chõ này Phương xóa ra khỏi cell rồi đặt vô?
-	for (int m = 0; m < enemies.size(); m++) {
-		LPGAMEOBJECT enemy = enemies[m];
+		CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+		enemies = scene->enemies;
+		//items = scene->items;
+		// update  vị trí của enemy trong cam từ cell này qua cell khác
+		for (int m = 0; m < enemies.size(); m++) {
+			LPGAMEOBJECT enemy = enemies[m];
 
-		for (int i = top_cell - 1; i <= bottom_cell + 1; i++)
-			for (int j = left_cell +1; j <= right_cell-1; j++) {
-				if (j < 0) j = 0;
-				if (i < 0) i = 0;
-				for (int k = 0; k < cells[i][j].size(); k++) {
-					if (cells[i][j].at(k)->id_grid == enemy->id_grid) {
-						cells[i][j].erase(cells[i][j].begin() + k);
+			for (int i = top_cell - 1; i <= bottom_cell + 1; i++)
+				for (int j = left_cell - 2; j <= right_cell + 2; j++) {
+					if (j < 0) j = 0;
+					if (i < 0) i = 0;
+					for (int k = 0; k < cells[i][j].size(); k++) {
+						if (cells[i][j].at(k)->id_grid == enemy->id_grid) {
+							cells[i][j].erase(cells[i][j].begin() + k);
+						}
 					}
 				}
-			}
 
-		int top = (int)(enemy->GetY() / CELL_HEIGHT);
-		int bottom = (int)((enemy->GetY() + enemy->h) / CELL_HEIGHT);
-		int left = (int)(enemy->GetX() / CELL_WIDTH);
-		int right = (int)((enemy->GetX() + enemy->w) / CELL_WIDTH);
+			int top = (int)(enemy->GetY() / CELL_HEIGHT);
+			int bottom = (int)((enemy->GetY() + enemy->h) / CELL_HEIGHT);
+			int left = (int)(enemy->GetX() / CELL_WIDTH);
+			int right = (int)((enemy->GetX() + enemy->w) / CELL_WIDTH);
+			/*DebugOut(L"***********\n");
+			DebugOut(L"left %d\n", left);
+			DebugOut(L"right %d\n", right);*/
 
-		//DebugOut(L"left %d\n", left);
-		//DebugOut(L"right %d\n", right);
-		for (int i = top; i <= bottom; i++)
-			for (int j = left; j <= right; j++) {
-				cells[i][j].push_back(enemy);
-			}
+			for (int i = top; i <= bottom; i++)
+				for (int j = left; j <= right; j++) {
+					cells[i][j].push_back(enemy);
+				}
+		}
+
+
+		
 	}
+	else if (dynamic_cast<MovingCameraScence*>(game->GetCurrentScene()))
+	{
+		items.clear();
+		bricks.clear();
+
+		MovingCameraScence* scene = (MovingCameraScence*)game->GetCurrentScene();
+		items = scene->Items;
+		bricks = scene->listBricks;
+		//items = scene->items;
+		// update  vị trí của enemy trong cam từ cell này qua cell khác
+		for (int m = 0; m < items.size(); m++) {
+			LPGAMEOBJECT item = items[m];
+
+			for (int i = top_cell - 1; i <= bottom_cell + 1; i++)
+				for (int j = left_cell - 2; j <= right_cell + 2; j++) {
+					if (j < 0) j = 0;
+					if (i < 0) i = 0;
+					for (int k = 0; k < cells[i][j].size(); k++) {
+						if (cells[i][j].at(k)->id_grid == item->id_grid) {
+							cells[i][j].erase(cells[i][j].begin() + k);
+						}
+					}
+				}
+
+			int top = (int)(item->GetY() / CELL_HEIGHT);
+			int bottom = (int)((item->GetY() + item->h) / CELL_HEIGHT);
+			int left = (int)(item->GetX() / CELL_WIDTH);
+			int right = (int)((item->GetX() + item->w) / CELL_WIDTH);
+			/*DebugOut(L"***********\n");
+			DebugOut(L"left %d\n", left);
+			DebugOut(L"right %d\n", right);*/
+
+			for (int i = top; i <= bottom; i++)
+				for (int j = left; j <= right; j++) {
+					cells[i][j].push_back(item);
+				}
+		}
+
+		for (int m = 0; m < bricks.size(); m++) {
+			LPGAMEOBJECT brick = bricks[m];
+
+			for (int i = top_cell - 1; i <= bottom_cell + 1; i++)
+				for (int j = left_cell - 2; j <= right_cell + 2; j++) {
+					if (j < 0) j = 0;
+					if (i < 0) i = 0;
+					for (int k = 0; k < cells[i][j].size(); k++) {
+						if (cells[i][j].at(k)->id_grid == brick->id_grid) {
+							cells[i][j].erase(cells[i][j].begin() + k);
+						}
+					}
+				}
+
+			int top = (int)(brick->GetY() / CELL_HEIGHT);
+			int bottom = (int)((brick->GetY() + brick->h) / CELL_HEIGHT);
+			int left = (int)(brick->GetX() / CELL_WIDTH);
+			int right = (int)((brick->GetX() + brick->w) / CELL_WIDTH);
+			/*DebugOut(L"***********\n");
+			DebugOut(L"left %d\n", left);
+			DebugOut(L"right %d\n", right);*/
+
+			for (int i = top; i <= bottom; i++)
+				for (int j = left; j <= right; j++) {
+					cells[i][j].push_back(brick);
+				}
+		}
+
+
+
+
+	}
+
 
 	
 
@@ -114,7 +208,7 @@ void CGrid::UpdatePositionInGrid(float cam_x, float cam_y)
 
 }
 
-LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra, int nx, int angle, int id_grid)
+LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra0, int extra1, int extra2, int id_grid)
 {
 	CAnimationSets * animation_sets = CAnimationSets::GetInstance();
 
@@ -158,7 +252,20 @@ LPGAMEOBJECT CGrid::CreateNewObj(int obj_type, float x, float y, float w, float 
 		break;
 	}
 
+	case 15:
+	{
+		//int state = atof(tokens[4].c_str());
+		obj = new MovingFlatform(player);
 
+		break;
+	}
+	case 11:
+	{
+		//int lv = atof(tokens[4].c_str());
+		obj = new BrickBlink(player);
+		//obj->SetState(BRICK_COIN_STATE_CHUA_DAP);
+		break;
+	}
 
 	}
 
@@ -211,8 +318,10 @@ void CGrid::ReadFileObj()
 		//AddObjectIntoGrid(object_type, x, y, w, h, ani_id, type, extra);
 		LPGAMEOBJECT obj = CreateNewObj(object_type, x, y, w, h, ani_id, type, extra, 1, 1, id_grid);
 		total_obj.push_back(obj);
+		
 	}
 
+	DebugOut(L"total obj la---------------] DINPUT::GetDeviceData failed. Error: %d\n", total_obj.size());
 	f.close();
 }
 
@@ -242,7 +351,7 @@ void CGrid::ReadFileGrid()
 
 		}
 	}
-
+	
 	f.close();
 
 	//DebugOut(L"[EEEEEEEEEEEEEEE] DINPUT::GetDeviceData failed. Error: %d\n", cells[6][14].size());

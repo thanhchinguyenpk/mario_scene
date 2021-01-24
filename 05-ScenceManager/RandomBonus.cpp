@@ -1,5 +1,5 @@
 ﻿#include "RandomBonus.h"
-
+#include "MovingCameraScence.h"
 
 RandomBonus::RandomBonus(CMario *player)
 {
@@ -11,7 +11,7 @@ RandomBonus::RandomBonus(CMario *player)
 void RandomBonus::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	CGameObject::Update(dt, colliable_objects);
-
+	
 	if (got_bonus == false)
 	{
 		float mt, ml, mb, mr, l, t, r, b;
@@ -31,19 +31,7 @@ void RandomBonus::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 
 	if (GetTickCount64() - start_ani >=2000&&got_bonus==false)
 	{
-		
-		/*if (state == STATE_RANDOM_BONUS_MUSHROOM)
-		{
-			DebugOut(L"[ERR]1 vô đây? object type: %d\n");
-			SetState(STATE_RANDOM_BONUS_STAR);
-		}
-		else if (state == STATE_RANDOM_BONUS_STAR)
-		{
-			SetState(STATE_RANDOM_BONUS_FIRE_FLOWER);
-			DebugOut(L"[ERR]2 vô đây? object type: %d\n");
-		}
-		else if (state == STATE_RANDOM_BONUS_FIRE_FLOWER);
-			SetState(STATE_RANDOM_BONUS_MUSHROOM);*/
+
 
 		switch (state) {
 
@@ -60,39 +48,97 @@ void RandomBonus::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 
 			start_ani = GetTickCount64();
 
-	} else if (got_bonus == true)
+	}
+	else if (got_bonus == true)
 	{
-
-		CGame* game = CGame::GetInstance();
-		CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
-		scene->is_mario_got_card = true;
-		//scene->card = state+1;
-
 		switch (state) {
 		case STATE_RANDOM_BONUS_MUSHROOM:
 			SetState(STATE_GOT_BONUS_MUSHROOM);
-			cart_after_text = 1;
-			scene->card = 1;
+			//cart_after_text = 1;
+			mario->which_card = 1;
 			//scene->mario_end_bonus = MUSHROOM_CARD;
 			break;
 		case STATE_RANDOM_BONUS_FIRE_FLOWER:
 			SetState(STATE_GOT_BONUS_FIRE_FLOWER);
-			cart_after_text = 2;
-			scene->card = 2;
+			//cart_after_text = 2;
+			mario->which_card = 2;
 			//scene->mario_end_bonus = FIRE_FLOWER_CARD;
 			break;
 		case STATE_RANDOM_BONUS_STAR:
 			SetState(STATE_GOT_BONUS_STAR);
-			cart_after_text = 3;
-			scene->card = 3;
+			//cart_after_text = 3;
+			mario->which_card = 3;
 			//scene->mario_end_bonus = STAR_MAN_CARD;
 			break;
-		
 		}
 
 		y += dy;
 		x += dx;
+
+
+		/*CGame* game = CGame::GetInstance();
+
+		if ((CPlayScene*)game->GetCurrentScene())
+		{
+			CPlayScene* scene = (CPlayScene*)game->GetCurrentScene();
+			scene->is_mario_got_card = true;
+
+			switch (state) {
+			case STATE_RANDOM_BONUS_MUSHROOM:
+				SetState(STATE_GOT_BONUS_MUSHROOM);
+				cart_after_text = 1;
+				scene->card = 1;
+				//scene->mario_end_bonus = MUSHROOM_CARD;
+				break;
+			case STATE_RANDOM_BONUS_FIRE_FLOWER:
+				SetState(STATE_GOT_BONUS_FIRE_FLOWER);
+				cart_after_text = 2;
+				scene->card = 2;
+				//scene->mario_end_bonus = FIRE_FLOWER_CARD;
+				break;
+			case STATE_RANDOM_BONUS_STAR:
+				SetState(STATE_GOT_BONUS_STAR);
+				cart_after_text = 3;
+				scene->card = 3;
+				//scene->mario_end_bonus = STAR_MAN_CARD;
+				break;
+
+			}
+		}
+		else
+			//((MovingCameraScence*)game->GetCurrentScene())
+		{
+			MovingCameraScence* scene = (MovingCameraScence*)game->GetCurrentScene();
+			scene->is_mario_got_card = true;
+
+			switch (state) {
+			case STATE_RANDOM_BONUS_MUSHROOM:
+				SetState(STATE_GOT_BONUS_MUSHROOM);
+				cart_after_text = 1;
+				scene->card = 1;
+				//scene->mario_end_bonus = MUSHROOM_CARD;
+				break;
+			case STATE_RANDOM_BONUS_FIRE_FLOWER:
+				SetState(STATE_GOT_BONUS_FIRE_FLOWER);
+				cart_after_text = 2;
+				scene->card = 2;
+				//scene->mario_end_bonus = FIRE_FLOWER_CARD;
+				break;
+			case STATE_RANDOM_BONUS_STAR:
+				SetState(STATE_GOT_BONUS_STAR);
+				cart_after_text = 3;
+				scene->card = 3;
+				//scene->mario_end_bonus = STAR_MAN_CARD;
+				break;
+
+			}
+		}
+		
+
+		y += dy;
+		x += dx;*/
 	}
+	
 	
 }
 
@@ -134,7 +180,7 @@ void RandomBonus::Render()
 			text.Render(x + 170, y + 155, "YOU GOT A CARD");
 
 		if (GetTickCount64() - time_order_to_render_text > 2000)
-			CSprites::GetInstance()->Get(40040+cart_after_text)->DrawFlipX(x+550,y+ 155, 0, 255, 1, 1);
+			CSprites::GetInstance()->Get(40040+ mario->which_card)->DrawFlipX(x+550,y+ 155, 0, 255, 1, 1);
 
 		//TextAndNumber text;
 		//CSprites::GetInstance()->Get(40040 )->DrawFlipX(x + 100, y + 155, 0, 255, 1, 1);

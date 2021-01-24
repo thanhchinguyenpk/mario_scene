@@ -25,7 +25,8 @@ public:
 	virtual void Render() = 0; 
 
 	virtual void SetEnemiesInScene(vector<LPGAMEOBJECT> listEnemy) {}
-
+	virtual void SetItemsInScene(vector<LPGAMEOBJECT> listItem) {}
+	virtual void SetBrickInScene(vector<LPGAMEOBJECT> listBrick) {}
 };
 typedef CScene * LPSCENE;
 

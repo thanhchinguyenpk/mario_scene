@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GameObject.h"
 #include "Game.h"
 #include "Mario.h"
@@ -54,6 +54,8 @@ public:
 
 	vector<LPGAMEOBJECT> total_obj;
 	vector<LPGAMEOBJECT> enemies;
+	vector<LPGAMEOBJECT> items;
+	vector<LPGAMEOBJECT> bricks;
 
 	vector<LPGAMEOBJECT> cells[MAX_ROW][MAX_COLUMN];
 
@@ -62,13 +64,17 @@ public:
 	LPCWSTR gridFilePath;
 
 	void Classify(LPGAMEOBJECT obj);
+
 	void GetListObjInGrid(float cam_x, float cam_y);
+	// lấy các obj trong cam phân loại rồi đổ qua playscene
 
 	void UpdatePositionInGrid(float cam_x, float cam_y);
+	//update obj từ cell nào qua cell nào
 
-	LPGAMEOBJECT CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra = 0, int nx = 1, int angle = 1, int id_grid = 0);
+	LPGAMEOBJECT CreateNewObj(int obj_type, float x, float y, float w, float h, int ani_id, int type, int extra0 = 0, int extra1= 1, int extra2 = 1, int id_grid = 0);
 
 	void ReadFileObj();
+
 	void ReadFileGrid();
 
 

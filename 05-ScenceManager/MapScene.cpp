@@ -482,12 +482,12 @@ void MapSceneKeyHandler::OnKeyDown(int KeyCode)
 	switch (KeyCode)
 	{
 	case DIK_S:
-		if (map_scene->current_portal->is_portal) {
-			
-			game_temp->SwitchScene(4);
-			//DebugOut(L"hé liu PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp----->  \n");
 
-		}
+		if (map_scene->current_portal->is_portal && map_scene->current_portal->id_portal==1)
+			game_temp->SwitchScene(4);
+		else if(map_scene->current_portal->is_portal && map_scene->current_portal->id_portal==16)
+			game_temp->SwitchScene(5);
+
 		break;
 	case DIK_RIGHT:
 		if (map_scene->current_portal->r != -1)

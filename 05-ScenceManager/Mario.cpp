@@ -141,11 +141,11 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 			{
 				this->SetPosition(6610, 1095);
 				this->is_in_near_end_scene = true;
-			}
+			}//dưới là chuôi cống map 1
 			else if (is_on_the_ground == false)
-				this->SetPosition(6363 + 16, 1521);
+				this->SetPosition(6379, 1521);//2126
 			else
-				this->SetPosition(2336 * 3, 360 * 3);
+				this->SetPosition(7008, 1080);//6330
 	
 
 			is_on_the_ground = !is_on_the_ground;//truyền biến xử lý cam ở play scene;
@@ -733,6 +733,8 @@ void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		}
 	}
 
+	if (y > 2050)//out ra khỏi map
+		is_die = true;
 	
 }
 

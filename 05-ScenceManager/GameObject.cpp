@@ -141,7 +141,7 @@ void CGameObject::RenderBoundingBox()
 
 	float width = (int)r - (int)l;
 	float height = (int)b - (int)t;
-	CGame::GetInstance()->Draw(x - width / 2, y - height / 2, bbox, rect.left, rect.top, rect.right, rect.bottom, 60);
+	//CGame::GetInstance()->Draw(x - width / 2, y - height / 2, bbox, rect.left, rect.top, rect.right, rect.bottom, 60);
 }
 
 
